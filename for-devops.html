@@ -4,593 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Threadledger for DevSecOps — Automated AI Compliance Pipeline</title>
-  <meta name="description" content="For security engineers and DevSecOps: Threadledger enforces compliance controls in your CI pipeline and IDE — automatically generated from a formally verified risk model." />
-<style>
-/* ============================================================
-   THREADLEDGER DESIGN SYSTEM
-   Dark security aesthetic — deep navy, cyan accent, green confirmation
-   Fonts: Space Mono (code/mono feel) + DM Sans (body)
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
-
-/* ── CSS Variables ── */
-:root {
-  --bg-void:        #080c14;
-  --bg-deep:        #0d1421;
-  --bg-surface:     #111927;
-  --bg-raised:      #162030;
-  --bg-card:        #1a2638;
-
-  --border-dim:     rgba(255,255,255,0.06);
-  --border-subtle:  rgba(255,255,255,0.10);
-  --border-accent:  rgba(0,224,255,0.25);
-
-  --cyan:           #00e0ff;
-  --cyan-dim:       rgba(0,224,255,0.15);
-  --cyan-glow:      rgba(0,224,255,0.08);
-  --green:          #00ff88;
-  --green-dim:      rgba(0,255,136,0.12);
-  --amber:          #ffaa00;
-  --amber-dim:      rgba(255,170,0,0.12);
-  --red:            #ff4466;
-  --red-dim:        rgba(255,68,102,0.12);
-  --purple:         #a855f7;
-
-  --text-primary:   #e8edf4;
-  --text-secondary: #8a9bb0;
-  --text-muted:     #4a5a6e;
-  --text-cyan:      #00e0ff;
-  --text-green:     #00ff88;
-
-  --font-mono:      'Space Mono', 'Courier New', monospace;
-  --font-body:      'DM Sans', system-ui, sans-serif;
-
-  --radius-sm:      4px;
-  --radius-md:      8px;
-  --radius-lg:      12px;
-  --radius-xl:      16px;
-
-  --shadow-card:    0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-glow:    0 0 24px rgba(0,224,255,0.12);
-  --shadow-green:   0 0 24px rgba(0,255,136,0.10);
-
-  --transition:     0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ── Reset & Base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg-void);
-  color: var(--text-primary);
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* ── Grid noise texture overlay ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0,224,255,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,255,136,0.03) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── Typography ── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.display-xl {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-}
-
-.display-lg {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-}
-
-.display-md {
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.text-lg   { font-size: 1.125rem; }
-.text-md   { font-size: 1rem; }
-.text-sm   { font-size: 0.875rem; }
-.text-xs   { font-size: 0.75rem; }
-
-.mono      { font-family: var(--font-mono); }
-.text-cyan { color: var(--cyan); }
-.text-green{ color: var(--green); }
-.text-amber{ color: var(--amber); }
-.text-muted{ color: var(--text-muted); }
-.text-secondary { color: var(--text-secondary); }
-
-/* ── Layout ── */
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.container-wide {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.section {
-  padding: 96px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.section-sm { padding: 64px 0; }
-
-/* ── Navigation ── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(8,12,20,0.85);
-  backdrop-filter: blur(16px) saturate(150%);
-  border-bottom: 1px solid var(--border-dim);
-  height: 64px;
-  display: flex;
-  align-items: center;
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text-primary);
-}
-
-.nav-logo-mark {
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--cyan), rgba(0,224,255,0.4));
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--bg-void);
-  box-shadow: 0 0 16px rgba(0,224,255,0.25);
-}
-
-.nav-logo-text {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: -0.01em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: color var(--transition);
-  letter-spacing: 0.01em;
-}
-
-.nav-links a:hover { color: var(--text-primary); }
-.nav-links a.active { color: var(--cyan); }
-
-.nav-cta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ── Buttons ── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: all var(--transition);
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-}
-
-.btn-primary {
-  background: var(--cyan);
-  color: var(--bg-void);
-  box-shadow: 0 0 20px rgba(0,224,255,0.2);
-}
-.btn-primary:hover {
-  background: #33e8ff;
-  box-shadow: 0 0 32px rgba(0,224,255,0.35);
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
-}
-.btn-outline:hover {
-  border-color: var(--border-accent);
-  color: var(--cyan);
-  background: var(--cyan-glow);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
-  padding: 10px 16px;
-}
-.btn-ghost:hover { color: var(--text-primary); }
-
-.btn-lg { padding: 14px 28px; font-size: 0.9rem; }
-.btn-sm { padding: 7px 14px; font-size: 0.75rem; }
-
-/* ── Cards ── */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-dim);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.card:hover {
-  border-color: var(--border-accent);
-  box-shadow: var(--shadow-card), var(--shadow-glow);
-}
-
-.card-cyan  { border-top: 2px solid var(--cyan); }
-.card-green { border-top: 2px solid var(--green); }
-.card-amber { border-top: 2px solid var(--amber); }
-.card-red   { border-top: 2px solid var(--red); }
-
-/* ── Badges / Pills ── */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.badge-cyan   { background: var(--cyan-dim);  color: var(--cyan);  border: 1px solid rgba(0,224,255,0.2); }
-.badge-green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,255,136,0.2); }
-.badge-amber  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255,170,0,0.2); }
-.badge-red    { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(255,68,102,0.2); }
-
-/* ── Code / Terminal blocks ── */
-.terminal {
-  background: #070b12;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  font-family: var(--font-mono);
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.04);
-}
-
-.terminal-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: var(--bg-raised);
-  border-bottom: 1px solid var(--border-dim);
-}
-
-.terminal-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-}
-.dot-red    { background: #ff5f56; }
-.dot-yellow { background: #ffbd2e; }
-.dot-green  { background: #27c93f; }
-
-.terminal-title {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-left: 8px;
-  letter-spacing: 0.05em;
-}
-
-.terminal-body {
-  padding: 20px 24px;
-  font-size: 0.8rem;
-  line-height: 1.7;
-}
-
-.t-prompt { color: var(--text-muted); }
-.t-cmd    { color: var(--text-primary); }
-.t-pass   { color: var(--green); }
-.t-fail   { color: var(--red); }
-.t-warn   { color: var(--amber); }
-.t-info   { color: var(--cyan); }
-.t-dim    { color: var(--text-muted); }
-
-/* ── Stat blocks ── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1px;
-  background: var(--border-dim);
-  border: 1px solid var(--border-dim);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.stat-item {
-  background: var(--bg-surface);
-  padding: 28px 24px;
-  text-align: center;
-}
-
-.stat-value {
-  font-family: var(--font-mono);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--cyan);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ── Section headings ── */
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-label::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--cyan);
-  opacity: 0.5;
-}
-
-/* ── Dividers ── */
-.divider {
-  height: 1px;
-  background: var(--border-dim);
-  margin: 0;
-}
-
-/* ── Layer stack visual ── */
-.layer-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.layer-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-dim);
-  border-radius: var(--radius-md);
-  transition: all var(--transition);
-}
-
-.layer-item:hover {
-  border-color: var(--border-accent);
-  background: var(--bg-card);
-}
-
-.layer-badge {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--cyan);
-  background: var(--cyan-dim);
-  border: 1px solid rgba(0,224,255,0.2);
-  border-radius: var(--radius-sm);
-  padding: 3px 8px;
-  white-space: nowrap;
-  min-width: 36px;
-  text-align: center;
-}
-
-/* ── Video placeholder ── */
-.video-frame {
-  position: relative;
-  background: var(--bg-deep);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  aspect-ratio: 16/9;
-  cursor: pointer;
-}
-
-.video-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,224,255,0.05) 0%, transparent 60%);
-}
-
-.video-play-btn {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 64px; height: 64px;
-  background: rgba(0,224,255,0.15);
-  border: 1px solid rgba(0,224,255,0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-}
-
-.video-frame:hover .video-play-btn {
-  background: rgba(0,224,255,0.25);
-  box-shadow: 0 0 32px rgba(0,224,255,0.2);
-  transform: translate(-50%, -50%) scale(1.05);
-}
-
-/* ── Footer ── */
-.footer {
-  background: var(--bg-deep);
-  border-top: 1px solid var(--border-dim);
-  padding: 48px 0 32px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Animations ── */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 16px rgba(0,224,255,0.2); }
-  50%       { box-shadow: 0 0 32px rgba(0,224,255,0.4); }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.animate-fade-up {
-  animation: fadeInUp 0.6s ease both;
-}
-
-.cursor-blink::after {
-  content: '▋';
-  animation: blink 1s step-end infinite;
-  color: var(--cyan);
-  margin-left: 2px;
-}
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .section   { padding: 64px 0; }
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-</style>
+  <meta name="description" content="For security engineers and DevSecOps: Threadledger enforces compliance controls in your CI pipeline and IDE automatically." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/design-system.css" />
   <style>
-    .audience-hero { padding: 140px 0 80px; position: relative; z-index: 1; }
-    .audience-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green-dim); border: 1px solid rgba(0,255,136,0.2);
-      border-radius: 999px; padding: 5px 14px;
-      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
-      color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 24px;
-    }
-    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 64px; }
-    .step-list { display: flex; flex-direction: column; gap: 16px; }
-    .step-item {
-      display: flex; gap: 16px; padding: 20px 24px;
-      background: var(--bg-card); border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg); transition: all var(--transition);
-    }
-    .step-item:hover { border-color: var(--border-accent); }
-    .step-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      flex-shrink: 0; margin-top: 6px;
-    }
-    .integration-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
-    .integration-card {
-      background: var(--bg-card); border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg); padding: 20px; text-align: center; transition: all var(--transition);
-    }
-    .integration-card:hover { border-color: var(--border-accent); }
-    .integration-icon { font-size: 1.5rem; margin-bottom: 8px; }
-    .integration-name { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
-    .cta-banner {
-      background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,224,255,0.03) 100%);
-      border: 1px solid rgba(0,255,136,0.15); border-radius: var(--radius-xl);
-      padding: 64px 48px; text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-banner::before {
-      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 300px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-    }
-    @media (max-width: 900px) {
-      .feature-grid { grid-template-columns: 1fr; }
-      .integration-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+    .audience-hero { padding: calc(var(--nav-h) + 64px) 0 72px; position:relative; z-index:1; }
+    .audience-tag { display:inline-flex; align-items:center; gap:7px; background:var(--green-dim); border:0.5px solid rgba(15,110,86,0.25); border-radius:999px; padding:4px 13px; font-family:var(--font-mono); font-size:0.67rem; font-weight:600; color:var(--green); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px; }
+    [data-theme="dark"] .audience-tag { border-color:rgba(0,255,136,0.2); }
+    .feature-grid { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; margin-bottom:56px; }
+    .step-list { display:flex; flex-direction:column; gap:14px; }
+    .step-item { display:flex; gap:14px; padding:18px 20px; background:var(--bg-card); border:0.5px solid var(--border-dim); border-radius:var(--radius-lg); transition:all var(--transition); }
+    .step-item:hover { border-color:var(--border-accent); }
+    .step-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+    .integration-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:36px; }
+    .integration-card { background:var(--bg-card); border:0.5px solid var(--border-dim); border-radius:var(--radius-lg); padding:18px; text-align:center; transition:all var(--transition); }
+    .integration-card:hover { border-color:var(--border-accent); }
+    .integration-icon { font-size:1.4rem; margin-bottom:7px; }
+    .integration-name { font-family:var(--font-mono); font-size:0.72rem; color:var(--text-secondary); }
+    .cta-banner { border:0.5px solid rgba(15,110,86,0.25); border-radius:var(--radius-xl); padding:52px 36px; text-align:center; position:relative; overflow:hidden; background:var(--bg-surface); }
+    [data-theme="dark"] .cta-banner { background:linear-gradient(135deg,rgba(0,255,136,0.04) 0%,rgba(0,224,255,0.02) 100%); border-color:rgba(0,255,136,0.15); }
+    .cta-banner::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:200px; height:0.5px; background:linear-gradient(90deg,transparent,var(--green),transparent); }
+    @media (max-width:900px) { .feature-grid { grid-template-columns:1fr; } .integration-grid { grid-template-columns:repeat(2,1fr); } }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -600,11 +38,15 @@ h1, h2, h3, h4, h5, h6 {
       <ul class="nav-links">
         <li><a href="index.html#platform">Platform</a></li>
         <li><a href="index.html#how-it-works">How It Works</a></li>
-        <li><a href="for-ciso.html">For CISOs &amp; DPOs</a></li>
+        <li><a href="for-ciso.html" class="">For CISOs &amp; DPOs</a></li>
         <li><a href="for-devops.html" class="active">For DevSecOps</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
       </ul>
-      <div class="nav-cta">
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-label">Dark</span>
+        </button>
         <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
         <a href="index.html#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
       </div>
@@ -614,141 +56,93 @@ h1, h2, h3, h4, h5, h6 {
   <section class="audience-hero">
     <div class="container">
       <div class="audience-tag">⚡ For Security Engineers &amp; DevSecOps</div>
-      <h1 class="display-xl" style="max-width:680px; margin-bottom:20px;">
-        Compliance controls that<br/><span class="text-green">can't be skipped.</span>
+      <h1 class="display-xl" style="max-width:660px; margin-bottom:16px;">
+        Compliance controls that<br/><em class="accent">can't be skipped.</em>
       </h1>
-      <p style="font-size:1.05rem; color:var(--text-secondary); max-width:560px; line-height:1.65; margin-bottom:32px;">
-        Threadledger CASE 2.0 automatically generates compliance controls from a formally verified risk model, enforces them at build time via IDE agent, and runs a multi-tier CI pipeline that detects gaps before they reach production.
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:540px; line-height:1.7; margin-bottom:28px;">
+        Threadledger CASE 2.0 automatically generates compliance controls from a formally verified risk model, enforces them at build time via IDE agent, and runs a multi-stage CI pipeline that detects gaps before they reach production.
       </p>
-      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
         <a href="index.html#request-demo" class="btn btn-primary btn-lg">Request Terminal Demo →</a>
         <a href="for-ciso.html" class="btn btn-outline btn-lg">For CISOs &amp; DPOs</a>
       </div>
     </div>
   </section>
 
-  <!-- How it works for devs -->
-  <section class="section" style="background:var(--bg-deep); padding-top:64px;">
+  <section class="section" style="background:var(--bg-deep); padding-top:56px;">
     <div class="container">
       <div class="section-label">How it fits your workflow</div>
-      <h2 class="display-md" style="margin-bottom:12px;">Compliance built into your pipeline — not bolted on after</h2>
-      <p style="color:var(--text-secondary); max-width:560px; font-size:0.9375rem; line-height:1.6; margin-bottom:40px;">
-        Four layers work together. Each layer catches what the previous one cannot.
-      </p>
-
+      <h2 class="display-md" style="margin-bottom:10px;">Compliance built into your pipeline — not bolted on after</h2>
+      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; line-height:1.65; margin-bottom:36px;">Four layers work together. Each one catches what the previous cannot.</p>
       <div class="feature-grid">
         <div>
           <div class="step-list">
-            <div class="step-item">
-              <div class="step-dot" style="background:var(--cyan);"></div>
-              <div>
-                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 1 — Risk model</div>
-                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Compliance rules defined in the workbench</h3>
-                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Your DPO defines risks and rules. The platform formally verifies them — no gaps, no contradictions. This becomes the source of truth for everything downstream.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-dot" style="background:var(--cyan);"></div>
-              <div>
-                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 2 — Auto-generated controls</div>
-                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Zero hand-written compliance code</h3>
-                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Compliance controls are generated directly from the verified model. Non-compliant code cannot compile or deploy. No manual guard implementation required.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-dot" style="background:var(--green);"></div>
-              <div>
-                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 3 — IDE agent</div>
-                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Compliance guidance at coding time</h3>
-                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">The IDE agent explains which rules apply to each piece of code, in plain language, as you write it. Omitting a required control is a build failure — not a code review comment.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-dot" style="background:var(--green);"></div>
-              <div>
-                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 4 — CI compliance agent</div>
-                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Automated compliance testing on every PR</h3>
-                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">On every merge request, the compliance agent re-verifies that controls are present, active on every sensitive code path, and have not been circumvented. Failures block the merge and generate a compliance report.</p>
-              </div>
-            </div>
+            <div class="step-item"><div class="step-dot" style="background:var(--cyan);"></div><div><div style="font-family:var(--font-mono);font-size:0.67rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Step 1 — Risk model</div><h3 style="font-size:0.9rem;margin-bottom:5px;">Compliance rules defined in the workbench</h3><p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">Your DPO defines risks and rules. The platform formally verifies them — no gaps, no contradictions. This becomes the source of truth for everything downstream.</p></div></div>
+            <div class="step-item"><div class="step-dot" style="background:var(--cyan);"></div><div><div style="font-family:var(--font-mono);font-size:0.67rem;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Step 2 — Auto-generated controls</div><h3 style="font-size:0.9rem;margin-bottom:5px;">Zero hand-written compliance code</h3><p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">Compliance controls are generated directly from the verified model. Non-compliant code cannot compile or deploy. No manual guard implementation required.</p></div></div>
+            <div class="step-item"><div class="step-dot" style="background:var(--green);"></div><div><div style="font-family:var(--font-mono);font-size:0.67rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Step 3 — IDE agent</div><h3 style="font-size:0.9rem;margin-bottom:5px;">Compliance guidance at coding time</h3><p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">The IDE agent explains which rules apply to each piece of code, in plain language, as you write it. Omitting a required control is a build failure — not a code review comment.</p></div></div>
+            <div class="step-item"><div class="step-dot" style="background:var(--green);"></div><div><div style="font-family:var(--font-mono);font-size:0.67rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Step 4 — CI compliance agent</div><h3 style="font-size:0.9rem;margin-bottom:5px;">Automated compliance testing on every PR</h3><p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">On every merge request, the compliance agent re-verifies that controls are present, active on every sensitive code path, and have not been circumvented. Failures block the merge and generate a compliance report.</p></div></div>
           </div>
         </div>
-
-        <!-- Terminal: outcome language only -->
         <div>
           <div class="terminal">
             <div class="terminal-bar">
-              <div class="terminal-dot dot-red"></div>
-              <div class="terminal-dot dot-yellow"></div>
-              <div class="terminal-dot dot-green"></div>
+              <div class="terminal-dot dot-red"></div><div class="terminal-dot dot-yellow"></div><div class="terminal-dot dot-green"></div>
               <span class="terminal-title">threadledger-ci · PR #142 · ai-service</span>
             </div>
             <div class="terminal-body">
-              <div class="t-dim">Compliance-Test-Agent running...</div>
-              <br/>
+              <div class="t-dim">Compliance-Test-Agent running...</div><br/>
               <div class="t-cmd">Checking: controls present in codebase</div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">All required controls found</span></div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-info">Control presence check · PASS</span></div>
-              <br/>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">All required controls found</span></div>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-info">Control presence check · PASS</span></div><br/>
               <div class="t-cmd">Checking: controls active on all sensitive paths</div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-warn">⚠ Code path identified where control is not invoked</span></div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">✗ Sensitive data flow exits without compliance check</span></div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">Path coverage check · FAIL</span></div>
-              <br/>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-warn">⚠ Code path where control is not invoked</span></div>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-fail">✗ Sensitive data flow exits without compliance check</span></div>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-fail">Path coverage check · FAIL</span></div><br/>
               <div class="t-cmd">Checking: controls cannot be circumvented</div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">✗ Compliance exception silently discarded</span></div>
-              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">Bypass detection · FAIL</span></div>
-              <br/>
-              <div style="background:rgba(255,68,102,0.08); border:1px solid rgba(255,68,102,0.2); border-radius:4px; padding:10px 14px;">
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-fail">✗ Compliance exception silently discarded</span></div>
+              <div style="padding-left:14px;margin:2px 0;"><span class="t-fail">Bypass detection · FAIL</span></div><br/>
+              <div style="background:rgba(192,57,43,0.07);border:0.5px solid rgba(192,57,43,0.18);border-radius:4px;padding:9px 13px;">
                 <div class="t-fail" style="font-weight:700;">✗ BUILD FAILED — PR #142 blocked</div>
-                <div class="t-dim" style="font-size:0.75rem; margin-top:4px; line-height:1.7;">
-                  HIGH-RISK merge blocked (EU AI Act Art. 9)<br/>
-                  2 compliance gaps detected · merge rejected<br/>
-                  Report generated · On-chain audit log updated
-                </div>
+                <div class="t-dim" style="font-size:0.72rem;margin-top:4px;line-height:1.7;">HIGH-RISK merge blocked (EU AI Act Art. 9)<br/>2 compliance gaps detected · merge rejected<br/>Report generated · On-chain audit log updated</div>
               </div>
             </div>
           </div>
-          <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:12px; font-family:var(--font-mono);">
-            Live demo · runnable in terminal · <a href="mailto:contact@threadledger.io?subject=DevSecOps Demo Request" style="color:var(--green); text-decoration:none;">request access →</a>
-          </p>
+          <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:10px;font-family:var(--font-mono);">Live demo · runnable in terminal · <a href="mailto:contact@threadledger.io?subject=DevSecOps Demo Request" style="color:var(--green);text-decoration:none;">request access →</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What gets caught -->
   <section class="section">
     <div class="container">
       <div class="section-label">What the pipeline catches</div>
-      <h2 class="display-md" style="margin-bottom:12px;">Three checks — three different failure modes</h2>
-      <p style="color:var(--text-secondary); max-width:540px; font-size:0.9375rem; line-height:1.6; margin-bottom:36px;">Most compliance pipelines check that controls exist. Threadledger also checks that they work — on every code path, against attempts to work around them.</p>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
-        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--cyan); border-radius:var(--radius-lg); padding:24px 20px;">
-          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--cyan); margin-bottom:10px;">Check 1 · Presence</div>
-          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls exist</h3>
-          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Verifies every required control is present in the codebase. Fails on any missing control. Scored report generated.</p>
+      <h2 class="display-md" style="margin-bottom:10px;">Three checks — three different failure modes</h2>
+      <p style="color:var(--text-secondary);max-width:520px;font-size:0.9375rem;line-height:1.65;margin-bottom:32px;">Most compliance pipelines check that controls exist. Threadledger also checks that they work — on every code path, against attempts to work around them.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+        <div style="background:var(--bg-card);border:0.5px solid var(--border-dim);border-top:2px solid var(--cyan);border-radius:var(--radius-lg);padding:22px 18px;">
+          <div style="font-family:var(--font-mono);font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:9px;">Check 1 · Presence</div>
+          <h3 style="font-size:0.875rem;margin-bottom:7px;">Controls exist</h3>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">Verifies every required control is present in the codebase. Fails on any missing control. Scored report generated.</p>
         </div>
-        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--amber); border-radius:var(--radius-lg); padding:24px 20px;">
-          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); margin-bottom:10px;">Check 2 · Coverage</div>
-          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls active on every path</h3>
-          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Analyses all code paths to detect branches where a control exists but is never reached. Catches fast-track bypasses invisible to presence checks.</p>
+        <div style="background:var(--bg-card);border:0.5px solid var(--border-dim);border-top:2px solid var(--amber);border-radius:var(--radius-lg);padding:22px 18px;">
+          <div style="font-family:var(--font-mono);font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:9px;">Check 2 · Coverage</div>
+          <h3 style="font-size:0.875rem;margin-bottom:7px;">Controls active on every path</h3>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">Analyses all code paths to detect branches where a control exists but is never reached. Catches fast-track bypasses invisible to presence checks.</p>
         </div>
-        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--red); border-radius:var(--radius-lg); padding:24px 20px;">
-          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--red); margin-bottom:10px;">Check 3 · Integrity</div>
-          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls cannot be circumvented</h3>
-          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Detects patterns where controls are nominally present but effectively disabled. Catches issues that pass both presence and coverage checks.</p>
+        <div style="background:var(--bg-card);border:0.5px solid var(--border-dim);border-top:2px solid var(--red);border-radius:var(--radius-lg);padding:22px 18px;">
+          <div style="font-family:var(--font-mono);font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:9px;">Check 3 · Integrity</div>
+          <h3 style="font-size:0.875rem;margin-bottom:7px;">Controls cannot be circumvented</h3>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;">Detects patterns where controls are nominally present but effectively disabled. Catches issues that pass both presence and coverage checks.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Integrations -->
   <section class="section" style="background:var(--bg-deep);">
     <div class="container">
       <div class="section-label">Integrations</div>
-      <h2 class="display-md" style="margin-bottom:12px;">Fits into your existing stack</h2>
-      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; line-height:1.6;">No rip-and-replace. Threadledger wraps around your existing CI pipeline and IDE.</p>
+      <h2 class="display-md" style="margin-bottom:10px;">Fits into your existing stack</h2>
+      <p style="color:var(--text-secondary);max-width:440px;font-size:0.9375rem;line-height:1.65;">No rip-and-replace. Threadledger wraps around your existing CI pipeline and IDE.</p>
       <div class="integration-grid">
         <div class="integration-card"><div class="integration-icon">🐙</div><div class="integration-name">GitHub Actions</div></div>
         <div class="integration-card"><div class="integration-icon">⚡</div><div class="integration-name">GitLab CI</div></div>
@@ -762,31 +156,27 @@ h1, h2, h3, h4, h5, h6 {
     </div>
   </section>
 
-  <!-- Video -->
-  <section class="section section-sm" style="padding-top:64px; padding-bottom:64px;">
+  <section class="section section-sm" style="padding-top:56px;padding-bottom:56px;">
     <div class="container">
       <div class="section-label">Demo</div>
-      <h2 class="display-md" style="margin-bottom:12px;">Compliance pipeline, live in your terminal</h2>
-      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; margin-bottom:32px; line-height:1.6;">~5 minute walkthrough. Controls present, path gap found, bypass detected, merge blocked. Runnable live — no slides.</p>
-      <div style="position:relative; background:var(--bg-deep); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; max-width:720px; min-height:280px;">
-        <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,255,136,0.04) 0%,transparent 70%);"></div>
-        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
-          <div style="width:64px;height:64px;background:rgba(0,255,136,0.10);border:1px solid rgba(0,255,136,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-            <div style="width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent var(--green);margin-left:4px;"></div>
-          </div>
-          <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">Terminal demo video coming soon</span>
+      <h2 class="display-md" style="margin-bottom:10px;">Compliance pipeline, live in your terminal</h2>
+      <p style="color:var(--text-secondary);max-width:500px;font-size:0.9375rem;margin-bottom:28px;line-height:1.65;">~5 minute walkthrough. Controls present, path gap found, bypass detected, merge blocked. Runnable live — no slides.</p>
+      <div style="position:relative;background:var(--bg-deep);border:0.5px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;max-width:700px;min-height:260px;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--green-dim) 0%,transparent 70%);"></div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+          <div style="width:56px;height:56px;background:var(--green-dim);border:0.5px solid rgba(15,110,86,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:9px 0 9px 16px;border-color:transparent transparent transparent var(--green);margin-left:3px;"></div></div>
+          <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">Terminal demo video coming soon</span>
           <a href="mailto:contact@threadledger.io?subject=DevSecOps Terminal Demo" class="btn btn-primary btn-sm">Request live terminal access →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-sm" style="padding-top:0;">
+  <section class="section section-sm" style="background:var(--bg-deep);padding-top:0;padding-bottom:64px;">
     <div class="container">
       <div class="cta-banner">
-        <h2 class="display-md" style="margin-bottom:12px;">Run the demo in <span class="text-green">your terminal</span>.</h2>
-        <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 24px; line-height:1.6;">Request access to the prototype. Controls present, path gap found, bypass detected, merge blocked. No slides.</p>
+        <h2 class="display-md" style="margin-bottom:10px;">Run the demo in <span style="color:var(--green);">your terminal</span>.</h2>
+        <p style="color:var(--text-secondary);max-width:400px;margin:0 auto 22px;line-height:1.65;">Request access to the prototype. Controls present, path gap found, bypass detected, merge blocked. No slides.</p>
         <a href="mailto:contact@threadledger.io?subject=DevSecOps Terminal Demo Request" class="btn btn-primary btn-lg">Request Demo Access →</a>
       </div>
     </div>
@@ -794,20 +184,19 @@ h1, h2, h3, h4, h5, h6 {
 
   <footer class="footer">
     <div class="container">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
+        <div style="display:flex;align-items:center;gap:9px;">
           <div class="nav-logo-mark">TL</div>
-          <span style="font-family:var(--font-mono); font-weight:700;">Threadledger</span>
-          <span style="color:var(--text-muted); font-size:0.8rem;">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
+          <span style="font-family:var(--font-mono);font-weight:600;">Threadledger</span>
+          <span style="color:var(--text-muted);font-size:0.78rem;font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
         </div>
-        <div style="display:flex; gap:20px;">
-          <a href="index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Home</a>
-          <a href="for-ciso.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">For CISOs &amp; DPOs</a>
-          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">contact@threadledger.io</a>
+        <div style="display:flex;gap:18px;">
+          <a href="index.html" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;">Home</a>
+          <a href="for-ciso.html" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;">For CISOs & DPOs</a>
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;">contact@threadledger.io</a>
         </div>
       </div>
     </div>
   </footer>
-
 </body>
 </html>
