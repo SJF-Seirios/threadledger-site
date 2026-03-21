@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threadledger — Request a Demo</title>
+  <meta name="description" content="Request a live demo of Threadledger CASE 2.0. We run the full compliance pipeline against a real codebase and show you what a regulator-ready evidence package looks like." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    .demo-hero {
+      padding: calc(var(--nav-h) + 64px) 0 56px;
+      position: relative; z-index: 1;
+      background: var(--bg-deep);
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      padding: 72px 0;
+    }
+
+    /* ── Tally embed container ── */
+    .form-wrap {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 560px;
+      position: relative;
+    }
+
+    .tally-embed {
+      width: 100%;
+      min-height: 560px;
+      border: none;
+      display: block;
+    }
+
+    /* Placeholder shown until Tally URL is added */
+    .form-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .placeholder-icon {
+      width: 56px; height: 56px;
+      background: var(--cyan-dim);
+      border: 0.5px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    /* ── What to expect list ── */
+    .expect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .expect-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .expect-num {
+      width: 28px; height: 28px;
+      background: var(--cyan-dim);
+      border: 0.5px solid var(--border-accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.68rem; font-weight: 700;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+    :root .expect-num { color: var(--green); background: var(--green-dim); border-color: rgba(15,110,86,0.2); }
+
+    .expect-item h4 {
+      font-size: 0.9rem; margin-bottom: 4px;
+    }
+    :root .expect-item h4 { font-family: var(--font-body); font-weight: 600; }
+    .expect-item p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ── Audience cards ── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .audience-card {
+      background: var(--bg-surface);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      transition: all var(--transition);
+    }
+    .audience-card:hover { border-color: var(--border-accent); }
+    .audience-card h4 { font-size: 0.875rem; margin-bottom: 5px; }
+    :root .audience-card h4 { font-family: var(--font-body); font-weight: 600; }
+    .audience-card p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* ── FAQ ── */
+    .faq-item { border-bottom: 0.5px solid var(--border-dim); padding: 16px 0; }
+    .faq-q { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-primary); margin-bottom: 6px; }
+    :root .faq-q { font-family: var(--font-body); font-weight: 600; font-size: 0.875rem; }
+    .faq-a { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .demo-grid { grid-template-columns: 1fr; gap: 40px; }
+      .audience-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-mark">TL</div>
+        <span class="nav-logo-text">Threadledger</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#platform">Platform</a></li>
+        <li><a href="regulations.html">Regulations</a></li>
+        <li><a href="../for-ciso.html">For CISOs &amp; DPOs</a></li>
+        <li><a href="../for-devops.html">For DevSecOps</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="request-demo.html" class="btn btn-primary btn-sm active">Request Demo →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="demo-hero">
+    <div class="container">
+      <div class="section-label">Live demo</div>
+      <h1 class="display-xl" style="max-width:620px; margin-bottom:14px;">
+        See it working.<br/><em class="accent">No slides. No pitch.</em>
+      </h1>
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:520px; line-height:1.7;">
+        We run the full compliance pipeline against a real codebase — risk model verification, control generation, CI gate, and on-chain audit trail. You see exactly what a regulator-ready evidence package looks like before you commit to anything.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="demo-grid">
+
+        <!-- Left: form -->
+        <div>
+          <div class="section-label" style="margin-bottom:20px;">Request your demo</div>
+
+          <!-- ════════════════════════════════════════════════
+               TALLY EMBED — replace src with your Tally URL
+               Steps:
+               1. Go to tally.so and create your form
+               2. Click Share → Embed
+               3. Copy the iframe src URL
+               4. Replace "TALLY_FORM_URL_HERE" below with it
+               5. Adjust height if needed (default 560px works for ~5 fields)
+               ════════════════════════════════════════════════ -->
+          <div class="form-wrap">
+            <div class="form-placeholder" id="form-placeholder">
+              <div class="placeholder-icon">📋</div>
+              <h3 style="font-size:1rem; margin-bottom:6px;">Demo request form</h3>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); max-width:280px; line-height:1.6; margin-bottom:16px;">
+                Tally form coming soon. In the meantime, email us directly and we'll get back to you within one business day.
+              </p>
+              <a href="mailto:contact@threadledger.io?subject=Demo Request&body=Name:%0ACompany:%0ARole:%0AUse case:%0APreferred time:" class="btn btn-primary">
+                Email demo request →
+              </a>
+              <p style="font-size:0.72rem; color:var(--text-muted); margin-top:12px; font-family:var(--font-mono);">
+                contact@threadledger.io
+              </p>
+            </div>
+            <!-- Uncomment and fill in once you have a Tally URL:
+            <iframe
+              id="tally-iframe"
+              class="tally-embed"
+              src="TALLY_FORM_URL_HERE"
+              title="Request a Threadledger demo"
+              style="display:none;"
+              onload="document.getElementById('form-placeholder').style.display='none'; this.style.display='block';"
+            ></iframe>
+            -->
+          </div>
+
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:12px; font-family:var(--font-mono); text-align:center;">
+            We respond within 1 business day · No obligation
+          </p>
+        </div>
+
+        <!-- Right: what to expect -->
+        <div>
+          <div class="section-label" style="margin-bottom:20px;">What happens next</div>
+          <div class="expect-list">
+            <div class="expect-item">
+              <div class="expect-num">1</div>
+              <div>
+                <h4>We confirm within 1 business day</h4>
+                <p>We'll reply with a calendar link and ask one question: what's your primary use case — compliance evidence, CI enforcement, or both?</p>
+              </div>
+            </div>
+            <div class="expect-item">
+              <div class="expect-num">2</div>
+              <div>
+                <h4>30-minute live session</h4>
+                <p>We run the full pipeline live. Risk model verification, control generation, and the CI gate catching a compliance gap — all in your terminal or ours.</p>
+              </div>
+            </div>
+            <div class="expect-item">
+              <div class="expect-num">3</div>
+              <div>
+                <h4>You get a sample evidence package</h4>
+                <p>We send you a sample regulator-ready output — compliance report, on-chain audit reference, and CI gate log — so you can show your team what the end state looks like.</p>
+              </div>
+            </div>
+            <div class="expect-item">
+              <div class="expect-num">4</div>
+              <div>
+                <h4>Optional: pilot scoping</h4>
+                <p>If it's a fit, we discuss a pilot arrangement. First customers get founder pricing and direct input into the regulation roadmap.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audience split -->
+          <div style="margin-top:36px;">
+            <div class="section-label" style="margin-bottom:14px;">Pick your demo path</div>
+            <div class="audience-grid">
+              <div class="audience-card">
+                <div class="badge badge-cyan" style="margin-bottom:10px;">CISOs &amp; DPOs</div>
+                <h4>Compliance evidence demo</h4>
+                <p>See the risk workbench, formal verification, and the regulator-ready evidence package from the compliance officer's perspective.</p>
+              </div>
+              <div class="audience-card">
+                <div class="badge badge-green" style="margin-bottom:10px;">DevSecOps</div>
+                <h4>CI pipeline demo</h4>
+                <p>Run the compliance agent in a terminal. Watch it detect a gap, block a merge, and generate a report. No slides — just the tool.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-sm" style="background:var(--bg-deep); padding-top:56px; padding-bottom:64px;">
+    <div class="container" style="max-width:700px;">
+      <div class="section-label">Before the demo</div>
+      <h2 class="display-md" style="margin-bottom:28px;">Common questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">How long is the demo?</div>
+        <div class="faq-a">30 minutes. We spend the first 5 minutes understanding your context, then run the pipeline live for 20 minutes, then take questions. If you want to go deeper, we can book a follow-up technical session.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to prepare anything?</div>
+        <div class="faq-a">Nothing. We run the demo on our own codebase. If you want to see it run against your own code, let us know in the request and we'll arrange a technical pre-call to set it up.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this a sales call?</div>
+        <div class="faq-a">No. It's a working demo. We show you the tool running — not slides about the tool. Pricing is on the website; we don't hide it. If there's a fit after the demo, we'll say so.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to sign an NDA first?</div>
+        <div class="faq-a">Not for the demo itself — everything shown is at Public Safe level. If you want to see investor materials or deeper technical documentation, we'll send an NDA first.</div>
+      </div>
+      <div class="faq-item" style="border-bottom:none;">
+        <div class="faq-q">What if I just want to discuss our compliance situation first?</div>
+        <div class="faq-a">That's fine too — email us at contact@threadledger.io with a brief description of your use case and we'll have a plain conversation before scheduling anything formal.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+        <div style="display:flex; align-items:center; gap:9px;">
+          <div class="nav-logo-mark">TL</div>
+          <span style="font-family:var(--font-mono); font-weight:600;">Threadledger</span>
+          <span style="color:var(--text-muted); font-size:0.78rem; font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
+        </div>
+        <div style="display:flex; gap:18px;">
+          <a href="../index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Home</a>
+          <a href="regulations.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Regulations</a>
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">contact@threadledger.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threadledger — About</title>
+  <meta name="description" content="Threadledger is built by a team combining formal verification, model-driven engineering, and AI compliance expertise. ThreatLedger B.V., Amsterdam." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    .about-hero {
+      padding: calc(var(--nav-h) + 64px) 0 64px;
+      position: relative; z-index: 1;
+      background: var(--bg-deep);
+    }
+
+    /* ── Team grid ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .person-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      transition: all var(--transition);
+    }
+    .person-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-glow); }
+
+    .person-card.placeholder {
+      border-style: dashed;
+      opacity: 0.6;
+    }
+    .person-card.placeholder:hover { opacity: 0.8; }
+
+    .avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--cyan-dim);
+      border: 0.5px solid var(--border-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1rem; font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    :root .avatar { color: var(--green); background: var(--green-dim); border-color: rgba(15,110,86,0.2); }
+
+    .avatar-placeholder {
+      background: var(--bg-raised);
+      color: var(--text-muted);
+      border-color: var(--border-dim);
+    }
+
+    .person-name {
+      font-family: var(--font-mono);
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    :root .person-name { font-family: var(--font-body); }
+
+    .person-title {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .person-bio {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .person-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Company facts ── */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border-dim);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .fact-item {
+      background: var(--bg-surface);
+      padding: 24px 20px;
+    }
+    .fact-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-bottom: 6px;
+    }
+    .fact-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    :root .fact-value { font-family: var(--font-body); }
+
+    /* ── Story section ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .story-body p {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* ── Values ── */
+    .values-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .value-item {
+      display: flex;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+    }
+    .value-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .value-item h4 { font-size: 0.875rem; margin-bottom: 4px; }
+    :root .value-item h4 { font-family: var(--font-body); font-weight: 600; }
+    .value-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-mark">TL</div>
+        <span class="nav-logo-text">Threadledger</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#platform">Platform</a></li>
+        <li><a href="regulations.html">Regulations</a></li>
+        <li><a href="../for-ciso.html">For CISOs &amp; DPOs</a></li>
+        <li><a href="../for-devops.html">For DevSecOps</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="request-demo.html" class="btn btn-primary btn-sm">Request Demo →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="section-label">About Threadledger</div>
+      <h1 class="display-xl" style="max-width:640px; margin-bottom:14px;">
+        Built by people who believe<br/><em class="accent">proof beats promises.</em>
+      </h1>
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:520px; line-height:1.7;">
+        Threadledger is a product of ThreatLedger B.V., incorporated in Amsterdam. We combine formal verification, model-driven engineering, and AI compliance expertise to build infrastructure that makes AI safety provable — not aspirational.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">The team</div>
+      <h2 class="display-lg" style="margin-bottom:10px;">Who's building this</h2>
+      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; line-height:1.65; margin-bottom:0;">
+        A small founding team with deep roots in formal methods, enterprise engineering, and regulated industries.
+      </p>
+
+      <div class="team-grid">
+
+        <!-- Founder -->
+        <div class="person-card">
+          <div class="avatar">SF</div>
+          <div class="person-name">Stephanus Fischer</div>
+          <div class="person-title">Founder &amp; CEO · PhD, MBA</div>
+          <p class="person-bio">
+            Stephanus combines a background in formal verification and model-driven engineering with hands-on enterprise software experience in regulated industries. Threadledger is built on years of research into the gap between compliance documentation and engineering reality.
+          </p>
+          <div class="person-links">
+            <span class="badge badge-cyan">Formal verification</span>
+            <span class="badge badge-cyan">MDE</span>
+            <span class="badge badge-cyan">RegTech</span>
+          </div>
+        </div>
+
+        <!-- Co-founder placeholder 1 -->
+        <div class="person-card placeholder">
+          <div class="avatar avatar-placeholder">?</div>
+          <div class="person-name" style="color:var(--text-muted);">Co-founder — TBD</div>
+          <div class="person-title">Engineering</div>
+          <p class="person-bio" style="color:var(--text-muted);">
+            We are in active conversations with two former colleagues about joining as co-founders and early engineers. This page will be updated once confirmed.
+          </p>
+          <div class="person-links">
+            <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Coming soon</span>
+          </div>
+        </div>
+
+        <!-- Co-founder placeholder 2 -->
+        <div class="person-card placeholder">
+          <div class="avatar avatar-placeholder">?</div>
+          <div class="person-name" style="color:var(--text-muted);">Co-founder — TBD</div>
+          <div class="person-title">Product / GTM</div>
+          <p class="person-bio" style="color:var(--text-muted);">
+            Second co-founder role under discussion. Background in enterprise software go-to-market and regulated industry sales.
+          </p>
+          <div class="person-links">
+            <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Coming soon</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:20px; padding:16px 20px; background:var(--cyan-dim); border:0.5px solid var(--border-accent); border-radius:var(--radius-md); max-width:640px;">
+        <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.6;">
+          <strong style="color:var(--cyan);">Interested in joining?</strong> We're looking for engineers and early team members who care about formal methods, AI safety, and building infrastructure that matters. Email <a href="mailto:contact@threadledger.io?subject=Joining Threadledger" style="color:var(--cyan);">contact@threadledger.io</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company facts -->
+  <section class="section section-sm" style="background:var(--bg-deep); padding-top:56px; padding-bottom:64px;">
+    <div class="container">
+      <div class="section-label">The company</div>
+      <div class="facts-grid">
+        <div class="fact-item">
+          <div class="fact-label">Legal entity</div>
+          <div class="fact-value">ThreatLedger B.V.</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Incorporated</div>
+          <div class="fact-value">Netherlands · Amsterdam</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Stage</div>
+          <div class="fact-value">Pre-seed · Bootstrap</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Governing law</div>
+          <div class="fact-value">Dutch law · Amsterdam jurisdiction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story + values -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+
+        <div>
+          <div class="section-label">Why we built this</div>
+          <h2 class="display-md" style="margin-bottom:24px;">The problem we couldn't ignore</h2>
+          <div class="story-body">
+            <p>
+              Every enterprise AI project we encountered had the same pattern: a compliance officer maintaining a spreadsheet of risks, a development team writing code that had no structural connection to that spreadsheet, and an audit team scrambling to bridge the gap every quarter.
+            </p>
+            <p>
+              The spreadsheet wasn't wrong. The developers weren't negligent. The gap was architectural — there was no mechanism to make compliance requirements structurally enforceable in code. You could write a rule, but you couldn't make it impossible to violate.
+            </p>
+            <p>
+              Threadledger exists because formal verification and model-driven engineering have solved this problem in safety-critical domains — aerospace, automotive, medical devices — for decades. AI systems deserve the same rigour. The EU AI Act creates the regulatory urgency. We built the infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">How we work</div>
+          <h2 class="display-md" style="margin-bottom:24px;">Principles</h2>
+          <div class="values-list">
+            <div class="value-item">
+              <span class="value-icon">🔬</span>
+              <div>
+                <h4>Proof over assertion</h4>
+                <p>We don't accept "we believe our system is compliant." We build tools that make compliance mathematically verifiable. If it can't be proven, it doesn't count.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon">🏗️</span>
+              <div>
+                <h4>Infrastructure, not process</h4>
+                <p>Checklists and audits are processes. They can be skipped, gamed, or forgotten. Infrastructure makes the wrong thing structurally impossible. We build infrastructure.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon">🌍</span>
+              <div>
+                <h4>Open by default</h4>
+                <p>The regulation library is open. The model format is open. The more organisations contribute profiles and threat models, the stronger the shared standard becomes for everyone.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon">⚖️</span>
+              <div>
+                <h4>Honest about what we do and don't do</h4>
+                <p>We make compliance provable. We are not lawyers and we don't guarantee legal outcomes. We are precise about where our tool ends and legal judgment begins.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-sm" style="background:var(--bg-deep); padding-top:56px; padding-bottom:64px;">
+    <div class="container">
+      <div style="border:0.5px solid var(--border-accent); border-radius:var(--radius-xl); padding:52px 40px; text-align:center; position:relative; overflow:hidden; background:var(--bg-surface);">
+        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:0.5px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);"></div>
+        <h2 class="display-md" style="margin-bottom:10px;">Want to work with us?</h2>
+        <p style="color:var(--text-secondary); max-width:400px; margin:0 auto 24px; line-height:1.65; font-size:0.9375rem;">
+          We're looking for pilot customers, early team members, and investors who understand formal verification and the AI regulation opportunity.
+        </p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <a href="request-demo.html" class="btn btn-primary btn-lg">Request Demo →</a>
+          <a href="mailto:contact@threadledger.io" class="btn btn-outline btn-lg">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+        <div style="display:flex; align-items:center; gap:9px;">
+          <div class="nav-logo-mark">TL</div>
+          <span style="font-family:var(--font-mono); font-weight:600;">Threadledger</span>
+          <span style="color:var(--text-muted); font-size:0.78rem; font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
+        </div>
+        <div style="display:flex; gap:18px;">
+          <a href="../index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Home</a>
+          <a href="regulations.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Regulations</a>
+          <a href="request-demo.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Request Demo</a>
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">contact@threadledger.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

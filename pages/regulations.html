@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threadledger — Regulation Coverage</title>
+  <meta name="description" content="Threadledger supports EU AI Act, GDPR, NIST AI RMF, MITRE ATT&CK, DORA, PSD3, and more. Swap regulation profiles without rebuilding your risk model." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    .page-hero { padding: calc(var(--nav-h) + 56px) 0 48px; position: relative; z-index: 1; }
+
+    /* ── Tab bar ── */
+    .tab-bar-wrap {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 50;
+      background: var(--bg-void);
+      border-bottom: 0.5px solid var(--border-dim);
+      transition: background 0.3s ease;
+    }
+    .tab-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .tab-bar::-webkit-scrollbar { display: none; }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .tab:hover { color: var(--text-primary); }
+    .tab.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+    }
+    .tab-status {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .status-live    { background: var(--green-dim);  color: var(--green); }
+    .status-soon    { background: var(--amber-dim);  color: var(--amber); }
+    .status-planned { background: var(--bg-raised);  color: var(--text-muted); }
+
+    /* ── Regulation sections ── */
+    .reg-section {
+      padding: 72px 0 80px;
+      border-bottom: 0.5px solid var(--border-dim);
+      scroll-margin-top: calc(var(--nav-h) + 48px);
+    }
+    .reg-section:last-child { border-bottom: none; }
+
+    .reg-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+
+    .reg-jurisdiction {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .reg-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      text-align: right;
+    }
+
+    .reg-enforcement {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Coverage grid */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .coverage-item {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: all var(--transition);
+    }
+    .coverage-item:hover { border-color: var(--border-accent); }
+
+    .coverage-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .coverage-item h4 {
+      font-size: 0.875rem;
+      margin-bottom: 6px;
+    }
+    :root .coverage-item h4 { font-family: var(--font-body); font-weight: 600; }
+    .coverage-item p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* How Threadledger maps to articles */
+    .article-map {
+      margin-top: 32px;
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .article-map-header {
+      padding: 12px 20px;
+      background: var(--bg-raised);
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border-bottom: 0.5px solid var(--border-dim);
+      display: grid;
+      grid-template-columns: 140px 1fr 160px;
+      gap: 16px;
+    }
+    .article-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 160px;
+      gap: 16px;
+      padding: 14px 20px;
+      border-bottom: 0.5px solid var(--border-dim);
+      align-items: center;
+      transition: background var(--transition);
+    }
+    .article-row:last-child { border-bottom: none; }
+    .article-row:hover { background: var(--bg-surface); }
+    .article-ref {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+    :root .article-ref { color: var(--green); }
+    .article-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+    .article-layer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* Roadmap callout */
+    .roadmap-callout {
+      margin-top: 32px;
+      padding: 18px 22px;
+      background: var(--amber-dim);
+      border: 0.5px solid rgba(186,117,23,0.2);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    [data-theme="dark"] .roadmap-callout { border-color: rgba(255,170,0,0.2); }
+    .roadmap-callout strong { color: var(--amber); }
+
+    /* Overlap note for regulations that share coverage */
+    .overlap-note {
+      margin-top: 24px;
+      padding: 14px 18px;
+      background: var(--cyan-dim);
+      border: 0.5px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .coverage-grid { grid-template-columns: 1fr 1fr; }
+      .reg-header { grid-template-columns: 1fr; }
+      .reg-meta { align-items: flex-start; text-align: left; }
+      .article-map-header { grid-template-columns: 110px 1fr; }
+      .article-row { grid-template-columns: 110px 1fr; }
+      .article-layer { display: none; }
+    }
+    @media (max-width: 600px) {
+      .coverage-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-mark">TL</div>
+        <span class="nav-logo-text">Threadledger</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#platform">Platform</a></li>
+        <li><a href="regulations.html" class="active">Regulations</a></li>
+        <li><a href="../for-ciso.html">For CISOs &amp; DPOs</a></li>
+        <li><a href="../for-devops.html">For DevSecOps</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="request-demo.html" class="btn btn-primary btn-sm">Request Demo →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero" style="background: var(--bg-deep);">
+    <div class="container">
+      <div class="section-label">Regulation coverage</div>
+      <h1 class="display-xl" style="max-width:680px; margin-bottom:14px;">
+        One platform.<br/><em class="accent">Every regulation.</em>
+      </h1>
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:560px; line-height:1.7; margin-bottom:28px;">
+        Threadledger's regulation profiles are modular — swap or combine them without rebuilding your risk model. Live profiles ship today; planned profiles are community-contributed as new laws come into force.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="badge badge-green">4 live profiles</span>
+        <span class="badge badge-amber">3 in progress</span>
+        <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">4 planned</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky tab bar -->
+  <div class="tab-bar-wrap">
+    <div class="tab-bar">
+      <a class="tab active" href="#eu-ai-act">EU AI Act <span class="tab-status status-live">Live</span></a>
+      <a class="tab" href="#gdpr">GDPR <span class="tab-status status-live">Live</span></a>
+      <a class="tab" href="#nist">NIST AI RMF <span class="tab-status status-live">Live</span></a>
+      <a class="tab" href="#mitre">MITRE ATT&amp;CK <span class="tab-status status-live">Live</span></a>
+      <a class="tab" href="#dora">DORA <span class="tab-status status-soon">Soon</span></a>
+      <a class="tab" href="#psd3">PSD3 <span class="tab-status status-soon">Soon</span></a>
+      <a class="tab" href="#fs-ai-rmf">FS AI RMF <span class="tab-status status-soon">Soon</span></a>
+      <a class="tab" href="#colorado-texas">Colorado / Texas <span class="tab-status status-planned">Planned</span></a>
+      <a class="tab" href="#japan">Japan AI <span class="tab-status status-planned">Planned</span></a>
+      <a class="tab" href="#korea">Korea AI Act <span class="tab-status status-planned">Planned</span></a>
+      <a class="tab" href="#singapore">Singapore PDPA <span class="tab-status status-planned">Planned</span></a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── EU AI ACT ── -->
+    <section class="reg-section" id="eu-ai-act">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">European Union · Regulation (EU) 2024/1689</div>
+          <h2 class="display-lg">EU AI Act</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-red">Aug 2026 — HIGH-risk enforcement</span>
+          <span class="reg-enforcement">€35M or 7% global turnover max fine</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        The EU AI Act is the world's first comprehensive AI regulation. It classifies AI systems by risk level and imposes strict requirements on HIGH-risk systems — those used in lending, hiring, healthcare triage, biometric identification, and other consequential domains. HIGH-risk enforcement begins August 2026.
+      </p>
+
+      <div class="article-map">
+        <div class="article-map-header">
+          <span>Article</span>
+          <span>Requirement</span>
+          <span style="text-align:right;">Threadledger layer</span>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 9</span>
+          <span class="article-desc">Risk management system — documented, continuously updated, covering all lifecycle phases</span>
+          <div class="article-layer"><span class="badge badge-cyan">L0 — Risk model</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 10</span>
+          <span class="article-desc">Data governance — training data quality, bias monitoring, relevance documentation</span>
+          <div class="article-layer"><span class="badge badge-cyan">L0 + L1</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 12</span>
+          <span class="article-desc">Record keeping — automatic logging of every decision the AI system makes</span>
+          <div class="article-layer"><span class="badge badge-cyan">L1 — Audit log</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 13</span>
+          <span class="article-desc">Transparency — users must be informed when interacting with an AI system</span>
+          <div class="article-layer"><span class="badge badge-cyan">L1 controls</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 17</span>
+          <span class="article-desc">Quality management system — documented processes, training records, change controls</span>
+          <div class="article-layer"><span class="badge badge-cyan">L2 + L3 reports</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 72</span>
+          <span class="article-desc">Post-market monitoring — continuous assessment of AI system performance in deployment</span>
+          <div class="article-layer"><span class="badge badge-cyan">L3 — CI agent</span></div>
+        </div>
+      </div>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">
+          <div class="coverage-label">What Threadledger produces</div>
+          <h4>Regulator-ready evidence package</h4>
+          <p>Design-time proof, implementation proof, developer guidance logs, and a continuous CI compliance score — all in one exportable package per release.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">HIGH-risk use cases covered</div>
+          <h4>Lending, hiring, medical triage, insurance</h4>
+          <p>The standard threat ontology ships with pre-mapped HIGH-risk scenarios for the most common EU fintech and enterprise AI deployments.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">Deployment blocking</div>
+          <h4>Non-compliant code cannot merge</h4>
+          <p>The CI gate hard-blocks any merge where a HIGH-risk rule is not covered. No deployment can bypass this without explicit model change and re-verification.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GDPR ── -->
+    <section class="reg-section" id="gdpr">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">European Union · Regulation (EU) 2016/679</div>
+          <h2 class="display-lg">GDPR</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-amber">In force since May 2018</span>
+          <span class="reg-enforcement">€20M or 4% global turnover max fine</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        GDPR governs the collection, processing, and storage of personal data of EU residents. For AI systems, GDPR introduces specific obligations around automated decision-making, data minimisation, purpose limitation, and the right to explanation — all areas where AI systems frequently fail silently.
+      </p>
+
+      <div class="article-map">
+        <div class="article-map-header">
+          <span>Article</span>
+          <span>Requirement</span>
+          <span style="text-align:right;">Threadledger layer</span>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 5</span>
+          <span class="article-desc">Purpose limitation — data may only be processed for specified, explicit, legitimate purposes</span>
+          <div class="article-layer"><span class="badge badge-cyan">L0 — OCL invariants</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 6</span>
+          <span class="article-desc">Lawfulness of processing — valid legal basis (consent, contract, legitimate interest) required</span>
+          <div class="article-layer"><span class="badge badge-cyan">L0 + L1 controls</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 22</span>
+          <span class="article-desc">Automated decision-making — right not to be subject to solely automated decisions with significant effects</span>
+          <div class="article-layer"><span class="badge badge-cyan">L1 — GDPR controls</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 25</span>
+          <span class="article-desc">Data protection by design and by default — privacy built into system architecture</span>
+          <div class="article-layer"><span class="badge badge-cyan">L1 codegen</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 30</span>
+          <span class="article-desc">Records of processing activities — documented inventory of all data processing operations</span>
+          <div class="article-layer"><span class="badge badge-cyan">L1 — Audit log</span></div>
+        </div>
+        <div class="article-row">
+          <span class="article-ref">Art. 33</span>
+          <span class="article-desc">Breach notification — 72-hour notification to supervisory authority after discovering a breach</span>
+          <div class="article-layer"><span class="badge badge-cyan">L3 — CI + alerts</span></div>
+        </div>
+      </div>
+
+      <div class="overlap-note">
+        <strong style="color:var(--cyan);">Note:</strong> GDPR and EU AI Act overlap significantly for AI systems processing personal data. Threadledger's combined EU profile covers both simultaneously — no duplicate configuration required.
+      </div>
+    </section>
+
+    <!-- ── NIST AI RMF ── -->
+    <section class="reg-section" id="nist">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">United States · NIST AI 100-1 + GenAI Profile</div>
+          <h2 class="display-lg">NIST AI RMF</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-amber">FedRAMP mandates incoming</span>
+          <span class="reg-enforcement">Federal contractor requirement</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        The NIST AI Risk Management Framework provides a voluntary but increasingly mandatory structure for managing AI risk across the US federal government and its contractors. The 2024 GenAI Profile extends the framework to generative AI systems. Federal contractors should treat this as a compliance requirement, not guidance.
+      </p>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">
+          <div class="coverage-label">GOVERN</div>
+          <h4>Policies, processes, organisational accountability</h4>
+          <p>Threadledger's risk model formalises governance requirements as verifiable OCL invariants — not policy documents.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">MAP</div>
+          <h4>Risk identification and classification</h4>
+          <p>L0 threat modeling maps AI risks to NIST categories with documented mitigations before any code is written.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">MEASURE</div>
+          <h4>Risk analysis and metrics</h4>
+          <p>L3 CI reports generate compliance scores per release, providing the continuous measurement evidence NIST requires.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">MANAGE</div>
+          <h4>Risk response and treatment</h4>
+          <p>L1 auto-generated controls implement NIST mitigations directly in code. Non-compliant deployments are blocked.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">GenAI Profile</div>
+          <h4>Generative AI-specific risks</h4>
+          <p>Hallucination, data poisoning, prompt injection, and model inversion threats are mapped in the standard ontology.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">Audit trail</div>
+          <h4>Immutable evidence for federal review</h4>
+          <p>On-chain audit log satisfies NIST's requirement for tamper-evident records of AI system decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MITRE ATT&CK ── -->
+    <section class="reg-section" id="mitre">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">MITRE Corporation · ATT&amp;CK for Enterprise + LLM Threats</div>
+          <h2 class="display-lg">MITRE ATT&amp;CK</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-cyan">27 threat vectors mapped</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        MITRE ATT&amp;CK is the industry-standard taxonomy for adversarial tactics and techniques. Threadledger's threat ontology maps ATT&amp;CK vectors specifically to AI and LLM attack surfaces — prompt injection, model evasion, data poisoning, and supply chain compromise — and generates enforcement controls automatically from them.
+      </p>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">
+          <div class="coverage-label">Threat categories covered</div>
+          <h4>Initial access, execution, persistence, exfiltration</h4>
+          <p>All major ATT&amp;CK tactic categories are mapped to AI-specific attack vectors in the standard threat ontology.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">LLM-specific threats</div>
+          <h4>Prompt injection, jailbreaking, model inversion</h4>
+          <p>Threats from the OWASP Top 10 for LLMs and ATLAS framework are included alongside classical ATT&amp;CK vectors.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">From threat to control</div>
+          <h4>Each threat generates an enforcement control</h4>
+          <p>L1 codegen produces a dedicated guard per ATT&amp;CK vector. The guard cannot be bypassed without the CI pipeline detecting it.</p>
+        </div>
+      </div>
+
+      <div class="overlap-note">
+        <strong style="color:var(--cyan);">Security + compliance in one model:</strong> MITRE threat coverage and EU AI Act / GDPR compliance are defined in the same risk model. No separate security toolchain required.
+      </div>
+    </section>
+
+    <!-- ── DORA ── -->
+    <section class="reg-section" id="dora">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">European Union · Regulation (EU) 2022/2554</div>
+          <h2 class="display-lg">DORA</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-amber">In progress</span>
+          <span class="badge badge-red">In force Jan 2025</span>
+          <span class="reg-enforcement">Financial entities — banks, insurers, investment firms</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        The Digital Operational Resilience Act mandates ICT risk management, incident classification, third-party oversight, and resilience testing for EU financial entities. AI systems deployed in financial services fall squarely within DORA scope — particularly where AI drives automated decisions in trading, credit, or fraud detection.
+      </p>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">
+          <div class="coverage-label">ICT risk management (Art. 6–16)</div>
+          <h4>Documented ICT risk framework with controls</h4>
+          <p>Threadledger's risk model maps ICT risks to DORA articles. Controls are generated and verified automatically.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">Incident classification (Art. 17–23)</div>
+          <h4>Automated detection and evidence trail</h4>
+          <p>Every AI decision is logged on-chain. Compliance gaps are detected in CI before deployment — not after an incident.</p>
+        </div>
+        <div class="coverage-item">
+          <div class="coverage-label">Third-party oversight (Art. 28–44)</div>
+          <h4>Supplier compliance requirements</h4>
+          <p>Threadledger's compliance model can be embedded in supplier contracts — requiring downstream vendors to meet the same standards.</p>
+        </div>
+      </div>
+
+      <div class="roadmap-callout">
+        <span style="font-size:1.1rem;">🔧</span>
+        <div><strong>In progress:</strong> The DORA regulation profile is under active development. Existing EU AI Act + GDPR coverage already addresses significant DORA overlap for AI systems. Contact us if DORA is a priority for your organisation — pilot customers shape the roadmap.</div>
+      </div>
+    </section>
+
+    <!-- ── PSD3 ── -->
+    <section class="reg-section" id="psd3">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">European Union · PSD3 / PSR (draft)</div>
+          <h2 class="display-lg">PSD3</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-amber">In progress</span>
+          <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Expected 2026</span>
+          <span class="reg-enforcement">Payment service providers, open banking</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        PSD3 and the Payment Services Regulation (PSR) extend and strengthen PSD2's requirements around strong customer authentication, fraud liability, and open banking APIs. Where AI is used for fraud scoring, transaction monitoring, or credit decisioning, PSD3 introduces new transparency and explainability obligations that align closely with EU AI Act Article 13.
+      </p>
+
+      <div class="roadmap-callout">
+        <span style="font-size:1.1rem;">🔧</span>
+        <div><strong>In progress:</strong> PSD3 is still in legislative process. Threadledger's combined EU profile (EU AI Act + GDPR) covers the majority of PSD3's AI-related obligations today. A dedicated PSD3 profile will ship once the final text is adopted.</div>
+      </div>
+    </section>
+
+    <!-- ── FS AI RMF ── -->
+    <section class="reg-section" id="fs-ai-rmf">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">Singapore · MAS TRM + FS-AISC / MAS FEAT</div>
+          <h2 class="display-lg">FS AI RMF</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge badge-amber">In progress</span>
+          <span class="badge badge-green">MAS TRM live today</span>
+          <span class="reg-enforcement">Financial institutions in Singapore</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        The Financial Services AI Risk Management Framework combines MAS Technology Risk Management (TRM) guidelines with the FEAT (Fairness, Ethics, Accountability, Transparency) principles for AI in Singapore financial services. MAS TRM is live in Threadledger today. The full FS AI RMF profile adds FEAT-specific controls for financial AI systems.
+      </p>
+
+      <div class="overlap-note">
+        <strong style="color:var(--cyan);">MAS TRM is live today.</strong> Existing MAS TRM coverage handles the majority of Singapore financial AI obligations. The expanded FS AI RMF profile adds FEAT principle enforcement and is on the near-term roadmap.
+      </div>
+    </section>
+
+    <!-- ── COLORADO / TEXAS ── -->
+    <section class="reg-section" id="colorado-texas">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">United States · Colorado SB 205 + Texas HB 1709</div>
+          <h2 class="display-lg">Colorado &amp; Texas AI Acts</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Planned</span>
+          <span class="reg-enforcement">High-risk AI systems affecting Colorado/Texas residents</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        Colorado's SB 205 and Texas's HB 1709 are among the first US state-level AI regulations with enforceable requirements. Both focus on algorithmic discrimination in consequential decisions — employment, housing, credit, insurance, education — and require deployers to conduct impact assessments and implement risk management programmes that closely mirror EU AI Act Article 9.
+      </p>
+
+      <div class="roadmap-callout">
+        <span style="font-size:1.1rem;">📋</span>
+        <div><strong>Planned:</strong> The EU AI Act profile covers approximately 70% of Colorado / Texas requirements today. A dedicated US state profile is on the community roadmap. Organisations operating under both EU AI Act and US state laws can use the EU profile as an interim measure with minimal gaps.</div>
+      </div>
+    </section>
+
+    <!-- ── JAPAN ── -->
+    <section class="reg-section" id="japan">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">Japan · AI Guidelines for Business (2024)</div>
+          <h2 class="display-lg">Japan Voluntary AI Framework</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Planned</span>
+          <span class="reg-enforcement">Voluntary — mandatory legislation expected 2025–26</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        Japan's Ministry of Economy, Trade and Industry (METI) published AI Guidelines for Business in 2024, establishing a voluntary risk management framework with strong alignment to NIST AI RMF and EU AI Act principles. Japan is expected to move toward mandatory requirements by 2025–26. Organisations operating in Japan can use Threadledger's NIST profile as a strong baseline today.
+      </p>
+
+      <div class="roadmap-callout">
+        <span style="font-size:1.1rem;">📋</span>
+        <div><strong>Planned:</strong> Japan's framework aligns closely with NIST AI RMF, which is live today. A dedicated Japan profile will be added to the community library once mandatory requirements are finalised.</div>
+      </div>
+    </section>
+
+    <!-- ── KOREA ── -->
+    <section class="reg-section" id="korea">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">Republic of Korea · AI Basic Act (2024)</div>
+          <h2 class="display-lg">Korea AI Act</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Planned</span>
+          <span class="badge badge-amber">Enforcement 2026</span>
+          <span class="reg-enforcement">High-impact AI systems in Korea</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        The Korean AI Basic Act (passed January 2024, enforcement 2026) establishes obligations for "high-impact AI" covering transparency, human oversight, safety testing, and incident reporting — closely paralleling EU AI Act HIGH-risk requirements. Korean financial institutions and platform operators deploying AI face mandatory compliance by 2026.
+      </p>
+
+      <div class="roadmap-callout">
+        <span style="font-size:1.1rem;">📋</span>
+        <div><strong>Planned:</strong> The EU AI Act profile provides strong coverage of Korea AI Act requirements today given their structural similarity. A dedicated Korea profile targeting the specific HIGH-impact categories defined in Korean law is on the roadmap for 2025.</div>
+      </div>
+    </section>
+
+    <!-- ── SINGAPORE ── -->
+    <section class="reg-section" id="singapore">
+      <div class="reg-header">
+        <div>
+          <div class="reg-jurisdiction">Singapore · PDPA + AI Governance Framework v2</div>
+          <h2 class="display-lg">Singapore PDPA &amp; AI Governance</h2>
+        </div>
+        <div class="reg-meta">
+          <span class="badge" style="background:var(--bg-raised); color:var(--text-muted); border:0.5px solid var(--border-dim);">Planned</span>
+          <span class="badge badge-green">MAS TRM live today</span>
+          <span class="reg-enforcement">Organisations processing personal data in Singapore</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
+        Singapore's Personal Data Protection Act (PDPA) combined with the IMDA/PDPC AI Governance Framework v2 establishes data protection and AI accountability requirements for organisations operating in Singapore. The framework emphasises explainability, human oversight, and algorithmic impact assessments — all areas directly covered by Threadledger's existing MAS TRM profile.
+      </p>
+
+      <div class="overlap-note">
+        <strong style="color:var(--cyan);">MAS TRM is live today</strong> and covers the majority of Singapore AI governance requirements. A combined PDPA + AI Governance Framework profile will be added as part of the Asia-Pacific expansion roadmap.
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--bg-deep);">
+    <div class="container">
+      <div style="border:0.5px solid var(--border-accent); border-radius:var(--radius-xl); padding:52px 40px; text-align:center; position:relative; overflow:hidden; background:var(--bg-surface);">
+        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:0.5px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);"></div>
+        <div class="section-label" style="justify-content:center; margin-bottom:16px;">Regulation profiles are modular</div>
+        <h2 class="display-lg" style="margin-bottom:12px; max-width:520px; margin-left:auto; margin-right:auto;">
+          Your regulation isn't listed?<br/><em class="accent">It probably will be.</em>
+        </h2>
+        <p style="color:var(--text-secondary); max-width:420px; margin:0 auto 28px; line-height:1.65; font-size:0.9375rem;">
+          The community regulation library grows with every new law. Contribute a regulation profile or contact us if your jurisdiction is a priority.
+        </p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <a href="request-demo.html" class="btn btn-primary btn-lg">Request Demo →</a>
+          <a href="mailto:contact@threadledger.io?subject=Regulation profile request" class="btn btn-outline btn-lg">Request a regulation profile</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+        <div style="display:flex; align-items:center; gap:9px;">
+          <div class="nav-logo-mark">TL</div>
+          <span style="font-family:var(--font-mono); font-weight:600;">Threadledger</span>
+          <span style="color:var(--text-muted); font-size:0.78rem; font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
+        </div>
+        <div style="display:flex; gap:18px;">
+          <a href="../index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Home</a>
+          <a href="../for-ciso.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">For CISOs &amp; DPOs</a>
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">contact@threadledger.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Highlight active tab on scroll
+    const sections = document.querySelectorAll('.reg-section');
+    const tabs = document.querySelectorAll('.tab');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tabs.forEach(t => t.classList.remove('active'));
+          const active = document.querySelector(`.tab[href="#${entry.target.id}"]`);
+          if (active) {
+            active.classList.add('active');
+            active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
