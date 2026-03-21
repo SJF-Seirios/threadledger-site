@@ -1,38 +1,5 @@
 {
   "version": 2,
-  "name": "threadledger",
-  "builds": [
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/for-ciso",
-      "dest": "/pages/for-ciso.html"
-    },
-    {
-      "src": "/for-devops",
-      "dest": "/pages/for-devops.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
