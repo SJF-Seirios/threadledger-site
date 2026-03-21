@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Threadledger for CISOs & DPOs — Provable AI Compliance</title>
-  <meta name="description" content="For compliance officers and DPOs: Threadledger makes AI compliance provable from design time to regulator submission. No developer involvement required." />
+  <meta name="description" content="For CISOs, DPOs and compliance teams: Threadledger gives you a complete, auditor-ready evidence chain for EU AI Act and GDPR — from formal risk model to on-chain audit log." />
 <style>
 /* ============================================================
    THREADLEDGER DESIGN SYSTEM
@@ -545,180 +545,86 @@ h1, h2, h3, h4, h5, h6 {
 
 </style>
   <style>
-    .audience-hero {
-      padding: 140px 0 80px;
-      position: relative;
-      z-index: 1;
-    }
-
+    .audience-hero { padding: 140px 0 80px; position: relative; z-index: 1; }
     .audience-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--cyan-dim);
-      border: 1px solid rgba(0,224,255,0.2);
-      border-radius: 999px;
-      padding: 5px 14px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--cyan-dim); border: 1px solid rgba(0,224,255,0.2);
+      border-radius: 999px; padding: 5px 14px;
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      color: var(--cyan); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 24px;
     }
-
     .evidence-chain {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: var(--border-dim);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-top: 40px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: var(--border-dim);
+      border: 1px solid var(--border-dim); border-radius: var(--radius-lg);
+      overflow: hidden; margin-top: 40px;
     }
-
-    .evidence-step {
-      background: var(--bg-surface);
-      padding: 24px 20px;
-      position: relative;
-    }
-
-    .evidence-step::after {
-      content: '→';
-      position: absolute;
-      right: -14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--cyan);
-      font-size: 1rem;
-      z-index: 2;
-    }
-
-    .evidence-step:last-child::after { display: none; }
-
-    .evidence-num {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-
-    .evidence-step h3 {
-      font-size: 0.875rem;
-      font-family: var(--font-mono);
-      margin-bottom: 6px;
-    }
-
-    .evidence-step p {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .pain-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .pain-item {
-      display: flex;
-      gap: 16px;
-      padding: 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg);
-      margin-bottom: 12px;
-    }
-
+    .evidence-step { background: var(--bg-surface); padding: 24px 20px; }
+    .evidence-num { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .evidence-step h3 { font-size: 0.875rem; font-family: var(--font-mono); margin-bottom: 6px; }
+    .evidence-step p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .pain-item { display: flex; gap: 16px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: var(--radius-lg); margin-bottom: 12px; }
     .pain-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border-dim);
-      padding: 20px 0;
+    .faq-item { border-bottom: 1px solid var(--border-dim); padding: 20px 0; }
+    .faq-q { font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-primary); margin-bottom: 8px; }
+    .faq-a { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(0,224,255,0.06) 0%, rgba(0,255,136,0.03) 100%);
+      border: 1px solid rgba(0,224,255,0.15); border-radius: var(--radius-xl);
+      padding: 64px 48px; text-align: center; position: relative; overflow: hidden;
     }
-
-    .faq-q {
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
-      color: var(--text-primary);
-      margin-bottom: 8px;
+    .cta-banner::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
     }
-
-    .faq-a {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
     @media (max-width: 900px) {
       .evidence-chain { grid-template-columns: 1fr 1fr; }
       .pain-grid { grid-template-columns: 1fr; }
     }
-
-    @media (max-width: 600px) {
-      .evidence-chain { grid-template-columns: 1fr; }
-      .evidence-step::after { display: none; }
-    }
+    @media (max-width: 600px) { .evidence-chain { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <div class="nav-logo-mark">TL</div>
         <span class="nav-logo-text">Threadledger</span>
       </a>
       <ul class="nav-links">
-        <li><a href="/#platform">Platform</a></li>
-        <li><a href="/#how-it-works">How It Works</a></li>
+        <li><a href="index.html#platform">Platform</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
         <li><a href="for-ciso.html" class="active">For CISOs &amp; DPOs</a></li>
         <li><a href="for-devops.html">For DevSecOps</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/cdn-cgi/l/email-protection#51323e3f25303225112539233430353d34353634237f383e" class="btn btn-ghost btn-sm">Contact</a>
-        <a href="/#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="index.html#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="audience-hero">
     <div class="container">
-      <div class="audience-tag">
-        🔒 For CISOs, DPOs &amp; Compliance Teams
-      </div>
+      <div class="audience-tag">🔒 For CISOs, DPOs &amp; Compliance Teams</div>
       <h1 class="display-xl" style="max-width:700px; margin-bottom:20px;">
-        The regulator asks for proof.<br/>
-        <span class="text-cyan">Now you have it.</span>
+        The regulator asks for proof.<br/><span class="text-cyan">Now you have it.</span>
       </h1>
       <p style="font-size:1.05rem; color:var(--text-secondary); max-width:560px; line-height:1.65; margin-bottom:32px;">
-        EU AI Act high-risk enforcement hits in August 2026. Threadledger gives your compliance team a complete, auditor-ready evidence chain — from design-time threat model to on-chain audit log — without depending on developers to get it right.
+        EU AI Act high-risk enforcement hits in August 2026. Threadledger gives your compliance team a complete, auditor-ready evidence chain — from formally verified risk model to on-chain audit log — without depending on developers to get it right.
       </p>
-      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px;">
-        <a href="/#request-demo" class="btn btn-primary btn-lg">Request Demo →</a>
-        <a href="/cdn-cgi/l/email-protection#2e4d41405a4f4d5a6e5a465c4b4f4a424b4a494b5c004741115d5b4c444b4d5a136d677d610e6b405f5b475c57" class="btn btn-outline btn-lg">Talk to us</a>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px;">
+        <a href="index.html#request-demo" class="btn btn-primary btn-lg">Request Demo →</a>
+        <a href="mailto:contact@threadledger.io?subject=CISO Enquiry" class="btn btn-outline btn-lg">Talk to us</a>
       </div>
-
-      <div style="display:flex; gap:24px; flex-wrap:wrap;">
-        <div class="badge badge-amber" style="padding:8px 14px; font-size:0.75rem;">
-          ⚡ Aug 2026 — EU AI Act HIGH-risk enforcement
-        </div>
-        <div class="badge badge-red" style="padding:8px 14px; font-size:0.75rem;">
-          €35M max fine per violation
-        </div>
-        <div class="badge badge-cyan" style="padding:8px 14px; font-size:0.75rem;">
-          27 MITRE + LLM threats covered
-        </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <span class="badge badge-amber" style="padding:8px 14px; font-size:0.75rem;">⚡ Aug 2026 — EU AI Act HIGH-risk enforcement</span>
+        <span class="badge badge-red" style="padding:8px 14px; font-size:0.75rem;">€35M max fine per violation</span>
+        <span class="badge badge-cyan" style="padding:8px 14px; font-size:0.75rem;">2,000+ EU teams currently blocked</span>
       </div>
     </div>
   </section>
@@ -728,93 +634,83 @@ h1, h2, h3, h4, h5, h6 {
     <div class="container">
       <div class="section-label">What the regulator sees</div>
       <h2 class="display-md" style="margin-bottom:12px;">A complete chain of evidence — no gaps, no guesswork</h2>
-      <p style="color:var(--text-secondary); max-width:560px; font-size:0.9375rem; line-height:1.6; margin-bottom:0;">
-        Every layer produces a distinct, verifiable proof. Stack them together and you have something no audit checklist can fake.
-      </p>
-
+      <p style="color:var(--text-secondary); max-width:560px; font-size:0.9375rem; line-height:1.6;">Every step produces a distinct, verifiable proof. Together they form an evidence package no audit checklist can replicate.</p>
       <div class="evidence-chain">
         <div class="evidence-step">
-          <div class="evidence-num">Step 1 · Design Proof</div>
-          <h3>Formal threat model</h3>
-          <p>Every AI risk, its classification, and its documented mitigation. Mathematically verified. Produced in the compliance workbench — not by developers.</p>
+          <div class="evidence-num">Step 1 · Design proof</div>
+          <h3>Formally-verified risk model</h3>
+          <p>Every AI risk, its classification, and its documented mitigation. Mathematically verified. Produced in the compliance officer's workbench — not by developers.</p>
         </div>
         <div class="evidence-step">
-          <div class="evidence-num">Step 2 · Implementation Proof</div>
+          <div class="evidence-num">Step 2 · Implementation proof</div>
           <h3>Auto-generated controls</h3>
-          <p>Code guards generated from your model. The system physically cannot be deployed in a non-compliant state. Non-compliance causes a build failure.</p>
+          <p>Compliance rules are automatically turned into software controls. The system physically cannot be deployed in a non-compliant state.</p>
         </div>
         <div class="evidence-step">
-          <div class="evidence-num">Step 3 · Developer Proof</div>
+          <div class="evidence-num">Step 3 · Developer proof</div>
           <h3>IDE guidance logs</h3>
-          <p>Every developer was guided on compliance rules at coding time. Demonstrates active organizational training — not just system controls.</p>
+          <p>Every developer was guided on compliance rules at coding time. Demonstrates active organisational training — not just system controls.</p>
         </div>
         <div class="evidence-step">
-          <div class="evidence-num">Step 4 · Continuous Proof</div>
-          <h3>3-tier CI reports</h3>
-          <p>Per-release compliance scores, historical trend, and on-chain audit log of every AI decision. Zero unlogged events. Forever.</p>
+          <div class="evidence-num">Step 4 · Continuous proof</div>
+          <h3>CI compliance reports</h3>
+          <p>Per-release compliance scores, historical trend, and on-chain audit log of every AI decision. Zero unlogged events.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pain points -->
+  <!-- Pain vs gain -->
   <section class="section">
     <div class="container">
       <div class="pain-grid">
         <div>
           <div class="section-label">What you're dealing with today</div>
           <h2 class="display-md" style="margin-bottom:24px;">Compliance reports that can't be trusted</h2>
-
           <div class="pain-item">
             <span class="pain-icon">📋</span>
             <div>
-              <h3 style="font-size:0.9rem; margin-bottom:5px;">Compliance checklists are unverifiable</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Developers self-report guard implementation. You have no way to verify that controls are actually working — or that they can't be bypassed.</p>
+              <h3 style="font-size:0.9rem; margin-bottom:5px;">Compliance checklists are self-reported</h3>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Developers self-report control implementation. You have no independent way to verify that controls are actually working across every code path.</p>
             </div>
           </div>
-
           <div class="pain-item">
             <span class="pain-icon">🔍</span>
             <div>
               <h3 style="font-size:0.9rem; margin-bottom:5px;">Audit prep takes weeks of manual evidence collection</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Pulling logs, interviewing developers, tracing decisions. Every audit is a fire drill. Regulators expect continuous proof, not snapshots.</p>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Pulling logs, interviewing developers, tracing decisions. Every audit is a fire drill. Regulators expect continuous proof, not point-in-time snapshots.</p>
             </div>
           </div>
-
           <div class="pain-item">
             <span class="pain-icon">⚖️</span>
             <div>
               <h3 style="font-size:0.9rem; margin-bottom:5px;">EU AI Act HIGH-risk requires more than a policy document</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Article 9 requires risk management systems. Article 12 demands logging of every decision. Article 17 mandates quality management. Documentation alone won't pass.</p>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Article 9 requires a risk management system. Article 12 demands logging of every decision. Article 17 mandates quality management. Documentation alone will not pass.</p>
             </div>
           </div>
         </div>
-
         <div>
           <div class="section-label" style="color:var(--green);">What Threadledger gives you</div>
           <h2 class="display-md" style="margin-bottom:24px;">Compliance that's provable by construction</h2>
-
           <div class="pain-item" style="border-color:rgba(0,255,136,0.15);">
             <span class="pain-icon">✅</span>
             <div>
-              <h3 style="font-size:0.9rem; margin-bottom:5px;">Your threat model IS the compliance proof</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">OCL invariants formally verify every risk definition. A model that passes formal verification is, by construction, consistent and complete.</p>
+              <h3 style="font-size:0.9rem; margin-bottom:5px;">Your risk model IS the compliance proof</h3>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Formal verification checks every risk definition for completeness and consistency. A model that passes is, by construction, a valid compliance blueprint — not a document someone filled in.</p>
             </div>
           </div>
-
           <div class="pain-item" style="border-color:rgba(0,255,136,0.15);">
             <span class="pain-icon">⛓️</span>
             <div>
               <h3 style="font-size:0.9rem; margin-bottom:5px;">On-chain audit log, always on</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">AuditRegistry.record() fires on every AI decision. IPFS-pinned via Pinata. Immutable, timestamped, regulator-exportable. Zero unlogged events by design.</p>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Every AI decision is recorded automatically. Immutable, timestamped, and exportable for regulators. Zero unlogged events by design — not by policy.</p>
             </div>
           </div>
-
           <div class="pain-item" style="border-color:rgba(0,255,136,0.15);">
             <span class="pain-icon">📊</span>
             <div>
-              <h3 style="font-size:0.9rem; margin-bottom:5px;">CI compliance reports per release, forever</h3>
-              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Every merge produces a scored compliance report. Historical trend is automatic. Audit prep is pulling a report, not running a 3-week project.</p>
+              <h3 style="font-size:0.9rem; margin-bottom:5px;">Compliance reports generated on every release</h3>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Every merge produces a scored compliance report. Historical trend is automatic. Audit prep becomes pulling a report — not running a 3-week project.</p>
             </div>
           </div>
         </div>
@@ -827,15 +723,15 @@ h1, h2, h3, h4, h5, h6 {
     <div class="container">
       <div class="section-label">Demo</div>
       <h2 class="display-md" style="margin-bottom:12px;">From risk model to regulator-ready evidence</h2>
-      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; margin-bottom:32px; line-height:1.6;">~4 minute walkthrough. How a DPO defines threats, OCL invariants are verified, and the audit trail is generated — no developer involvement.</p>
-
-      <div class="video-frame" style="max-width:720px; min-height:280px;">
+      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; margin-bottom:32px; line-height:1.6;">~4 minute walkthrough. How a DPO defines risks, how they are formally verified, and how the complete evidence package is generated — no developer involvement.</p>
+      <div style="position:relative; background:var(--bg-deep); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; max-width:720px; min-height:280px;">
+        <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,224,255,0.04) 0%,transparent 70%);"></div>
         <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
-          <div style="width:64px; height:64px; background:rgba(0,224,255,0.12); border:1px solid rgba(0,224,255,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <div style="width:64px;height:64px;background:rgba(0,224,255,0.12);border:1px solid rgba(0,224,255,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
             <div style="width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent var(--cyan);margin-left:4px;"></div>
           </div>
           <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">Demo video coming soon</span>
-          <a href="/cdn-cgi/l/email-protection#b7d4d8d9c3d6d4c3f7c3dfc5d2d6d3dbd2d3d0d2c599ded888c4c2d5ddd2d4c38af4fee4f897f3d2dad897e5d2c6c2d2c4c3" class="btn btn-primary btn-sm">Request live demo instead →</a>
+          <a href="mailto:contact@threadledger.io?subject=CISO Demo Request" class="btn btn-primary btn-sm">Request live demo instead →</a>
         </div>
       </div>
     </div>
@@ -846,26 +742,25 @@ h1, h2, h3, h4, h5, h6 {
     <div class="container" style="max-width:720px;">
       <div class="section-label">Common questions</div>
       <h2 class="display-md" style="margin-bottom:32px;">What compliance teams ask us</h2>
-
       <div class="faq-item">
         <div class="faq-q">Does using Threadledger guarantee EU AI Act compliance?</div>
-        <div class="faq-a">No tool can guarantee regulatory compliance — that's a legal determination. What Threadledger gives you is a formally verified, continuously tested, on-chain evidence chain that demonstrates you have implemented a risk management system, technical controls, and audit logging in accordance with Articles 9, 12, and 17. That's what regulators are actually checking for.</div>
+        <div class="faq-a">No tool can guarantee regulatory compliance — that is a legal determination. What Threadledger gives you is a formally verified, continuously tested, on-chain evidence chain that demonstrates you have implemented a risk management system, technical controls, and audit logging in accordance with Articles 9, 12, and 17. That is what regulators check for.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Do I need to involve my development team to use this?</div>
-        <div class="faq-a">L0 (threat modeling) is entirely within the compliance officer's workbench — no developer involvement. L1-L3 are automated from your model. The only developer touchpoint is the IDE agent at L2, which is guidance, not gatekeeping. Compliance defines the rules; the platform enforces them.</div>
+        <div class="faq-a">The risk modeling step is entirely within the compliance officer's workbench — no developer involvement. Controls are generated automatically from your model. The only developer touchpoint is the IDE guidance agent, which coaches developers at coding time. Compliance defines the rules; the platform enforces them.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What regulations does Threadledger cover today?</div>
-        <div class="faq-a">EU AI Act, GDPR, NIST AI RMF, and MAS TRM are live today. ISO 42001, PDPA, and Korea AI Act are in the community roadmap. Regulation profiles are modular — you swap them without rebuilding your threat model.</div>
+        <div class="faq-a">EU AI Act, GDPR, NIST AI RMF, and MAS TRM are live today. Additional regulation profiles are on the community roadmap. Profiles are modular — you swap them without rebuilding your risk model.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I export evidence for a regulator submission?</div>
-        <div class="faq-a">Yes. Enterprise tier includes regulator submission exports. The on-chain AuditRegistry is IPFS-pinned and exportable in standard formats. CI compliance reports are generated per release and permanently stored.</div>
+        <div class="faq-a">Yes. Enterprise tier includes regulator submission exports. The on-chain audit log is exportable in standard formats. Compliance reports are generated per release and permanently stored.</div>
       </div>
       <div class="faq-item" style="border-bottom:none;">
         <div class="faq-q">How long does it take to get a pilot running?</div>
-        <div class="faq-a">We're actively seeking EU fintech design partner pilots before seed. Typical pilot setup is days, not months — the L0 threat model for a standard HIGH-risk AI use case takes a compliance officer 2-4 hours in the workbench. Contact us to discuss a design partner arrangement.</div>
+        <div class="faq-a">We are actively seeking EU fintech design partner pilots. Typical pilot setup takes days — a risk model for a standard HIGH-risk AI use case takes a compliance officer a few hours in the workbench. Contact us to discuss a design partner arrangement.</div>
       </div>
     </div>
   </section>
@@ -875,13 +770,12 @@ h1, h2, h3, h4, h5, h6 {
     <div class="container">
       <div class="cta-banner">
         <h2 class="display-md" style="margin-bottom:12px;">August 2026 is <span class="text-amber">closer than it looks</span>.</h2>
-        <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 24px; line-height:1.6;">Design partner pilots are open now. We work with you to build your threat model and validate the evidence chain against your AI system before enforcement hits.</p>
-        <a href="/cdn-cgi/l/email-protection#395a56574d585a4d794d514b5c585d555c5d5e5c4b175056064a4c5b535c5a4d047a706a76197d5c4a505e571969584b4d575c4b19695055564d" class="btn btn-primary btn-lg">Apply for Design Partner Pilot →</a>
+        <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 24px; line-height:1.6;">Design partner pilots are open now. We work with you to build your risk model and validate the evidence chain against your AI system before enforcement hits.</p>
+        <a href="mailto:contact@threadledger.io?subject=CISO Design Partner Pilot" class="btn btn-primary btn-lg">Apply for Design Partner Pilot →</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
@@ -891,5 +785,13 @@ h1, h2, h3, h4, h5, h6 {
           <span style="color:var(--text-muted); font-size:0.8rem;">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
         </div>
         <div style="display:flex; gap:20px;">
-          <a href="/" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Home</a>
-          <a href="for-devops.html" style="color:var(--text-muted); text-decoratio
+          <a href="index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Home</a>
+          <a href="for-devops.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">For DevSecOps</a>
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">contact@threadledger.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threadledger for DevSecOps — 3-Tier CI Compliance Pipeline</title>
-  <meta name="description" content="For security engineers and DevSecOps: Threadledger's 3-tier CI pipeline catches guard presence, path bypass, and adversarial patterns. BUILD FAIL before the auditor does." />
+  <title>Threadledger for DevSecOps — Automated AI Compliance Pipeline</title>
+  <meta name="description" content="For security engineers and DevSecOps: Threadledger enforces compliance controls in your CI pipeline and IDE — automatically generated from a formally verified risk model." />
 <style>
 /* ============================================================
    THREADLEDGER DESIGN SYSTEM
@@ -545,390 +545,237 @@ h1, h2, h3, h4, h5, h6 {
 
 </style>
   <style>
-    .audience-hero {
-      padding: 140px 0 80px;
-      position: relative;
-      z-index: 1;
-    }
-
+    .audience-hero { padding: 140px 0 80px; position: relative; z-index: 1; }
     .audience-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green-dim);
-      border: 1px solid rgba(0,255,136,0.2);
-      border-radius: 999px;
-      padding: 5px 14px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-dim); border: 1px solid rgba(0,255,136,0.2);
+      border-radius: 999px; padding: 5px 14px;
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 24px;
     }
-
-    .code-block {
-      background: #070b12;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-top: 24px;
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 64px; }
+    .step-list { display: flex; flex-direction: column; gap: 16px; }
+    .step-item {
+      display: flex; gap: 16px; padding: 20px 24px;
+      background: var(--bg-card); border: 1px solid var(--border-dim);
+      border-radius: var(--radius-lg); transition: all var(--transition);
     }
-
-    .code-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-      background: var(--bg-raised);
-      border-bottom: 1px solid var(--border-dim);
+    .step-item:hover { border-color: var(--border-accent); }
+    .step-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 6px;
     }
-
-    .code-lang {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .code-body {
-      padding: 20px 24px;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      line-height: 1.7;
-      overflow-x: auto;
-    }
-
-    .kw  { color: #7c8fff; }
-    .fn  { color: var(--cyan); }
-    .str { color: #88dd88; }
-    .ann { color: var(--amber); }
-    .cmt { color: var(--text-muted); font-style: italic; }
-
-    .feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-      margin-bottom: 64px;
-    }
-
-    .feature-row:nth-child(even) { direction: rtl; }
-    .feature-row:nth-child(even) > * { direction: ltr; }
-
-    .integration-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 40px;
-    }
-
+    .integration-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
     .integration-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: center;
-      transition: all var(--transition);
+      background: var(--bg-card); border: 1px solid var(--border-dim);
+      border-radius: var(--radius-lg); padding: 20px; text-align: center; transition: all var(--transition);
     }
-
-    .integration-card:hover {
-      border-color: var(--border-accent);
-    }
-
+    .integration-card:hover { border-color: var(--border-accent); }
     .integration-icon { font-size: 1.5rem; margin-bottom: 8px; }
-    .integration-name {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-secondary);
+    .integration-name { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,224,255,0.03) 100%);
+      border: 1px solid rgba(0,255,136,0.15); border-radius: var(--radius-xl);
+      padding: 64px 48px; text-align: center; position: relative; overflow: hidden;
     }
-
+    .cta-banner::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+    }
     @media (max-width: 900px) {
-      .feature-row { grid-template-columns: 1fr; direction: ltr; }
+      .feature-grid { grid-template-columns: 1fr; }
       .integration-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <div class="nav-logo-mark">TL</div>
         <span class="nav-logo-text">Threadledger</span>
       </a>
       <ul class="nav-links">
-        <li><a href="/#platform">Platform</a></li>
-        <li><a href="/#how-it-works">How It Works</a></li>
+        <li><a href="index.html#platform">Platform</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
         <li><a href="for-ciso.html">For CISOs &amp; DPOs</a></li>
         <li><a href="for-devops.html" class="active">For DevSecOps</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/cdn-cgi/l/email-protection#c3a0acadb7a2a0b783b7abb1a6a2a7afa6a7a4a6b1edaaac" class="btn btn-ghost btn-sm">Contact</a>
-        <a href="/#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="index.html#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="audience-hero">
     <div class="container">
-      <div class="audience-tag">
-        ⚡ For Security Engineers &amp; DevSecOps
-      </div>
+      <div class="audience-tag">⚡ For Security Engineers &amp; DevSecOps</div>
       <h1 class="display-xl" style="max-width:680px; margin-bottom:20px;">
-        Compliance guards that<br/>
-        <span class="text-green">can't be bypassed.</span>
+        Compliance controls that<br/><span class="text-green">can't be skipped.</span>
       </h1>
       <p style="font-size:1.05rem; color:var(--text-secondary); max-width:560px; line-height:1.65; margin-bottom:32px;">
-        Threadledger CASE 2.0 ships 27 auto-generated guards from a formally verified threat model, enforces them via MCP IDE agent, then runs a 3-tier CI pipeline that catches exception swallowing, fast-track bypasses, and shadow variables — before they merge.
+        Threadledger CASE 2.0 automatically generates compliance controls from a formally verified risk model, enforces them at build time via IDE agent, and runs a multi-tier CI pipeline that detects gaps before they reach production.
       </p>
       <div style="display:flex; gap:16px; flex-wrap:wrap;">
-        <a href="/#request-demo" class="btn btn-primary btn-lg">Request Terminal Demo →</a>
-        <a href="https://github.com/SJF-Seirios/Threatledger-prototype" class="btn btn-outline btn-lg" target="_blank" rel="noopener">GitHub (private) ↗</a>
+        <a href="index.html#request-demo" class="btn btn-primary btn-lg">Request Terminal Demo →</a>
+        <a href="for-ciso.html" class="btn btn-outline btn-lg">For CISOs &amp; DPOs</a>
       </div>
     </div>
   </section>
 
-  <!-- 3-tier pipeline detail -->
+  <!-- How it works for devs -->
   <section class="section" style="background:var(--bg-deep); padding-top:64px;">
     <div class="container">
-      <div class="section-label">L3 — 3-Tier CI Pipeline</div>
-      <h2 class="display-md" style="margin-bottom:12px;">Guard presence ≠ guard usage ≠ guard enforcement</h2>
+      <div class="section-label">How it fits your workflow</div>
+      <h2 class="display-md" style="margin-bottom:12px;">Compliance built into your pipeline — not bolted on after</h2>
       <p style="color:var(--text-secondary); max-width:560px; font-size:0.9375rem; line-height:1.6; margin-bottom:40px;">
-        Three escalating tiers. Three different failure modes. Each tier catches what the previous one misses. This is what makes Threadledger structurally impossible to ship in a sprint.
+        Four layers work together. Each layer catches what the previous one cannot.
       </p>
 
-      <!-- Full pipeline terminal -->
-      <div class="terminal" style="max-width:800px;">
-        <div class="terminal-bar">
-          <div class="terminal-dot dot-red"></div>
-          <div class="terminal-dot dot-yellow"></div>
-          <div class="terminal-dot dot-green"></div>
-          <span class="terminal-title">$ ./threadledger-ci run --mode=full --target=ai-service</span>
-        </div>
-        <div class="terminal-body">
-          <div style="color:var(--cyan); margin-bottom:8px;">Threadledger CASE 2.0 — Compliance-Test-Agent v2.0</div>
-          <div style="color:var(--text-muted);">Target: ai-service · Profile: EU-AI-Act + GDPR · 27 threats</div>
-          <br/>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="color:var(--text-primary); font-weight:bold; margin:8px 0;">TIER 1 · Guard Presence Analysis</div>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-pass">✓</span> <span style="color:var(--text-primary);">MITREController</span> <span class="t-dim">— 27/27 guards injected</span></div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-pass">✓</span> <span style="color:var(--text-primary);">GDPRController</span> <span class="t-dim">— GDPRCoverage + ValidConsents invariants</span></div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-pass">✓</span> <span style="color:var(--text-primary);">AuditRegistry</span> <span class="t-dim">— .record() verified in all guards</span></div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-pass">✓</span> <span style="color:var(--text-primary);">On-chain trail</span> <span class="t-dim">— Pinata IPFS pinned</span></div>
-          <div style="margin:8px 0;"><span class="t-info">  TIER 1 SCORE: 100/100 · </span><span class="t-pass">PASS</span></div>
-          <br/>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="color:var(--text-primary); font-weight:bold; margin:8px 0;">TIER 2 · Branch-Aware Path Analysis</div>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-pass">✓</span> <span class="t-dim">Standard path: guard called correctly</span></div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-fail">✗</span> <span style="color:var(--text-primary);">Fast-track branch</span><span class="t-dim"> [UserService.java:84]</span></div>
-          <div style="padding-left:32px; color:var(--amber); font-size:0.75rem; margin:2px 0;">→ Sensitive data flow exits without guard invocation</div>
-          <div style="padding-left:32px; color:var(--amber); font-size:0.75rem; margin:2px 0;">→ if (user.isAdmin()) return result; // guard skipped</div>
-          <div style="margin:8px 0;"><span class="t-fail">  TIER 2: PATH GAP DETECTED · FAIL</span></div>
-          <br/>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="color:var(--text-primary); font-weight:bold; margin:8px 0;">TIER 3 · Adversarial Bypass Detection (AST)</div>
-          <div style="color:var(--text-muted);">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-fail">✗</span> <span style="color:var(--text-primary);">Exception swallowed</span><span class="t-dim"> [AiController.java:156]</span></div>
-          <div style="padding-left:32px; color:var(--red); font-size:0.75rem; margin:2px 0;">→ catch (ComplianceException e) { } // silent drop</div>
-          <div style="padding-left:16px; margin:4px 0;"><span class="t-fail">✗</span> <span style="color:var(--text-primary);">Shadow variable</span><span class="t-dim"> [DataProcessor.java:223]</span></div>
-          <div style="padding-left:32px; color:var(--red); font-size:0.75rem; margin:2px 0;">→ boolean auditEnabled = false; // shadows config</div>
-          <div style="margin:8px 0;"><span class="t-fail">  TIER 3: 2 BYPASS PATTERNS · FAIL</span></div>
-          <br/>
-          <div style="background:rgba(255,68,102,0.10); border:1px solid rgba(255,68,102,0.25); border-radius:6px; padding:14px 18px; margin-top:4px;">
-            <div style="color:var(--red); font-weight:bold; font-size:0.875rem; margin-bottom:6px;">✗ BUILD FAILED — PR #142 BLOCKED</div>
-            <div class="t-dim" style="font-size:0.75rem; line-height:1.8;">
-              HIGH-RISK merge blocked (EU AI Act Art. 9)<br/>
-              Tier 2: 1 path gap · Tier 3: 2 bypass patterns<br/>
-              Tier 1: 100/100 (PASS) · On-chain: 0 unlogged events<br/>
-              Report: .threadledger/reports/pr-142.json · IPFS: Qm3x...f9
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- L2: IDE agent -->
-  <section class="section">
-    <div class="container">
-      <div class="feature-row">
+      <div class="feature-grid">
         <div>
-          <div class="section-label">L2 — Developer DX</div>
-          <h2 class="display-md" style="margin-bottom:16px;">@ComplianceRequired — guard omission is a build failure</h2>
-          <p style="color:var(--text-secondary); font-size:0.9375rem; line-height:1.6; margin-bottom:20px;">
-            The Cursor/MCP IDE agent loads generated guards at coding time. Annotate any method with <code style="font-family:var(--font-mono); color:var(--cyan); background:var(--cyan-dim); padding:2px 6px; border-radius:3px;">@ComplianceRequired</code> and the agent enforces correct guard usage — both as a lint warning and a compiler-enforced build failure.
-          </p>
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;">
-            <span class="badge badge-cyan">VS Code</span>
-            <span class="badge badge-cyan">Cursor</span>
-            <span class="badge badge-cyan">MCP Protocol</span>
-            <span class="badge badge-cyan">Claude Skills</span>
-          </div>
-          <a href="/#request-demo" class="btn btn-outline">See IDE demo →</a>
-        </div>
-        <div>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-lang">Java · AI Service</span>
-              <div style="display:flex; gap:4px;">
-                <div class="terminal-dot dot-red"></div>
-                <div class="terminal-dot dot-yellow"></div>
-                <div class="terminal-dot dot-green"></div>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-dot" style="background:var(--cyan);"></div>
+              <div>
+                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 1 — Risk model</div>
+                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Compliance rules defined in the workbench</h3>
+                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Your DPO defines risks and rules. The platform formally verifies them — no gaps, no contradictions. This becomes the source of truth for everything downstream.</p>
               </div>
             </div>
-            <div class="code-body">
-<span class="cmt">// ✓ Correct usage — guard called before sensitive op</span>
-<span class="ann">@ComplianceRequired</span>
-<span class="kw">public</span> <span class="fn">ResponseEntity</span> processAiDecision(
-    <span class="fn">AiRequest</span> request) {
-
-  <span class="cmt">// L2 agent enforces this call exists</span>
-  mitre.<span class="fn">checkT1190_ExploitPublicFacing</span>(request);
-  gdpr.<span class="fn">validateConsent</span>(request.getUserId());
-  audit.<span class="fn">record</span>(request.getRequestId());
-
-  <span class="kw">return</span> aiService.<span class="fn">execute</span>(request);
-}
-
-<span class="cmt">// ✗ Missing guard — IDE flags, CI blocks</span>
-<span class="ann">@ComplianceRequired</span>
-<span class="kw">public</span> <span class="fn">ResponseEntity</span> unsafeDecision(
-    <span class="fn">AiRequest</span> request) {
-
-  <span class="cmt">// ⚠ L2: No MITRE guard invoked</span>
-  <span class="cmt">// ⚠ L2: No audit.record() call</span>
-  <span class="cmt">// → Build will fail at compile time</span>
-  <span class="kw">return</span> aiService.<span class="fn">execute</span>(request); <span class="cmt">// ✗</span>
-}
+            <div class="step-item">
+              <div class="step-dot" style="background:var(--cyan);"></div>
+              <div>
+                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 2 — Auto-generated controls</div>
+                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Zero hand-written compliance code</h3>
+                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Compliance controls are generated directly from the verified model. Non-compliant code cannot compile or deploy. No manual guard implementation required.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot" style="background:var(--green);"></div>
+              <div>
+                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 3 — IDE agent</div>
+                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Compliance guidance at coding time</h3>
+                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">The IDE agent explains which rules apply to each piece of code, in plain language, as you write it. Omitting a required control is a build failure — not a code review comment.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot" style="background:var(--green);"></div>
+              <div>
+                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Step 4 — CI compliance agent</div>
+                <h3 style="font-size:0.9375rem; margin-bottom:6px;">Automated compliance testing on every PR</h3>
+                <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">On every merge request, the compliance agent re-verifies that controls are present, active on every sensitive code path, and have not been circumvented. Failures block the merge and generate a compliance report.</p>
+              </div>
             </div>
           </div>
+        </div>
+
+        <!-- Terminal: outcome language only -->
+        <div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot dot-red"></div>
+              <div class="terminal-dot dot-yellow"></div>
+              <div class="terminal-dot dot-green"></div>
+              <span class="terminal-title">threadledger-ci · PR #142 · ai-service</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-dim">Compliance-Test-Agent running...</div>
+              <br/>
+              <div class="t-cmd">Checking: controls present in codebase</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">All required controls found</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-info">Control presence check · PASS</span></div>
+              <br/>
+              <div class="t-cmd">Checking: controls active on all sensitive paths</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-warn">⚠ Code path identified where control is not invoked</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">✗ Sensitive data flow exits without compliance check</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">Path coverage check · FAIL</span></div>
+              <br/>
+              <div class="t-cmd">Checking: controls cannot be circumvented</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">✗ Compliance exception silently discarded</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">Bypass detection · FAIL</span></div>
+              <br/>
+              <div style="background:rgba(255,68,102,0.08); border:1px solid rgba(255,68,102,0.2); border-radius:4px; padding:10px 14px;">
+                <div class="t-fail" style="font-weight:700;">✗ BUILD FAILED — PR #142 blocked</div>
+                <div class="t-dim" style="font-size:0.75rem; margin-top:4px; line-height:1.7;">
+                  HIGH-RISK merge blocked (EU AI Act Art. 9)<br/>
+                  2 compliance gaps detected · merge rejected<br/>
+                  Report generated · On-chain audit log updated
+                </div>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:12px; font-family:var(--font-mono);">
+            Live demo · runnable in terminal · <a href="mailto:contact@threadledger.io?subject=DevSecOps Demo Request" style="color:var(--green); text-decoration:none;">request access →</a>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- L0/L1: codegen -->
-  <section class="section" style="background:var(--bg-deep);">
+  <!-- What gets caught -->
+  <section class="section">
     <div class="container">
-      <div class="feature-row">
-        <div>
-          <div class="section-label">L0 + L1 — MDD Pipeline</div>
-          <h2 class="display-md" style="margin-bottom:16px;">Verified model → generated guards. Zero hand-written compliance code.</h2>
-          <p style="color:var(--text-secondary); font-size:0.9375rem; line-height:1.6; margin-bottom:20px;">
-            The MDD engine reads the OCL-verified threat model and auto-generates Java guards, Solidity on-chain registry, and MCP stubs. Non-compliant models cannot produce deployable artifacts. The threat model IS the source of truth.
-          </p>
-          <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-md); padding:16px 20px; font-family:var(--font-mono); font-size:0.78rem; line-height:1.8;">
-            <div style="color:var(--text-muted);">Generated artifacts from verified .ecore model:</div>
-            <div style="margin-top:8px;">
-              <span class="t-pass">✓</span> <span class="t-cmd">MITREController.java</span> <span class="t-dim">— 27 threat guards</span><br/>
-              <span class="t-pass">✓</span> <span class="t-cmd">GDPRController.java</span> <span class="t-dim">— consent + purpose guards</span><br/>
-              <span class="t-pass">✓</span> <span class="t-cmd">AuditRegistry.java</span> <span class="t-dim">— on-chain record() calls</span><br/>
-              <span class="t-pass">✓</span> <span class="t-cmd">AuditRegistry.sol</span> <span class="t-dim">— Solidity on-chain contract</span><br/>
-              <span class="t-pass">✓</span> <span class="t-cmd">compliance-mcp-stubs/</span> <span class="t-dim">— IDE agent integration</span>
-            </div>
-          </div>
+      <div class="section-label">What the pipeline catches</div>
+      <h2 class="display-md" style="margin-bottom:12px;">Three checks — three different failure modes</h2>
+      <p style="color:var(--text-secondary); max-width:540px; font-size:0.9375rem; line-height:1.6; margin-bottom:36px;">Most compliance pipelines check that controls exist. Threadledger also checks that they work — on every code path, against attempts to work around them.</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--cyan); border-radius:var(--radius-lg); padding:24px 20px;">
+          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--cyan); margin-bottom:10px;">Check 1 · Presence</div>
+          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls exist</h3>
+          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Verifies every required control is present in the codebase. Fails on any missing control. Scored report generated.</p>
         </div>
-        <div>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-lang">OCL invariant · threat-model.ecore</span>
-            </div>
-            <div class="code-body">
-<span class="cmt">-- OCL invariant: every HIGH-risk threat</span>
-<span class="cmt">-- must have at least one active mitigation</span>
-<span class="kw">context</span> <span class="fn">ThreatScenario</span>
-<span class="kw">inv</span> GDPRCoverage:
-  <span class="fn">self</span>.riskLevel = <span class="str">RiskLevel::HIGH</span>
-    <span class="kw">implies</span>
-  <span class="fn">self</span>.mitigations<span class="fn">-&gt;</span>exists(m |
-    m.status = <span class="str">MitigationStatus::ACTIVE</span>
-  )
-
-<span class="cmt">-- All valid consent claims must reference</span>
-<span class="cmt">-- an existing data subject consent record</span>
-<span class="kw">context</span> <span class="fn">ConsentClaim</span>
-<span class="kw">inv</span> ValidConsents:
-  <span class="fn">self</span>.dataSubjects<span class="fn">-&gt;</span>forAll(ds |
-    ds.consents<span class="fn">-&gt;</span>notEmpty() <span class="kw">and</span>
-    ds.consents<span class="fn">-&gt;</span>exists(c | c.isValid())
-  )
-
-<span class="cmt">-- Violation → model rejected → no codegen</span>
-            </div>
-          </div>
+        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--amber); border-radius:var(--radius-lg); padding:24px 20px;">
+          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber); margin-bottom:10px;">Check 2 · Coverage</div>
+          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls active on every path</h3>
+          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Analyses all code paths to detect branches where a control exists but is never reached. Catches fast-track bypasses invisible to presence checks.</p>
+        </div>
+        <div style="background:var(--bg-card); border:1px solid var(--border-dim); border-top:2px solid var(--red); border-radius:var(--radius-lg); padding:24px 20px;">
+          <div style="font-family:var(--font-mono); font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--red); margin-bottom:10px;">Check 3 · Integrity</div>
+          <h3 style="font-size:0.9rem; margin-bottom:8px; font-family:var(--font-mono);">Controls cannot be circumvented</h3>
+          <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.5;">Detects patterns where controls are nominally present but effectively disabled. Catches issues that pass both presence and coverage checks.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Integrations -->
-  <section class="section">
+  <section class="section" style="background:var(--bg-deep);">
     <div class="container">
       <div class="section-label">Integrations</div>
       <h2 class="display-md" style="margin-bottom:12px;">Fits into your existing stack</h2>
-      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; line-height:1.6;">No rip-and-replace. Threadledger wraps around your CI pipeline and IDE.</p>
-
+      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; line-height:1.6;">No rip-and-replace. Threadledger wraps around your existing CI pipeline and IDE.</p>
       <div class="integration-grid">
-        <div class="integration-card">
-          <div class="integration-icon">🐙</div>
-          <div class="integration-name">GitHub Actions</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">⚡</div>
-          <div class="integration-name">GitLab CI</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">🔵</div>
-          <div class="integration-name">VS Code</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">⬛</div>
-          <div class="integration-name">Cursor / MCP</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">🌿</div>
-          <div class="integration-name">Eclipse EMF</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">☕</div>
-          <div class="integration-name">Java / Spring</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">⛓️</div>
-          <div class="integration-name">Pinata IPFS</div>
-        </div>
-        <div class="integration-card">
-          <div class="integration-icon">🔷</div>
-          <div class="integration-name">Solidity</div>
-        </div>
+        <div class="integration-card"><div class="integration-icon">🐙</div><div class="integration-name">GitHub Actions</div></div>
+        <div class="integration-card"><div class="integration-icon">⚡</div><div class="integration-name">GitLab CI</div></div>
+        <div class="integration-card"><div class="integration-icon">🔵</div><div class="integration-name">VS Code</div></div>
+        <div class="integration-card"><div class="integration-icon">⬛</div><div class="integration-name">Cursor / MCP</div></div>
+        <div class="integration-card"><div class="integration-icon">🌿</div><div class="integration-name">Eclipse Workbench</div></div>
+        <div class="integration-card"><div class="integration-icon">☕</div><div class="integration-name">Java / Spring</div></div>
+        <div class="integration-card"><div class="integration-icon">⛓️</div><div class="integration-name">On-chain audit log</div></div>
+        <div class="integration-card"><div class="integration-icon">🔷</div><div class="integration-name">Smart contracts</div></div>
       </div>
     </div>
   </section>
 
-  <!-- Video placeholder -->
-  <section class="section section-sm" style="background:var(--bg-deep); padding-top:64px; padding-bottom:64px;">
+  <!-- Video -->
+  <section class="section section-sm" style="padding-top:64px; padding-bottom:64px;">
     <div class="container">
       <div class="section-label">Demo</div>
-      <h2 class="display-md" style="margin-bottom:12px;">3-tier CI pipeline, live in your terminal</h2>
-      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; margin-bottom:32px; line-height:1.6;">
-        ~5 minute walkthrough. Tier 1 passes. Tier 2 finds a path bypass. Tier 3 finds a swallowed exception. BUILD FAIL. All runnable in your terminal from the prototype repo.
-      </p>
-
-      <div class="video-frame" style="max-width:720px; min-height:280px;">
+      <h2 class="display-md" style="margin-bottom:12px;">Compliance pipeline, live in your terminal</h2>
+      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; margin-bottom:32px; line-height:1.6;">~5 minute walkthrough. Controls present, path gap found, bypass detected, merge blocked. Runnable live — no slides.</p>
+      <div style="position:relative; background:var(--bg-deep); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; max-width:720px; min-height:280px;">
+        <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,255,136,0.04) 0%,transparent 70%);"></div>
         <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
-          <div style="width:64px; height:64px; background:rgba(0,255,136,0.10); border:1px solid rgba(0,255,136,0.25); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <div style="width:64px;height:64px;background:rgba(0,255,136,0.10);border:1px solid rgba(0,255,136,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;">
             <div style="width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent var(--green);margin-left:4px;"></div>
           </div>
           <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">Terminal demo video coming soon</span>
-          <a href="/cdn-cgi/l/email-protection#accfc3c2d8cdcfd8ecd8c4dec9cdc8c0c9c8cbc9de82c5c393dfd9cec6c9cfd891e8c9daffc9cfe3dcdf8ce8c9c1c38cfec9ddd9c9dfd8" class="btn btn-primary btn-sm">Request live terminal access →</a>
+          <a href="mailto:contact@threadledger.io?subject=DevSecOps Terminal Demo" class="btn btn-primary btn-sm">Request live terminal access →</a>
         </div>
       </div>
     </div>
@@ -937,15 +784,14 @@ h1, h2, h3, h4, h5, h6 {
   <!-- CTA -->
   <section class="section section-sm" style="padding-top:0;">
     <div class="container">
-      <div class="cta-banner" style="background:linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,224,255,0.03) 100%); border-color:rgba(0,255,136,0.15);">
+      <div class="cta-banner">
         <h2 class="display-md" style="margin-bottom:12px;">Run the demo in <span class="text-green">your terminal</span>.</h2>
-        <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 24px; line-height:1.6;">Request access to the prototype repo. Tier 1 → Tier 2 → Tier 3 → BUILD FAIL. Runnable live. No slides.</p>
-        <a href="/cdn-cgi/l/email-protection#95f6fafbe1f4f6e1d5e1fde7f0f4f1f9f0f1f2f0e7bbfcfaaae6e0f7fff0f6e1a8d1f0e3c6f0f6dae5e6b5c1f0e7f8fcfbf4f9b5d1f0f8fab5c7f0e4e0f0e6e1" class="btn btn-primary btn-lg">Request Prototype Access →</a>
+        <p style="color:var(--text-secondary); max-width:440px; margin:0 auto 24px; line-height:1.6;">Request access to the prototype. Controls present, path gap found, bypass detected, merge blocked. No slides.</p>
+        <a href="mailto:contact@threadledger.io?subject=DevSecOps Terminal Demo Request" class="btn btn-primary btn-lg">Request Demo Access →</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
@@ -955,6 +801,13 @@ h1, h2, h3, h4, h5, h6 {
           <span style="color:var(--text-muted); font-size:0.8rem;">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
         </div>
         <div style="display:flex; gap:20px;">
-          <a href="/" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Home</a>
+          <a href="index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Home</a>
           <a href="for-ciso.html" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">For CISOs &amp; DPOs</a>
-          <
+          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">contact@threadledger.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

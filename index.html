@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threadledger — Formal Verification for AI Compliance</title>
-  <meta name="description" content="Threadledger CASE 2.0 makes AI compliance provable, automatic and continuous. From formal threat models to CI-enforced guards — zero gaps, zero guesswork." />
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <title>Threadledger — Provable AI Compliance</title>
+  <meta name="description" content="Threadledger CASE 2.0 makes AI compliance provable, automatic and continuous. From formal threat models to CI-enforced controls — a complete regulator-ready evidence chain." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
 /* ============================================================
    THREADLEDGER DESIGN SYSTEM
@@ -546,27 +546,17 @@ h1, h2, h3, h4, h5, h6 {
 
 </style>
   <style>
-    /* ── Hero ── */
     .hero {
       padding: 160px 0 96px;
       position: relative;
       z-index: 1;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
     }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
     .urgency-pill {
       display: inline-flex;
       align-items: center;
@@ -582,7 +572,6 @@ h1, h2, h3, h4, h5, h6 {
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-
     .urgency-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
@@ -590,18 +579,13 @@ h1, h2, h3, h4, h5, h6 {
       animation: pulse-glow 2s ease-in-out infinite;
       box-shadow: 0 0 8px var(--amber);
     }
-
     .hero h1 {
       font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
       margin-bottom: 20px;
     }
-
-    .hero h1 .accent {
-      color: var(--cyan);
-    }
-
+    .hero h1 .accent { color: var(--cyan); }
     .hero-sub {
       font-size: 1.05rem;
       color: var(--text-secondary);
@@ -609,14 +593,12 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 32px;
       max-width: 480px;
     }
-
     .hero-actions {
       display: flex;
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
     }
-
     .hero-proof {
       display: flex;
       align-items: center;
@@ -625,314 +607,128 @@ h1, h2, h3, h4, h5, h6 {
       padding-top: 32px;
       border-top: 1px solid var(--border-dim);
     }
-
-    .proof-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
+    .proof-item { display: flex; flex-direction: column; gap: 3px; }
     .proof-value {
       font-family: var(--font-mono);
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-primary);
     }
-
     .proof-label {
       font-size: 0.72rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
+    .proof-sep { width: 1px; height: 32px; background: var(--border-dim); }
 
-    .proof-sep {
-      width: 1px;
-      height: 32px;
-      background: var(--border-dim);
-    }
-
-    /* Hero right — terminal demo */
+    /* Hero terminal */
     .hero-terminal { animation: fadeInUp 0.8s ease 0.2s both; }
 
-    .tier-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 3px 0;
-    }
-
-    .tier-indicator {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* ── Value props ── */
-    .props-grid {
+    /* Steps */
+    .steps-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
-
-    .prop-card {
-      background: var(--bg-surface);
+    .step-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-dim);
       border-radius: var(--radius-lg);
       padding: 28px;
       transition: all var(--transition);
     }
-
-    .prop-card:hover {
-      border-color: var(--border-accent);
-      background: var(--bg-card);
-    }
-
-    .prop-icon {
-      width: 40px; height: 40px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      font-size: 18px;
-    }
-
-    .prop-icon-cyan  { background: var(--cyan-dim);  }
-    .prop-icon-green { background: var(--green-dim); }
-    .prop-icon-amber { background: var(--amber-dim); }
-
-    /* ── How it works ── */
-    .layers-section { background: var(--bg-deep); }
-
-    .layer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .layer-connector {
-      width: 2px;
-      height: 24px;
-      background: linear-gradient(to bottom, var(--border-accent), transparent);
-      margin: 0 0 0 19px;
-    }
-
-    .layer-card {
-      display: flex;
-      gap: 20px;
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg);
-      transition: all var(--transition);
-      cursor: default;
-    }
-
-    .layer-card:hover {
+    .step-card:hover {
       border-color: var(--border-accent);
       box-shadow: var(--shadow-glow);
     }
-
-    .layer-num {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--cyan);
-      background: var(--cyan-dim);
-      border: 1px solid rgba(0,224,255,0.2);
-      border-radius: var(--radius-sm);
-      padding: 4px 8px;
-      height: fit-content;
-      white-space: nowrap;
-      letter-spacing: 0.04em;
-    }
-
-    .layer-content h3 {
-      font-size: 1rem;
-      font-family: var(--font-mono);
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-
-    .layer-content p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    .layer-actor {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-top: 10px;
-    }
-
-    /* ── 3-tier CI ── */
-    .tier-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .tier-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tier-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-    }
-
-    .tier-1::before { background: var(--cyan); }
-    .tier-2::before { background: var(--amber); }
-    .tier-3::before { background: var(--red); }
-
-    .tier-num {
+    .step-num {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      margin-bottom: 12px;
     }
-
-    .tier-1 .tier-num { color: var(--cyan); }
-    .tier-2 .tier-num { color: var(--amber); }
-    .tier-3 .tier-num { color: var(--red); }
-
-    .tier-card h3 {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
+    .step-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .step-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; }
+    .step-proof {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
       font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--green);
     }
 
-    .tier-card p {
-      font-size: 0.8125rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    /* ── Videos section ── */
-    .video-grid {
+    /* Evidence chain */
+    .evidence-chain {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .video-card {
-      background: var(--bg-surface);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border-dim);
       border: 1px solid var(--border-dim);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      transition: all var(--transition);
+      margin-top: 48px;
     }
-
-    .video-card:hover {
-      border-color: var(--border-accent);
-      box-shadow: var(--shadow-glow);
+    .evidence-step {
+      background: var(--bg-surface);
+      padding: 24px 20px;
     }
-
-    .video-thumb {
-      position: relative;
-      background: var(--bg-deep);
-      aspect-ratio: 16/9;
-      cursor: pointer;
-      overflow: hidden;
+    .evidence-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
     }
+    .evidence-step h3 { font-size: 0.875rem; font-family: var(--font-mono); margin-bottom: 6px; }
+    .evidence-step p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
 
-    .video-thumb-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
+    /* Competitor table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+      font-size: 0.8125rem;
     }
-
-    .video-thumb-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,224,255,0.04) 0%, transparent 70%);
-    }
-
-    .play-btn {
-      width: 52px; height: 52px;
-      background: rgba(0,224,255,0.12);
-      border: 1px solid rgba(0,224,255,0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-      position: relative;
-      z-index: 1;
-    }
-
-    .video-card:hover .play-btn {
-      background: rgba(0,224,255,0.22);
-      box-shadow: 0 0 24px rgba(0,224,255,0.2);
-    }
-
-    .play-icon {
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 8px 0 8px 14px;
-      border-color: transparent transparent transparent var(--cyan);
-      margin-left: 3px;
-    }
-
-    .video-audience {
-      position: relative;
-      z-index: 1;
+    .comp-table th {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--text-muted);
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-dim);
     }
-
-    .video-info {
-      padding: 20px;
-    }
-
-    .video-info h3 {
-      font-size: 0.9375rem;
-      font-family: var(--font-mono);
-      margin-bottom: 6px;
-    }
-
-    .video-info p {
-      font-size: 0.8125rem;
+    .comp-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-dim);
       color: var(--text-secondary);
-      line-height: 1.5;
     }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table td:first-child { font-weight: 500; color: var(--text-primary); }
+    .comp-table tr.ours td { background: rgba(0,224,255,0.04); }
+    .comp-table tr.ours td:first-child { color: var(--cyan); font-family: var(--font-mono); }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--text-muted); }
+    .partial { color: var(--amber); }
 
-    /* ── Pricing ── */
+    /* Pricing */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
-
     .price-card {
       background: var(--bg-card);
       border: 1px solid var(--border-dim);
@@ -941,100 +737,25 @@ h1, h2, h3, h4, h5, h6 {
       position: relative;
       transition: all var(--transition);
     }
-
-    .price-card:hover {
-      border-color: var(--border-accent);
-      box-shadow: var(--shadow-card), var(--shadow-glow);
-    }
-
-    .price-card.featured {
-      border-color: rgba(0,224,255,0.3);
-      background: var(--bg-raised);
-      box-shadow: var(--shadow-card), var(--shadow-glow);
-    }
-
+    .price-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-card), var(--shadow-glow); }
+    .price-card.featured { border-color: rgba(0,224,255,0.3); background: var(--bg-raised); box-shadow: var(--shadow-card), var(--shadow-glow); }
     .featured-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--cyan);
-      color: var(--bg-void);
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 999px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--cyan); color: var(--bg-void);
+      font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
+      padding: 3px 12px; border-radius: 999px; letter-spacing: 0.08em;
+      text-transform: uppercase; white-space: nowrap;
     }
+    .price-plan { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; }
+    .price-amount { font-family: var(--font-mono); font-size: 2.4rem; font-weight: 700; color: var(--text-primary); line-height: 1; margin-bottom: 4px; }
+    .price-amount sup { font-size: 1.1rem; vertical-align: top; margin-top: 6px; color: var(--text-secondary); }
+    .price-period { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px; }
+    .price-desc { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border-dim); line-height: 1.5; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8125rem; color: var(--text-secondary); }
+    .feature-check { color: var(--green); font-size: 0.75rem; margin-top: 1px; flex-shrink: 0; }
 
-    .price-plan {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .price-amount {
-      font-family: var(--font-mono);
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .price-amount sup {
-      font-size: 1.1rem;
-      vertical-align: top;
-      margin-top: 6px;
-      color: var(--text-secondary);
-    }
-
-    .price-period {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .price-desc {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-dim);
-      line-height: 1.5;
-    }
-
-    .price-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .price-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.8125rem;
-      color: var(--text-secondary);
-    }
-
-    .feature-check {
-      color: var(--green);
-      font-size: 0.75rem;
-      margin-top: 1px;
-      flex-shrink: 0;
-    }
-
-    /* ── CTA banner ── */
+    /* CTA banner */
     .cta-banner {
       background: linear-gradient(135deg, rgba(0,224,255,0.06) 0%, rgba(0,255,136,0.03) 100%);
       border: 1px solid rgba(0,224,255,0.15);
@@ -1044,34 +765,43 @@ h1, h2, h3, h4, h5, h6 {
       position: relative;
       overflow: hidden;
     }
-
     .cta-banner::before {
       content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
       width: 300px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--cyan), transparent);
     }
 
-    /* ── Responsive ── */
+    /* Video */
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .video-card { background: var(--bg-surface); border: 1px solid var(--border-dim); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition); }
+    .video-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-glow); }
+    .video-thumb { position: relative; background: var(--bg-deep); aspect-ratio: 16/9; cursor: pointer; overflow: hidden; }
+    .play-btn { width: 52px; height: 52px; background: rgba(0,224,255,0.12); border: 1px solid rgba(0,224,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all var(--transition); position: relative; z-index: 1; }
+    .video-card:hover .play-btn { background: rgba(0,224,255,0.22); box-shadow: 0 0 24px rgba(0,224,255,0.2); }
+    .play-icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent var(--cyan); margin-left: 3px; }
+    .video-info { padding: 20px; }
+    .video-info h3 { font-size: 0.9375rem; font-family: var(--font-mono); margin-bottom: 6px; }
+    .video-info p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; }
+
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-terminal { display: none; }
-      .props-grid { grid-template-columns: 1fr; }
-      .layer-grid { grid-template-columns: 1fr; }
-      .tier-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .evidence-chain { grid-template-columns: 1fr 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
       .video-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .evidence-chain { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <div class="nav-logo-mark">TL</div>
         <span class="nav-logo-text">Threadledger</span>
       </a>
@@ -1083,504 +813,431 @@ h1, h2, h3, h4, h5, h6 {
         <li><a href="#pricing">Pricing</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/cdn-cgi/l/email-protection#71121e1f05101205310519031410151d14151614035f181e" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="mailto:contact@threadledger.io" class="btn btn-ghost btn-sm">Contact</a>
         <a href="#request-demo" class="btn btn-primary btn-sm">Request Demo →</a>
       </div>
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
-
-        <!-- Left: Copy -->
         <div>
-          <div class="hero-eyebrow">
-            <span class="urgency-pill">
-              <span class="urgency-dot"></span>
-              EU AI Act enforcement: Aug 2026
-            </span>
+          <div style="margin-bottom:24px;">
+            <span class="urgency-pill"><span class="urgency-dot"></span>EU AI Act enforcement: Aug 2026</span>
           </div>
-
-          <h1>
-            AI compliance<br/>
-            that's <span class="accent">provable</span>,<br/>
-            not promised.
-          </h1>
-
+          <h1>AI compliance<br/>that's <span class="accent">provable</span>,<br/>not promised.</h1>
           <p class="hero-sub">
-            Threadledger CASE 2.0 is the formal verification infrastructure layer for AI. From design-time threat models to CI-enforced guards — every claim is mathematically proven, every check is automated, every audit trail is on-chain.
+            Threadledger CASE 2.0 is the compliance infrastructure layer for AI. From formally-verified risk models to CI-enforced controls — every claim is mathematically proven, every check is automated, every audit trail is permanent.
           </p>
-
           <div class="hero-actions">
             <a href="#request-demo" class="btn btn-primary btn-lg">Request Live Demo →</a>
             <a href="for-ciso.html" class="btn btn-outline btn-lg">For CISOs &amp; DPOs</a>
           </div>
-
           <div class="hero-proof">
             <div class="proof-item">
-              <span class="proof-value text-cyan">27/27</span>
-              <span class="proof-label">Threats covered</span>
+              <span class="proof-value text-cyan">€26B</span>
+              <span class="proof-label">Global TAM 2026</span>
             </div>
             <div class="proof-sep"></div>
             <div class="proof-item">
-              <span class="proof-value text-cyan">100/100</span>
-              <span class="proof-label">Tier 1 CI score</span>
+              <span class="proof-value text-cyan">Aug 2026</span>
+              <span class="proof-label">EU AI Act enforcement</span>
             </div>
             <div class="proof-sep"></div>
             <div class="proof-item">
               <span class="proof-value text-cyan">Zero</span>
-              <span class="proof-label">Competitors w/ OCL codegen</span>
+              <span class="proof-label">Competitors with our approach</span>
             </div>
           </div>
         </div>
 
-        <!-- Right: Terminal demo -->
+        <!-- Right: terminal — outcome language only, no implementation detail -->
         <div class="hero-terminal">
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot dot-red"></div>
               <div class="terminal-dot dot-yellow"></div>
               <div class="terminal-dot dot-green"></div>
-              <span class="terminal-title">threadledger-ci · compliance-test-agent</span>
+              <span class="terminal-title">threadledger · compliance-agent · ai-lending-service</span>
             </div>
             <div class="terminal-body">
-              <div class="tier-row">
-                <span class="t-info">▶</span>
-                <span class="t-dim">Running Threadledger CASE 2.0 pipeline...</span>
-              </div>
+              <div class="t-dim">Running compliance verification pipeline...</div>
               <br/>
-              <div class="tier-row">
-                <span class="t-dim">──</span>
-                <span class="t-cmd">TIER 1: Guard Presence (27 threats)</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="tier-indicator" style="background:var(--green)"></span>
-                <span class="t-pass">✓ MITREController — all 27 guards injected</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="tier-indicator" style="background:var(--green)"></span>
-                <span class="t-pass">✓ GDPRController — consent + purpose guards</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="tier-indicator" style="background:var(--green)"></span>
-                <span class="t-pass">✓ AuditRegistry — on-chain trail verified</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="t-info">Score: 100/100</span>
-                <span class="t-dim">· PASS</span>
-              </div>
+              <div class="t-cmd">Step 1 — Formal risk model verification</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">Risk definitions complete and consistent</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">All HIGH-risk items have documented mitigations</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-info">Design-time proof generated · PASS</span></div>
               <br/>
-              <div class="tier-row">
-                <span class="t-dim">──</span>
-                <span class="t-cmd">TIER 2: Branch-Aware Path Analysis</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="tier-indicator" style="background:var(--amber)"></span>
-                <span class="t-warn">⚠ Fast-track branch: guard bypassed on line 84</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="t-fail">✗ Uncovered path detected · FAIL</span>
-              </div>
+              <div class="t-cmd">Step 2 — Code controls verification</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">Auto-generated controls present in codebase</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">Build rejects non-compliant deployments</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-info">Implementation proof generated · PASS</span></div>
               <br/>
-              <div class="tier-row">
-                <span class="t-dim">──</span>
-                <span class="t-cmd">TIER 3: Adversarial Bypass Detection</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="tier-indicator" style="background:var(--red)"></span>
-                <span class="t-fail">✗ Exception swallowed in catch block</span>
-              </div>
-              <div class="tier-row" style="padding-left:20px">
-                <span class="t-fail">✗ Shadow variable detected · FAIL</span>
-              </div>
+              <div class="t-cmd">Step 3 — Developer guidance check</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-pass">✓</span> <span class="t-dim">IDE agent active — all developers guided</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-info">Developer proof generated · PASS</span></div>
+              <br/>
+              <div class="t-cmd">Step 4 — Continuous compliance testing</div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-warn">⚠ Compliance gap detected on code path</span></div>
+              <div style="padding-left:16px; margin:3px 0;"><span class="t-fail">✗ Release blocked — HIGH-RISK rule not covered</span></div>
               <br/>
               <div style="background:rgba(255,68,102,0.08); border:1px solid rgba(255,68,102,0.2); border-radius:4px; padding:10px 14px;">
-                <span class="t-fail" style="font-weight:700">✗ BUILD FAILED — HIGH-RISK merge blocked</span><br/>
-                <span class="t-dim" style="font-size:0.75rem">PR #142 · 2 path gaps · 1 bypass pattern · 0 unlogged events</span>
+                <span class="t-fail" style="font-weight:700;">✗ BUILD FAILED — merge blocked</span><br/>
+                <span class="t-dim" style="font-size:0.75rem;">Compliance report generated · On-chain audit log updated · PR blocked</span>
               </div>
             </div>
           </div>
           <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:12px; font-family:var(--font-mono);">
-            Live demo · runnable in terminal · <a href="#request-demo" style="color:var(--cyan); text-decoration:none;">request access →</a>
+            Live demo available · <a href="#request-demo" style="color:var(--cyan); text-decoration:none;">request access →</a>
           </p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ── Stats bar ── -->
+  <!-- Stats bar -->
   <section class="section-sm" style="padding-top:0; position:relative; z-index:1;">
     <div class="container">
       <div class="stat-grid">
-        <div class="stat-item">
-          <div class="stat-value">€26B</div>
-          <div class="stat-label">Global TAM 2026</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">Aug '26</div>
-          <div class="stat-label">EU AI Act enforcement</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">€35M</div>
-          <div class="stat-label">Max fine per violation</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">0</div>
-          <div class="stat-label">Competitors w/ our stack</div>
-        </div>
+        <div class="stat-item"><div class="stat-value">€26B</div><div class="stat-label">Global TAM 2026</div></div>
+        <div class="stat-item"><div class="stat-value">Aug '26</div><div class="stat-label">EU AI Act enforcement</div></div>
+        <div class="stat-item"><div class="stat-value">€35M</div><div class="stat-label">Max fine per violation</div></div>
+        <div class="stat-item"><div class="stat-value">2,000+</div><div class="stat-label">EU teams currently blocked</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ── Value props ── -->
+  <!-- Platform: 4 steps -->
   <section class="section" id="platform">
     <div class="container">
-      <div class="section-label">The problem we solve</div>
-      <h2 class="display-lg" style="max-width:600px; margin-bottom:16px;">
-        Guard presence ≠ guard usage<br/>≠ guard enforcement.
-      </h2>
-      <p style="color:var(--text-secondary); max-width:520px; font-size:1rem; line-height:1.6;">
-        Every AI compliance tool today checks that controls exist. Threadledger is the only platform that proves they work — on every code path, against every adversarial bypass pattern.
+      <div class="section-label">The platform</div>
+      <h2 class="display-lg" style="max-width:560px; margin-bottom:16px;">One platform — from risk definition to regulator-proof compliance</h2>
+      <p style="color:var(--text-secondary); max-width:540px; font-size:1rem; line-height:1.6;">
+        Think of Threadledger as the compliance infrastructure layer for AI — the same way a bank uses a core banking system for financial controls. AI compliance becomes automatic, provable, and continuous.
       </p>
-
-      <div class="props-grid">
-        <div class="prop-card">
-          <div class="prop-icon prop-icon-cyan">🔒</div>
-          <h3 style="font-size:1rem; margin-bottom:8px;">Mathematically provable</h3>
-          <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.55;">
-            OCL invariants formally verify your threat model before any code is generated. Compliance is proven at design time — not asserted.
-          </p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 1 · Define It</div>
+          <h3>What counts as safe?</h3>
+          <p>Your compliance team formally defines AI risks — for GDPR, EU AI Act, NIST — in a structured model. The platform mathematically verifies every definition is complete and consistent before any code is written.</p>
+          <div class="step-proof"><span>✓</span> Design-time proof</div>
         </div>
-        <div class="prop-card">
-          <div class="prop-icon prop-icon-green">⚙️</div>
-          <h3 style="font-size:1rem; margin-bottom:8px;">Zero hand-written guards</h3>
-          <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.55;">
-            MDD engine auto-generates Java guards and Solidity registry from your verified model. Developers cannot deploy non-compliant code — the build physically blocks it.
-          </p>
+        <div class="step-card">
+          <div class="step-num">Step 2 · Build It In</div>
+          <h3>Compliance baked into code</h3>
+          <p>Compliance rules are automatically translated into software controls. Developers cannot deploy code that violates a rule — the build system rejects it. Zero hand-written compliance code.</p>
+          <div class="step-proof"><span>✓</span> Implementation proof</div>
         </div>
-        <div class="prop-card">
-          <div class="prop-icon prop-icon-amber">🔍</div>
-          <h3 style="font-size:1rem; margin-bottom:8px;">Three-tier bypass detection</h3>
-          <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.55;">
-            Presence → path coverage → adversarial AST analysis. Catches exception swallowing, reflection hacks, shadow variables. Three different failure modes, three different verdicts.
-          </p>
+        <div class="step-card">
+          <div class="step-num">Step 3 · Guide Developers</div>
+          <h3>Agent skills in the IDE</h3>
+          <p>AI-powered guidance in developers' coding tools explains exactly which rules apply to each piece of code, what is required, and what is forbidden. Compliance becomes part of the coding experience.</p>
+          <div class="step-proof"><span>✓</span> Developer proof</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 4 · Prove It Continuously</div>
+          <h3>Automated compliance testing</h3>
+          <p>On every code change, an automated agent checks that compliance rules are still being followed across every code path and generates a scored report. Merges are blocked if any check fails.</p>
+          <div class="step-proof"><span>✓</span> Continuous proof</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── How it works: 4 layers ── -->
-  <section class="section layers-section" id="how-it-works">
+  <!-- What the regulator sees -->
+  <section class="section" id="how-it-works" style="background:var(--bg-deep);">
     <div class="container">
-      <div class="layer-grid">
-
-        <div>
-          <div class="section-label">Architecture</div>
-          <h2 class="display-lg" style="margin-bottom:16px;">
-            4-layer<br/>compliance stack
-          </h2>
-          <p style="color:var(--text-secondary); font-size:0.9375rem; line-height:1.6; margin-bottom:32px;">
-            From formal threat model to CI-enforced continuous verification — a complete, regulator-facing evidence chain. No layer is optional.
-          </p>
-
-          <div class="layer-stack">
-            <div class="layer-card">
-              <span class="layer-num">L0</span>
-              <div class="layer-content">
-                <h3>Threat Modeling — Design-time Proof</h3>
-                <p>DPO defines threats, risk classifications, and OCL invariants. Formal verification proves consistency before code is generated.</p>
-                <span class="layer-actor">👤 Actor: DPO / Compliance Officer</span>
-              </div>
-            </div>
-            <div class="layer-connector"></div>
-            <div class="layer-card">
-              <span class="layer-num">L1</span>
-              <div class="layer-content">
-                <h3>Code Generation — Compliance-as-Code</h3>
-                <p>MDD engine reads the verified model. Auto-generates Java guards, Solidity on-chain registry, and MCP stubs. Non-compliant models cannot produce deployable artifacts.</p>
-                <span class="layer-actor">🤖 Actor: MDD Engine (Automated)</span>
-              </div>
-            </div>
-            <div class="layer-connector"></div>
-            <div class="layer-card">
-              <span class="layer-num">L2</span>
-              <div class="layer-content">
-                <h3>Developer DX — Agent Skills in IDE</h3>
-                <p>Cursor / Claude skills load generated guards and guide developers. Misuse triggers both a lint warning and a compiler-enforced build failure.</p>
-                <span class="layer-actor">👤 Actor: Developer (VS Code / Cursor)</span>
-              </div>
-            </div>
-            <div class="layer-connector"></div>
-            <div class="layer-card">
-              <span class="layer-num">L3</span>
-              <div class="layer-content">
-                <h3>Test-as-Code — 3-Tier Agentic CI</h3>
-                <p>Presence → path coverage → bypass detection. CI blocks merge if any tier fails. On-chain audit trail on every decision.</p>
-                <span class="layer-actor">🤖 Actor: CI Pipeline + Compliance-Test-Agent</span>
-              </div>
-            </div>
-          </div>
+      <div class="section-label">What the regulator sees</div>
+      <h2 class="display-lg" style="margin-bottom:12px;">A complete chain of evidence — no gaps, no guesswork</h2>
+      <p style="color:var(--text-secondary); max-width:540px; font-size:0.9375rem; line-height:1.6;">Works for EU AI Act, GDPR, NIST AI RMF, and MAS TRM — swap regulation profiles without rebuilding.</p>
+      <div class="evidence-chain">
+        <div class="evidence-step">
+          <div class="evidence-num">Step 1 · Design proof</div>
+          <h3>Formally-verified risk model</h3>
+          <p>Every AI risk, its classification, and its documented mitigation. Produced in the compliance officer's workbench — not by developers.</p>
         </div>
-
-        <!-- Right: 3-tier detail -->
-        <div>
-          <div class="section-label" style="margin-top:8px;">L3 deep dive</div>
-          <h3 class="display-md" style="margin-bottom:12px;">Three tiers, three failure modes</h3>
-          <p style="color:var(--text-secondary); font-size:0.875rem; line-height:1.6; margin-bottom:0;">
-            Each tier catches what the previous tier misses. Stack them and you have the only pipeline that blocks adversarial code before it merges.
-          </p>
-
-          <div class="tier-grid">
-            <div class="tier-card tier-1">
-              <div class="tier-num">Tier 1 · Presence</div>
-              <h3>Guards Exist</h3>
-              <p>Verifies every required guard is injected. Score: 100/100. Fails on any missing control.</p>
-            </div>
-            <div class="tier-card tier-2">
-              <div class="tier-num">Tier 2 · Coverage</div>
-              <h3>Every Path Guarded</h3>
-              <p>Branch-aware path analysis. Catches fast-track bypasses where a guard exists but a code path avoids it.</p>
-            </div>
-            <div class="tier-card tier-3">
-              <div class="tier-num">Tier 3 · Adversarial</div>
-              <h3>No Bypass Patterns</h3>
-              <p>AST analysis for exception swallowing, reflection hacks, and shadow variables. Catches intentional cover-ups.</p>
-            </div>
-          </div>
-
-          <!-- Supported regulations -->
-          <div style="margin-top:28px; padding:20px; background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-lg);">
-            <div class="section-label" style="margin-bottom:12px;">Regulation profiles</div>
-            <div style="display:flex; flex-wrap:wrap; gap:8px;">
-              <span class="badge badge-cyan">EU AI Act</span>
-              <span class="badge badge-cyan">GDPR</span>
-              <span class="badge badge-cyan">NIST AI RMF</span>
-              <span class="badge badge-cyan">MAS TRM</span>
-              <span class="badge badge-cyan" style="opacity:0.6;">ISO 42001 ↗</span>
-              <span class="badge badge-cyan" style="opacity:0.6;">PDPA ↗</span>
-            </div>
-            <p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px;">Swap regulation profiles without rebuilding. Community-contributed rule sets grow the library at zero cost.</p>
-          </div>
-
-          <!-- On-chain -->
-          <div style="margin-top:16px; padding:16px 20px; background:var(--green-dim); border:1px solid rgba(0,255,136,0.15); border-radius:var(--radius-md); display:flex; align-items:center; gap:12px;">
-            <span style="font-size:1.2rem;">⛓️</span>
-            <div>
-              <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--green); margin-bottom:2px;">On-chain audit trail</div>
-              <div style="font-size:0.8rem; color:var(--text-secondary);">AuditRegistry.record() on every AI decision. IPFS-pinned via Pinata. Zero unlogged events.</div>
-            </div>
-          </div>
+        <div class="evidence-step">
+          <div class="evidence-num">Step 2 · Implementation proof</div>
+          <h3>Auto-generated controls</h3>
+          <p>Code controls generated from your model. The system physically cannot be deployed in a non-compliant state.</p>
+        </div>
+        <div class="evidence-step">
+          <div class="evidence-num">Step 3 · Developer proof</div>
+          <h3>IDE guidance logs</h3>
+          <p>Evidence that every developer was guided on compliance rules at coding time. Active organisational training — not just system controls.</p>
+        </div>
+        <div class="evidence-step">
+          <div class="evidence-num">Step 4 · Continuous proof</div>
+          <h3>CI compliance reports</h3>
+          <p>Per-release compliance scores, historical trend, and on-chain audit log of every AI decision. Zero unlogged events.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Demo Videos ── -->
+  <!-- Real-world example -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Real-world example</div>
+      <h2 class="display-lg" style="margin-bottom:12px;">A bank deploys an AI lending system</h2>
+      <p style="color:var(--text-secondary); max-width:540px; font-size:0.9375rem; line-height:1.6; margin-bottom:40px;">Here is what Threadledger does — week by week.</p>
+      <div style="display:flex; flex-direction:column; gap:16px; max-width:800px;">
+        <div style="display:grid; grid-template-columns:100px 1fr; gap:24px; align-items:start; padding:24px; background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-lg);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); padding-top:2px;">Week 1<br/><span style="color:var(--text-muted);">Compliance Team</span></div>
+          <div>
+            <p style="font-size:0.875rem; color:var(--text-primary); margin-bottom:6px; font-weight:500;">"We define what safe AI lending looks like"</p>
+            <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.55;">The DPO and compliance officer define risks: bias in lending decisions and leakage of sensitive applicant data. The platform checks their rules are complete — no gaps, no contradictions. A verified compliance blueprint is produced.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:100px 1fr; gap:24px; align-items:start; padding:24px; background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-lg);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); padding-top:2px;">Week 2<br/><span style="color:var(--text-muted);">Engineering Team</span></div>
+          <div>
+            <p style="font-size:0.875rem; color:var(--text-primary); margin-bottom:6px; font-weight:500;">"The rules are baked into our codebase automatically"</p>
+            <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.55;">Software controls are generated directly from the compliance blueprint. The lending system's code physically cannot approve a loan without running a bias check and logging the decision. If a developer skips a step, the system refuses to build.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:100px 1fr; gap:24px; align-items:start; padding:24px; background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-lg);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); padding-top:2px;">Ongoing<br/><span style="color:var(--text-muted);">Every Developer</span></div>
+          <div>
+            <p style="font-size:0.875rem; color:var(--text-primary); margin-bottom:6px; font-weight:500;">"Every developer is coached in real time"</p>
+            <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.55;">When any developer touches the lending code, their coding tool explains which rules apply, what they must do, and what is forbidden — in plain language, inline. A missing audit log is caught before the code is even submitted for review.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:100px 1fr; gap:24px; align-items:start; padding:24px; background:var(--bg-card); border:1px solid var(--border-dim); border-radius:var(--radius-lg);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); padding-top:2px;">Every PR<br/><span style="color:var(--text-muted);">CI Pipeline</span></div>
+          <div>
+            <p style="font-size:0.875rem; color:var(--text-primary); margin-bottom:6px; font-weight:500;">"We get a compliance score on every release"</p>
+            <p style="font-size:0.8125rem; color:var(--text-secondary); line-height:1.55;">Every time a change is proposed, an automated check re-runs the full compliance suite. The team receives a score and the release is blocked if any rule is not covered. The result is stored as auditor-ready evidence.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding:16px 24px; background:var(--green-dim); border:1px solid rgba(0,255,136,0.15); border-radius:var(--radius-md); max-width:800px;">
+        <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.6;"><span style="color:var(--green); font-weight:600;">When the regulator asks:</span> the bank presents a 4-layer evidence package — blueprint, code proof, developer logs, and a compliance score from every release.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive landscape -->
+  <section class="section" style="background:var(--bg-deep);">
+    <div class="container">
+      <div class="section-label">Competitive landscape</div>
+      <h2 class="display-lg" style="margin-bottom:12px;">The only platform that makes AI compliance automatic, provable, and continuous</h2>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Threadledger</th>
+            <th>OneTrust</th>
+            <th>CrowdStrike</th>
+            <th>GitHub Copilot</th>
+            <th>Fiddler AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ours">
+            <td>Formal Risk Verification</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>Auto-Generated Controls</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>Immutable Audit Trail</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>Developer Guidance (IDE)</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>EU AI Act Ready</td>
+            <td><span class="check">✓</span></td><td><span class="partial">~</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>Continuous Compliance Testing</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td>
+          </tr>
+          <tr class="ours">
+            <td>Open Regulation Library</td>
+            <td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Videos -->
   <section class="section" id="demos">
     <div class="container">
       <div class="section-label">Demos</div>
       <h2 class="display-lg" style="margin-bottom:12px;">See it working</h2>
-      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; line-height:1.6;">
-        Two demo paths — one for compliance and risk teams, one for engineering. Both show the same platform from the angle that matters to you.
-      </p>
-
+      <p style="color:var(--text-secondary); max-width:520px; font-size:0.9375rem; line-height:1.6;">Two demo paths — one for compliance and risk teams, one for engineering.</p>
       <div class="video-grid">
-        <!-- CISO/DPO demo -->
         <div class="video-card">
           <div class="video-thumb">
-            <div class="video-thumb-bg"></div>
-            <div class="video-thumb-inner">
-              <div class="play-btn">
-                <div class="play-icon"></div>
-              </div>
-              <div class="video-audience">For CISOs &amp; DPOs</div>
-            </div>
-            <!-- Decorative terminal lines -->
-            <div style="position:absolute; inset:0; overflow:hidden; opacity:0.15;">
-              <div style="font-family:var(--font-mono); font-size:0.6rem; color:var(--cyan); padding:16px; line-height:1.8;">
-                L0: OCL formal verification... PASS<br/>
-                L1: Guards generated (27/27)... PASS<br/>
-                L2: IDE agent loaded... READY<br/>
-                L3: Compliance-Test-Agent... RUN
-              </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,224,255,0.04) 0%,transparent 70%);"></div>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+              <div class="play-btn"><div class="play-icon"></div></div>
+              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;position:relative;z-index:1;">For CISOs &amp; DPOs</span>
             </div>
           </div>
           <div class="video-info">
-            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
               <h3>From risk model to regulator-ready evidence</h3>
-              <span class="badge badge-cyan" style="flex-shrink:0; margin-left:10px;">~4 min</span>
+              <span class="badge badge-cyan" style="flex-shrink:0;margin-left:10px;">~4 min</span>
             </div>
-            <p>How a DPO defines threats in the compliance workbench, how OCL invariants are verified, and how the on-chain audit trail is generated — no developer involvement required.</p>
-            <a href="for-ciso.html" style="display:inline-flex; align-items:center; gap:6px; color:var(--cyan); font-size:0.8125rem; text-decoration:none; margin-top:12px; font-family:var(--font-mono);">View CISO/DPO page →</a>
+            <p>How a DPO defines risks in the compliance workbench, how rules are formally verified, and how the audit trail is generated — no developer involvement.</p>
+            <a href="for-ciso.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--cyan);font-size:0.8125rem;text-decoration:none;margin-top:12px;font-family:var(--font-mono);">View CISO/DPO page →</a>
           </div>
         </div>
-
-        <!-- DevSecOps demo -->
         <div class="video-card">
           <div class="video-thumb">
-            <div class="video-thumb-bg" style="background:linear-gradient(135deg, rgba(0,255,136,0.04) 0%, transparent 70%);"></div>
-            <div class="video-thumb-inner">
-              <div class="play-btn" style="background:rgba(0,255,136,0.10); border-color:rgba(0,255,136,0.25);">
-                <div class="play-icon" style="border-color:transparent transparent transparent var(--green);"></div>
-              </div>
-              <div class="video-audience">For SecDevOps / Engineering</div>
-            </div>
-            <div style="position:absolute; inset:0; overflow:hidden; opacity:0.15;">
-              <div style="font-family:var(--font-mono); font-size:0.6rem; color:var(--green); padding:16px; line-height:1.8;">
-                ✓ Tier 1: 100/100 PASS<br/>
-                ✗ Tier 2: path bypass detected<br/>
-                ✗ Tier 3: exception swallowed<br/>
-                BUILD FAILED — merge blocked
-              </div>
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,255,136,0.04) 0%,transparent 70%);"></div>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+              <div class="play-btn" style="background:rgba(0,255,136,0.10);border-color:rgba(0,255,136,0.25);"><div class="play-icon" style="border-color:transparent transparent transparent var(--green);"></div></div>
+              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;position:relative;z-index:1;">For SecDevOps / Engineering</span>
             </div>
           </div>
           <div class="video-info">
-            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:8px;">
-              <h3>3-tier CI pipeline in action</h3>
-              <span class="badge badge-green" style="flex-shrink:0; margin-left:10px;">~5 min</span>
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+              <h3>Compliance pipeline in action</h3>
+              <span class="badge badge-green" style="flex-shrink:0;margin-left:10px;">~5 min</span>
             </div>
-            <p>Watch Tier 1 pass, Tier 2 catch a fast-track bypass, and Tier 3 detect a swallowed exception — then see the PR blocked. Runnable live in your terminal.</p>
-            <a href="for-devops.html" style="display:inline-flex; align-items:center; gap:6px; color:var(--green); font-size:0.8125rem; text-decoration:none; margin-top:12px; font-family:var(--font-mono);">View DevSecOps page →</a>
+            <p>Watch the compliance agent run end-to-end, detect a gap, and block a merge — then see the evidence report generated for the auditor.</p>
+            <a href="for-devops.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--green);font-size:0.8125rem;text-decoration:none;margin-top:12px;font-family:var(--font-mono);">View DevSecOps page →</a>
           </div>
         </div>
       </div>
-
-      <div style="text-align:center; margin-top:32px;">
-        <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:16px;">Videos coming soon. Request a live terminal demo now.</p>
+      <div style="text-align:center;margin-top:32px;">
+        <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:16px;">Videos coming soon. Request a live demo now.</p>
         <a href="#request-demo" class="btn btn-outline">Request live demo →</a>
       </div>
     </div>
   </section>
 
-  <!-- ── Pricing ── -->
+  <!-- Pricing -->
   <section class="section" id="pricing" style="background:var(--bg-deep);">
     <div class="container">
       <div class="section-label">Pricing</div>
       <h2 class="display-lg" style="margin-bottom:12px;">Open core, transparent pricing</h2>
-      <p style="color:var(--text-secondary); max-width:480px; font-size:0.9375rem; line-height:1.6; margin-bottom:0;">
-        Start free, scale as you grow. Enterprise teams get the full 3-tier CI Test-Agent and all regulation modules.
-      </p>
-
+      <p style="color:var(--text-secondary);max-width:480px;font-size:0.9375rem;line-height:1.6;">Start with the community platform. Scale as your compliance needs grow.</p>
       <div class="pricing-grid">
-
-        <!-- Starter -->
         <div class="price-card">
           <div class="price-plan">Starter</div>
           <div class="price-amount"><sup>$</sup>99</div>
           <div class="price-period">per month</div>
-          <div class="price-desc">Community OCL rules and standard threat ontology. For teams getting started with AI compliance.</div>
+          <div class="price-desc">Community regulation rules and standard risk ontology. For teams getting started with AI compliance.</div>
           <ul class="price-features">
-            <li><span class="feature-check">✓</span> Standard threat ontology (read-only)</li>
+            <li><span class="feature-check">✓</span> Standard risk ontology (read-only)</li>
             <li><span class="feature-check">✓</span> Community regulation library</li>
             <li><span class="feature-check">✓</span> GitHub integration</li>
-            <li><span class="feature-check">✓</span> Tier 1 CI (presence checks)</li>
-            <li style="opacity:0.4"><span class="feature-check">—</span> Custom metamodels</li>
-            <li style="opacity:0.4"><span class="feature-check">—</span> 3-tier Test-Agent</li>
+            <li><span class="feature-check">✓</span> Basic compliance testing</li>
+            <li style="opacity:0.4"><span class="feature-check">—</span> Custom risk models</li>
+            <li style="opacity:0.4"><span class="feature-check">—</span> Full compliance agent</li>
           </ul>
-          <a href="/cdn-cgi/l/email-protection#ee8d81809a8f8d9aae9a869c8b8f8a828b8a898b9cc08781d19d9b8c848b8d9ad3bd9a8f9c9a8b9ccebe828f80" class="btn btn-outline" style="width:100%; justify-content:center;">Get started</a>
+          <a href="mailto:contact@threadledger.io?subject=Starter Plan" class="btn btn-outline" style="width:100%;justify-content:center;">Get started</a>
         </div>
-
-        <!-- Pro -->
         <div class="price-card featured">
           <div class="featured-badge">Most Popular</div>
           <div class="price-plan">Pro</div>
           <div class="price-amount"><sup>$</sup>999</div>
           <div class="price-period">per month</div>
-          <div class="price-desc">Custom metamodels and your own OCL rules. For teams building EU AI Act-compliant AI systems.</div>
+          <div class="price-desc">Custom risk models and your own compliance rules. For teams building EU AI Act-compliant systems.</div>
           <ul class="price-features">
             <li><span class="feature-check">✓</span> GDPR + EU AI Act modules</li>
-            <li><span class="feature-check">✓</span> Custom metamodels</li>
-            <li><span class="feature-check">✓</span> Write your own OCL rules</li>
+            <li><span class="feature-check">✓</span> Custom risk models</li>
+            <li><span class="feature-check">✓</span> Write your own compliance rules</li>
             <li><span class="feature-check">✓</span> Priority support</li>
-            <li><span class="feature-check">✓</span> Tier 1 + Tier 2 CI</li>
-            <li style="opacity:0.4"><span class="feature-check">—</span> Full 3-tier Test-Agent</li>
+            <li><span class="feature-check">✓</span> Extended compliance testing</li>
+            <li style="opacity:0.4"><span class="feature-check">—</span> Full compliance agent + SLA</li>
           </ul>
-          <a href="/cdn-cgi/l/email-protection#0b6864657f6a687f4b7f63796e6a6f676e6f6c6e7925626434787e69616e687f365b79642b5b676a65" class="btn btn-primary" style="width:100%; justify-content:center;">Start with Pro</a>
+          <a href="mailto:contact@threadledger.io?subject=Pro Plan" class="btn btn-primary" style="width:100%;justify-content:center;">Start with Pro</a>
         </div>
-
-        <!-- Enterprise -->
         <div class="price-card">
           <div class="price-plan">Enterprise</div>
           <div class="price-amount"><sup>$</sup>5k</div>
           <div class="price-period">per month</div>
-          <div class="price-desc">All regulation modules, full 3-tier CI Test-Agent, SLA, and developer seat licensing.</div>
+          <div class="price-desc">All regulation modules, full compliance agent, SLA, and developer seat licensing.</div>
           <ul class="price-features">
             <li><span class="feature-check">✓</span> All regulation modules</li>
             <li><span class="feature-check">✓</span> Developer seat licensing</li>
-            <li><span class="feature-check">✓</span> Full 3-tier CI Test-Agent</li>
+            <li><span class="feature-check">✓</span> Full compliance agent</li>
             <li><span class="feature-check">✓</span> SLA + dedicated support</li>
             <li><span class="feature-check">✓</span> On-chain audit trail</li>
             <li><span class="feature-check">✓</span> Regulator submission exports</li>
           </ul>
-          <a href="/cdn-cgi/l/email-protection#bdded2d3c9dcdec9fdc9d5cfd8dcd9d1d8d9dad8cf93d4d282cec8dfd7d8dec980f8d3c9d8cfcdcfd4ced89dedd1dcd3" class="btn btn-outline" style="width:100%; justify-content:center;">Talk to us</a>
+          <a href="mailto:contact@threadledger.io?subject=Enterprise Plan" class="btn btn-outline" style="width:100%;justify-content:center;">Talk to us</a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ── CTA ── -->
+  <!-- CTA -->
   <section class="section" id="request-demo">
     <div class="container">
       <div class="cta-banner">
-        <div class="section-label" style="justify-content:center; margin-bottom:20px;">EU AI Act enforcement: August 2026</div>
-        <h2 class="display-lg" style="margin-bottom:16px; max-width:600px; margin-left:auto; margin-right:auto;">
-          Ready to make compliance <span class="text-cyan">provable</span>?
-        </h2>
-        <p style="color:var(--text-secondary); font-size:1rem; max-width:440px; margin:0 auto 32px; line-height:1.6;">
-          Request a live terminal demo. We'll run Tier 1 → Tier 2 → Tier 3 against a real codebase and show you exactly what a BUILD FAIL looks like before your auditor does.
+        <div class="section-label" style="justify-content:center;margin-bottom:20px;">EU AI Act enforcement: August 2026</div>
+        <h2 class="display-lg" style="margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto;">Ready to make compliance <span class="text-cyan">provable</span>?</h2>
+        <p style="color:var(--text-secondary);font-size:1rem;max-width:440px;margin:0 auto 32px;line-height:1.6;">
+          Request a live demo. We'll run the full compliance pipeline against a real codebase and show you exactly what a regulator-ready evidence package looks like.
         </p>
-        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-          <a href="/cdn-cgi/l/email-protection#9cfff3f2e8fdffe8dce8f4eef9fdf8f0f9f8fbf9eeb2f5f3a3efe9fef6f9ffe8a1d8f9f1f3bccef9ede9f9efe8" class="btn btn-primary btn-lg">Request Demo →</a>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="mailto:contact@threadledger.io?subject=Demo Request" class="btn btn-primary btn-lg">Request Demo →</a>
           <a href="for-ciso.html" class="btn btn-outline btn-lg">For CISOs &amp; DPOs</a>
           <a href="for-devops.html" class="btn btn-outline btn-lg">For DevSecOps</a>
         </div>
-        <p style="margin-top:24px; font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
-          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34575b5a4055574074405c465155505851505351461a5d5b">[email&#160;protected]</a> · hellothreadledger.io · ThreatLedger B.V. · Amsterdam
+        <p style="margin-top:24px;font-size:0.8rem;color:var(--text-muted);font-family:var(--font-mono);">
+          contact@threadledger.io · hellothreadledger.io · ThreatLedger B.V. · Amsterdam
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ── -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div style="display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start; margin-bottom:40px;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;margin-bottom:40px;">
         <div>
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
             <div class="nav-logo-mark">TL</div>
-            <span style="font-family:var(--font-mono); font-weight:700; font-size:1rem;">Threadledger</span>
+            <span style="font-family:var(--font-mono);font-weight:700;font-size:1rem;">Threadledger</span>
           </div>
-          <p style="font-size:0.875rem; color:var(--text-muted); max-width:320px; line-height:1.6;">
-            Formal verification infrastructure for AI compliance. Provable. Automatic. Continuous.
-          </p>
-          <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
+          <p style="font-size:0.875rem;color:var(--text-muted);max-width:300px;line-height:1.6;">Formal verification infrastructure for AI compliance. Provable. Automatic. Continuous.</p>
+          <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;">
             <span class="badge badge-cyan">EU AI Act</span>
             <span class="badge badge-green">GDPR</span>
             <span class="badge badge-amber">NIST AI RMF</span>
           </div>
         </div>
-        <div style="display:flex; gap:48px;">
+        <div style="display:flex;gap:48px;">
           <div>
-            <div style="font-family:var(--font-mono); font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:12px;">Platform</div>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-              <li><a href="#how-it-works" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">How It Works</a></li>
-              <li><a href="#pricing" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">Pricing</a></li>
-              <li><a href="#demos" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">Demos</a></li>
+            <div style="font-family:var(--font-mono);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;">Platform</div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+              <li><a href="#platform" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">How It Works</a></li>
+              <li><a href="#pricing" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Pricing</a></li>
+              <li><a href="#demos" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Demos</a></li>
             </ul>
           </div>
           <div>
-            <div style="font-family:var(--font-mono); font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:12px;">Teams</div>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-              <li><a href="for-ciso.html" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">CISOs &amp; DPOs</a></li>
-              <li><a href="for-devops.html" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">DevSecOps</a></li>
-              <li><a href="/cdn-cgi/l/email-protection#42212d2c3623213602362a302723262e27262527306c2b2d" style="color:var(--text-secondary); text-decoration:none; font-size:0.875rem;">Contact</a></li>
+            <div style="font-family:var(--font-mono);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;">Teams</div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+              <li><a href="for-ciso.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">CISOs &amp; DPOs</a></li>
+              <li><a href="for-devops.html" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">DevSecOps</a></li>
+              <li><a href="mailto:contact@threadledger.io" style="color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="divider"></div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;">
+        <span style="font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono);">© 2025 ThreatLedger B.V. · Amsterdam · Dutch law</span>
+        <a href="mailto:contact@threadledger.io" style="font-size:0.75rem;color:var(--text-muted);text-decoration:none;font-family:var(--font-mono);">contact@threadledger.io</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
