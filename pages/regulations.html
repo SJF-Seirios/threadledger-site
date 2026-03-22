@@ -836,7 +836,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       .coverage-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <!-- build: 2026-03-22 20:37 -->
+  <!-- build: 2026-03-22 21:29:23 -->
 </head>
 <body>
 
@@ -2220,54 +2220,5 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       });
       mobileNav.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', ()
-  <script>
-    (function() {
-      var h = document.getElementById('nav-hamburger');
-      var m = document.getElementById('nav-mobile');
-      var nl = document.querySelector('.nav-links');
-      var nr = document.querySelector('.nav-right');
-      if (!h || !m || !nl || !nr) return;
-
-      // Set initial state based on window width — pure JS, no CSS media queries
-      function setNavMode() {
-        if (window.innerWidth <= 900) {
-          // Mobile: show hamburger, hide desktop nav
-          h.style.setProperty('display', 'flex', 'important');
-          h.style.flexDirection = 'column';
-          h.style.justifyContent = 'center';
-          h.style.alignItems = 'center';
-          h.style.gap = '5px';
-          nl.style.setProperty('display', 'none', 'important');
-          nr.style.setProperty('display', 'none', 'important');
-        } else {
-          // Desktop: hide hamburger, show desktop nav
-          h.style.setProperty('display', 'none', 'important');
-          m.style.display = 'none';
-          nl.style.removeProperty('display');
-          nr.style.removeProperty('display');
-          h.classList.remove('open');
-        }
-      }
-
-      // Drawer toggle
-      function closeMenu() { m.style.display = 'none'; h.classList.remove('open'); }
-      function openMenu()  { m.style.display = 'block'; h.classList.add('open'); }
-
-      h.addEventListener('click', function(e) {
-        e.stopPropagation();
-        m.style.display === 'block' ? closeMenu() : openMenu();
-      });
-      document.addEventListener('click', function(e) {
-        if (!h.contains(e.target) && !m.contains(e.target)) closeMenu();
-      });
-      m.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', closeMenu);
-      });
-
-      // Run on load and on resize
-      setNavMode();
-      window.addEventListener('resize', setNavMode);
-    })();
-  </script>
 </body>
 </html>
