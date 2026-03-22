@@ -1311,10 +1311,10 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       document.addEventListener('click',function(e){if(!h.contains(e.target)&&!m.contains(e.target)){h.classList.remove('open');m.classList.remove('open');}});
       m.querySelectorAll('a').forEach(function(a
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
       var h = document.getElementById('nav-hamburger');
       var m = document.getElementById('nav-mobile');
-      if (!h || !m) { console.warn('Nav elements not found'); return; }
+      if (!h || !m) return;
       function closeMenu() { m.style.display = 'none'; h.classList.remove('open'); }
       function openMenu()  { m.style.display = 'block'; h.classList.add('open'); }
       h.addEventListener('click', function(e) {
@@ -1327,7 +1327,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       m.querySelectorAll('a').forEach(function(a) {
         a.addEventListener('click', closeMenu);
       });
-    });
+    })();
   </script>
 </body>
 </html>
