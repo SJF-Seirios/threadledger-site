@@ -3,6 +3,10 @@
 <head>
   <!-- Nav CSS: self-contained, no external dependency -->
   <style>
+    /* Prevent horizontal overflow on mobile */
+    html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+    .nav { overflow: visible; }
+    .nav-inner { overflow: visible; }
     /* Nav bar */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -745,6 +749,25 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   <div class="nav-mobile" id="nav-mobile">
     <a href="../index.html#platform">Platform</a>
     <div class="nav-mobile-group">Solutions</div>
+    <a href="regulations.html" class="nav-mobile-sub">📋 Regulations &amp; Frameworks</a>
+    <a href="ai-agent-security.html" class="nav-mobile-sub">🤖 AI Agent Security</a>
+    <div class="nav-mobile-divider"></div>
+    <a href="../for-ciso.html">For CISOs &amp; DPOs</a>
+    <a href="../for-devops.html">For DevSecOps</a>
+    <a href="about.html">About</a>
+    <a href="../index.html#pricing">Pricing</a>
+    <a href="mailto:contact@threadledger.io">Contact</a>
+    <div class="nav-mobile-divider"></div>
+    <a href="request-demo.html" style="color:var(--cyan);font-weight:600;">Request Demo →</a>
+    <div class="nav-mobile-divider"></div>
+    <div style="padding:8px 24px 14px; display:flex; align-items:center; gap:10px;">
+      <span style="font-size:0.8rem; color:var(--text-muted); font-family:monospace;">Appearance</span>
+      <button class="theme-toggle" style="padding:4px 12px 4px 8px; font-size:0.72rem;">
+        <span class="theme-toggle-icon">🌙</span>
+        <span class="theme-toggle-label">Dark</span>
+      </button>
+    </div>
+  </div>
     <a href="regulations.html" class="nav-mobile-sub">📋 Regulations &amp; Frameworks</a>
     <a href="ai-agent-security.html" class="nav-mobile-sub">🤖 AI Agent Security</a>
     <div class="nav-mobile-divider"></div>
