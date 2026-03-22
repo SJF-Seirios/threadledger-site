@@ -233,9 +233,8 @@
           <span class="theme-toggle-label">Dark</span>
         </button>
       </div>
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
+
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -243,6 +242,20 @@
   <div class="nav-mobile" id="nav-mobile">
     <a href="index.html#platform">Platform</a>
     <div class="nav-mobile-group">Solutions</div>
+    <a href="pages/regulations.html" class="nav-mobile-sub">📋 Regulations &amp; Frameworks</a>
+    <a href="pages/ai-agent-security.html" class="nav-mobile-sub">🤖 AI Agent Security</a>
+    <div class="nav-mobile-divider"></div>
+    <a href="for-ciso.html">For CISOs &amp; DPOs</a>
+    <a href="for-devops.html">For DevSecOps</a>
+    <a href="pages/about.html">About</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="mailto:contact@threadledger.io">Contact</a>
+    <div class="nav-mobile-divider"></div>
+    <a href="pages/request-demo.html" style="color:var(--cyan);font-weight:600;">Request Demo →</a>
+    <div style="padding:8px 24px 12px;"><button class="theme-toggle" onclick="void(0)" style="width:auto;"><span class="theme-toggle-icon">🌙</span><span class="theme-toggle-label">Dark mode</span></button></div>
+  </div>
+
+
     <a href="pages/regulations.html" class="nav-mobile-sub">Regulations & Frameworks</a>
     <a href="pages/ai-agent-security.html" class="nav-mobile-sub">AI Agent Security</a>
     <div class="nav-mobile-divider"></div>
@@ -250,7 +263,7 @@
     <a href="for-devops.html">For DevSecOps</a>
     <a href="pages/about.html">About</a>
     <a href="index.html#pricing">Pricing</a>
-    <a href="mailto:contact@threadledger.io">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#3e5d51504a5f5d4a7e4a564c5b5f5a525b5a595b4c105751">Contact</a>
     <div class="nav-mobile-divider"></div>
     <a href="pages/request-demo.html" style="color:var(--cyan); font-weight:600; padding:11px 24px; display:block; text-decoration:none; font-size:0.9rem;">Request Demo →</a>
   </div>
@@ -622,7 +635,7 @@
           <a href="for-ciso.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">For CISOs &amp; DPOs</a>
           <a href="for-devops.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">For DevSecOps</a>
           <a href="pages/request-demo.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Request Demo</a>
-          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">contact@threadledger.io</a>
+          <a href="/cdn-cgi/l/email-protection#3b5854554f5a584f7b4f53495e5a5f575e5f5c5e49155254" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;"><span class="__cf_email__" data-cfemail="15767a7b6174766155617d677074717970717270673b7c7a">[email&#160;protected]</span></a>
         </div>
       </div>
       <div style="height:0.5px; background:var(--border-dim); margin:20px 0 16px;"></div>
@@ -638,7 +651,7 @@
   </footer>
 
   <!-- Mobile nav JS -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('nav-mobile');
     if (hamburger && mobileNav) {
@@ -650,16 +663,30 @@
       document.addEventListener('click', (e) => {
         if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
           hamburger.classList.remove('open');
+          mobi
+  <script>
+    (function() {
+      var hamburger = document.getElementById('nav-hamburger');
+      var mobileNav = document.getElementById('nav-mobile');
+      if (!hamburger || !mobileNav) return;
+      hamburger.addEventListener('click', function() {
+        var isOpen = hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+      document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+          hamburger.classList.remove('open');
           mobileNav.classList.remove('open');
         }
       });
-      mobileNav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
+      mobileNav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
           hamburger.classList.remove('open');
           mobileNav.classList.remove('open');
         });
       });
-    }
+    })();
   </script>
 
 </body>
