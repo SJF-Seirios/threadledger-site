@@ -27,6 +27,15 @@
     .cta-banner::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:200px; height:0.5px; background:linear-gradient(90deg,transparent,var(--green),transparent); }
     @media (max-width:900px) { .feature-grid { grid-template-columns:1fr; } .integration-grid { grid-template-columns:repeat(2,1fr); } }
   </style>
+
+  <!-- Critical mobile nav CSS -->
+  <style>
+    @media (max-width: 900px) {
+      .nav-links     { display: none !important; }
+      .nav-right     { display: none !important; }
+      .nav-hamburger { display: flex !important; }
+    }
+  </style>
 </head>
 <body>
 

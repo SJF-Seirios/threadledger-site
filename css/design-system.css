@@ -516,8 +516,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   visibility: hidden;
   transition: transform 0.22s ease, opacity 0.22s ease, visibility 0.22s ease;
   pointer-events: none;
-  /* Hidden by default on all screen sizes */
-  display: none;
+  /* display controlled by media query and .open class only */
 }
 [data-theme="dark"] .nav-mobile {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
@@ -563,11 +562,10 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   font-size: 0.85rem !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav-hamburger { display: flex !important; }
   .nav-links     { display: none !important; }
   .nav-right     { display: none !important; }
-  .nav-mobile    { display: block; }
   .section       { padding: 60px 0; }
   .stat-grid     { grid-template-columns: repeat(2, 1fr); }
 }
