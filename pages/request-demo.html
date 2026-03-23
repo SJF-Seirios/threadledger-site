@@ -511,6 +511,12 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 :root .section-label::before { background: var(--text-muted); }
 
 /* ── Stat grid ── */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border-dim);
+  border: 0.5px solid var(--border-dim);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
 .stat-item {
   background: var(--bg-surface); padding: 24px 20px; text-align: center;
 }
@@ -594,7 +600,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 @media (max-width: 600px) {
   .section    { padding: 32px 0; }
   .section-sm { padding: 22px 0; }
-  .stat-grid  { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid  { grid-template-columns: repeat(2, 1fr); font-size: 0.85em; }
 }
 }
   
@@ -627,7 +633,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seirios — Request a Demo</title>
   <meta name="description" content="Request a live demo of Seirios CASE 2.0. We run the full compliance pipeline against a real codebase and show you what a regulator-ready evidence package looks like." />
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <script src="../js/theme.js"></script>
   <style>
     .demo-hero {
