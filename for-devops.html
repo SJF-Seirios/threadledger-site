@@ -11,66 +11,66 @@
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 60px; display: flex; align-items: center;
-      background: rgba(250,249,247,0.95);
+      background: rgba(247,248,251,0.93);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid rgba(0,0,0,0.07);
     }
-    [data-theme="dark"] .nav { background: rgba(8,12,20,0.92); }
+    [data-theme="dark"] .nav { background: rgba(13,17,23,0.90); }
     .nav-inner {
       display: flex; align-items: center;
       width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
-    .nav-logo-mark { width: 30px; height: 30px; background: #1D9E75; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-size: 12px; font-weight: 700; color: #fff; }
-    [data-theme="dark"] .nav-logo-mark { background: #00e0ff; color: #080c14; }
-    .nav-logo-text { font-family: monospace; font-weight: 700; font-size: 0.95rem; }
+    .nav-logo-mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: none; border: none; padding: 0; }
+    [data-theme="dark"] .nav-logo-mark { background: none; }
+    .nav-logo-text { font-family: 'DM Mono', monospace; font-weight: 600; font-size: 0.92rem; letter-spacing: 0.04em; }
     /* Desktop links */
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0 auto 0 24px; padding: 0; }
     .nav-links a, .nav-dropdown-trigger {
-      color: #5a5a52; text-decoration: none; font-size: 0.78rem; font-weight: 500;
+      color: #4a5a7a; text-decoration: none; font-size: 0.78rem; font-weight: 500;
       padding: 5px 9px; border-radius: 4px; transition: all 0.15s;
       background: none; border: none; cursor: pointer; font-family: inherit;
       white-space: nowrap;
     }
-    [data-theme="dark"] .nav-links a, [data-theme="dark"] .nav-dropdown-trigger { color: #8a9bb0; }
-    .nav-links a:hover, .nav-dropdown-trigger:hover { color: #1a1a18; background: #f0ede8; }
-    [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-dropdown-trigger:hover { color: #e8edf4; background: #162030; }
-    .nav-links a.active { color: #1D9E75; }
-    [data-theme="dark"] .nav-links a.active { color: #00e0ff; }
+    [data-theme="dark"] .nav-links a, [data-theme="dark"] .nav-dropdown-trigger { color: #8aabcc; }
+    .nav-links a:hover, .nav-dropdown-trigger:hover { color: #0a1f3d; background: #eaecf4; }
+    [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-dropdown-trigger:hover { color: #e2ecf8; background: #182233; }
+    .nav-links a.active { color: #185fba; }
+    [data-theme="dark"] .nav-links a.active { color: #4a9eff; }
     /* Dropdown */
     .nav-dropdown { position: relative; list-style: none; }
     .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 4px; }
     .nav-dropdown-arrow { font-size: 0.55rem; }
     .nav-dropdown-menu {
       position: absolute; top: calc(100% + 8px); left: 0; min-width: 200px;
-      background: #faf9f7; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 10px;
+      background: #f7f8fb; border: 0.5px solid rgba(24,95,186,0.20); border-radius: 10px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.1); padding: 6px;
       opacity: 0; visibility: hidden; transform: translateY(-4px);
       transition: all 0.15s; z-index: 200;
     }
-    [data-theme="dark"] .nav-dropdown-menu { background: #111927; border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .nav-dropdown-menu { background: #131c2a; border-color: rgba(255,255,255,0.1); }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     .nav-dropdown-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border-radius: 6px; text-decoration: none; }
-    .nav-dropdown-item:hover { background: #f0ede8; }
-    [data-theme="dark"] .nav-dropdown-item:hover { background: #162030; }
+    .nav-dropdown-item:hover { background: #eaecf4; }
+    [data-theme="dark"] .nav-dropdown-item:hover { background: #182233; }
     .nav-dropdown-item-icon { font-size: 0.875rem; flex-shrink: 0; margin-top: 1px; }
-    .nav-dropdown-item-text strong { display: block; font-size: 0.78rem; font-weight: 600; color: #1a1a18; margin-bottom: 1px; }
-    [data-theme="dark"] .nav-dropdown-item-text strong { color: #e8edf4; }
-    .nav-dropdown-item-text span { font-size: 0.7rem; color: #999990; line-height: 1.4; }
+    .nav-dropdown-item-text strong { display: block; font-size: 0.78rem; font-weight: 600; color: #0a1f3d; margin-bottom: 1px; }
+    [data-theme="dark"] .nav-dropdown-item-text strong { color: #e2ecf8; }
+    .nav-dropdown-item-text span { font-size: 0.7rem; color: #8a9bb8; line-height: 1.4; }
     .nav-dropdown-divider { height: 0.5px; background: rgba(0,0,0,0.07); margin: 4px 6px; }
     /* Right side */
     .nav-right { display: flex; align-items: center; gap: 8px; margin-left: 12px; flex-shrink: 0; }
     /* Theme toggle */
     .theme-toggle {
       display: inline-flex; align-items: center; gap: 6px;
-      background: #f0ede8; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 999px;
+      background: #eaecf4; border: 0.5px solid rgba(24,95,186,0.20); border-radius: 999px;
       padding: 4px 12px 4px 8px; cursor: pointer;
       font-family: monospace; font-size: 0.65rem; font-weight: 600;
-      color: #5a5a52; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #4a5a7a; letter-spacing: 0.04em; text-transform: uppercase;
       transition: all 0.15s;
     }
-    [data-theme="dark"] .theme-toggle { background: #162030; border-color: rgba(255,255,255,0.1); color: #8a9bb0; }
+    [data-theme="dark"] .theme-toggle { background: #182233; border-color: rgba(255,255,255,0.1); color: #8aabcc; }
     /* Hamburger — hidden on desktop, flex on mobile via media query */
     .nav-hamburger {
       display: none !important;
@@ -78,7 +78,7 @@
       cursor: pointer; padding: 8px; border-radius: 4px; margin-left: auto; flex-shrink: 0;
     }
     .nav-hamburger span {
-      display: block; width: 20px; height: 2px; background: #1a1a18;
+      display: block; width: 20px; height: 2px; background: #0a1f3d;
       border-radius: 2px; transition: all 0.22s ease; transform-origin: center;
     }
     [data-theme="dark"] .nav-hamburger span { background: #e8edf4; }
@@ -89,25 +89,25 @@
     .nav-mobile {
       display: none; /* JS adds .open which changes to block */
       position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
-      background: #faf9f7; border-bottom: 0.5px solid rgba(0,0,0,0.07);
+      background: #f7f8fb; border-bottom: 0.5px solid rgba(0,0,0,0.07);
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       padding: 12px 0 16px;
       animation: slideDown 0.2s ease;
     }
-    [data-theme="dark"] .nav-mobile { background: #0d1421; }
+    [data-theme="dark"] .nav-mobile { background: #0f1520; }
     @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
     .nav-mobile a {
-      display: block; padding: 11px 24px; color: #5a5a52; text-decoration: none;
+      display: block; padding: 11px 24px; color: #4a5a7a; text-decoration: none;
       font-size: 0.9rem; font-weight: 500; transition: all 0.15s;
     }
-    [data-theme="dark"] .nav-mobile a { color: #8a9bb0; }
-    .nav-mobile a:hover { color: #1a1a18; background: #f0ede8; }
-    [data-theme="dark"] .nav-mobile a:hover { color: #e8edf4; background: #162030; }
-    .nav-mobile a.active { color: #1D9E75; }
-    [data-theme="dark"] .nav-mobile a.active { color: #00e0ff; }
+    [data-theme="dark"] .nav-mobile a { color: #8aabcc; }
+    .nav-mobile a:hover { color: #0a1f3d; background: #eaecf4; }
+    [data-theme="dark"] .nav-mobile a:hover { color: #e2ecf8; background: #182233; }
+    .nav-mobile a.active { color: #185fba; }
+    [data-theme="dark"] .nav-mobile a.active { color: #4a9eff; }
     .nav-mobile-group {
       padding: 10px 24px 4px; font-family: monospace; font-size: 0.62rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #999990;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #8a9bb8;
     }
     .nav-mobile-sub { padding-left: 36px !important; font-size: 0.85rem !important; }
     .nav-mobile-divider { height: 0.5px; background: rgba(0,0,0,0.07); margin: 6px 24px; }
@@ -129,7 +129,7 @@
   
     /* ── DESIGN SYSTEM ── */
 /* ============================================================
-   THREADLEDGER DESIGN SYSTEM — DUAL THEME
+   SEIRIOS DESIGN SYSTEM — DUAL THEME
    Light (default): DM Serif Display + DM Mono + Figtree — warm, document-like
    Dark (toggle):   Space Mono + DM Sans — deep navy security aesthetic
    ============================================================ */
@@ -139,34 +139,34 @@
 /* ── LIGHT THEME (default) ── */
 :root {
   /* Backgrounds */
-  --bg-void:        #faf9f7;
-  --bg-deep:        #f5f3ef;
-  --bg-surface:     #f0ede8;
-  --bg-raised:      #ebe7e1;
-  --bg-card:        #f5f3ef;
+  --bg-void:        #f7f8fb;
+  --bg-deep:        #f0f2f8;
+  --bg-surface:     #eaecf4;
+  --bg-raised:      #e2e5f0;
+  --bg-card:        #f0f2f8;
 
   /* Borders */
-  --border-dim:     rgba(0,0,0,0.07);
-  --border-subtle:  rgba(0,0,0,0.10);
-  --border-accent:  rgba(29,158,117,0.35);
+  --border-dim:     rgba(24,95,186,0.14);
+  --border-subtle:  rgba(24,95,186,0.22);
+  --border-accent:  rgba(24,95,186,0.35);
 
   /* Accent colours */
-  --cyan:           #1D9E75;
-  --cyan-dim:       rgba(29,158,117,0.10);
-  --cyan-glow:      rgba(29,158,117,0.06);
-  --green:          #0F6E56;
-  --green-dim:      rgba(15,110,86,0.10);
-  --amber:          #BA7517;
-  --amber-dim:      rgba(186,117,23,0.10);
-  --red:            #C0392B;
-  --red-dim:        rgba(192,57,43,0.08);
+  --cyan:           #185fba;
+  --cyan-dim:       rgba(24,95,186,0.10);
+  --cyan-glow:      rgba(24,95,186,0.06);
+  --green:          #0e6655;
+  --green-dim:      rgba(14,102,85,0.10);
+  --amber:          #b06000;
+  --amber-dim:      rgba(176,96,0,0.10);
+  --red:            #b52828;
+  --red-dim:        rgba(181,40,40,0.08);
 
   /* Text */
-  --text-primary:   #1a1a18;
-  --text-secondary: #5a5a52;
-  --text-muted:     #999990;
-  --text-cyan:      #1D9E75;
-  --text-green:     #0F6E56;
+  --text-primary:   #0a1f3d;
+  --text-secondary: #4a5a7a;
+  --text-muted:     #8a9bb8;
+  --text-cyan:      #185fba;
+  --text-green:     #0e6655;
 
   /* Typography */
   --font-display:   'DM Serif Display', Georgia, serif;
@@ -180,8 +180,8 @@
   --radius-xl:      14px;
 
   /* Shadows */
-  --shadow-card:    0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-  --shadow-glow:    0 0 20px rgba(29,158,117,0.08);
+  --shadow-card:    0 1px 3px rgba(10,31,61,0.06), 0 4px 12px rgba(10,31,61,0.04);
+  --shadow-glow:    0 0 20px rgba(24,95,186,0.08);
 
   --transition:     0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -191,38 +191,38 @@
 
 /* ── DARK THEME ── */
 [data-theme="dark"] {
-  --bg-void:        #080c14;
-  --bg-deep:        #0d1421;
-  --bg-surface:     #111927;
-  --bg-raised:      #162030;
+  --bg-void:        #0d1117;
+  --bg-deep:        #0f1520;
+  --bg-surface:     #131c2a;
+  --bg-raised:      #182233;
   --bg-card:        #1a2638;
 
-  --border-dim:     rgba(255,255,255,0.06);
-  --border-subtle:  rgba(255,255,255,0.10);
-  --border-accent:  rgba(0,224,255,0.25);
+  --border-dim:     rgba(74,158,255,0.06);
+  --border-subtle:  rgba(74,158,255,0.12);
+  --border-accent:  rgba(74,158,255,0.28);
 
-  --cyan:           #00e0ff;
-  --cyan-dim:       rgba(0,224,255,0.15);
-  --cyan-glow:      rgba(0,224,255,0.08);
-  --green:          #00ff88;
-  --green-dim:      rgba(0,255,136,0.12);
+  --cyan:           #4a9eff;
+  --cyan-dim:       rgba(74,158,255,0.15);
+  --cyan-glow:      rgba(74,158,255,0.08);
+  --green:          #00d98a;
+  --green-dim:      rgba(0,217,138,0.12);
   --amber:          #ffaa00;
   --amber-dim:      rgba(255,170,0,0.12);
   --red:            #ff4466;
   --red-dim:        rgba(255,68,102,0.12);
 
-  --text-primary:   #e8edf4;
-  --text-secondary: #8a9bb0;
-  --text-muted:     #4a5a6e;
-  --text-cyan:      #00e0ff;
-  --text-green:     #00ff88;
+  --text-primary:   #e2ecf8;
+  --text-secondary: #8aabcc;
+  --text-muted:     #3d5470;
+  --text-cyan:      #4a9eff;
+  --text-green:     #00d98a;
 
   --font-display:   'Space Mono', 'Courier New', monospace;
   --font-mono:      'Space Mono', 'Courier New', monospace;
   --font-body:      'DM Sans', system-ui, sans-serif;
 
   --shadow-card:    0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-glow:    0 0 24px rgba(0,224,255,0.12);
+  --shadow-glow:    0 0 28px rgba(74,158,255,0.14);
 }
 
 /* ── Dark theme ambient glow ── */
@@ -231,8 +231,8 @@
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0,224,255,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,255,136,0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(74,158,255,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,217,138,0.03) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -292,7 +292,8 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 
 /* ── Layout ── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-.section-sm { padding: 56px 0; position: relative; z-index: 1; }
+.section    { padding: 52px 0; position: relative; z-index: 1; }
+.section-sm { padding: 36px 0;  position: relative; z-index: 1; }
 
 /* ── Navigation ── */
 .nav {
@@ -300,13 +301,13 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   z-index: 100;
   height: var(--nav-h);
   display: flex; align-items: center;
-  background: rgba(250,249,247,0.92);
+  background: rgba(247,248,251,0.93);
   backdrop-filter: blur(16px) saturate(130%);
   border-bottom: 0.5px solid var(--border-dim);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 [data-theme="dark"] .nav {
-  background: rgba(8,12,20,0.88);
+  background: rgba(13,17,23,0.90);
 }
 
 .nav-inner {
@@ -329,7 +330,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   transition: background 0.3s ease;
 }
 [data-theme="dark"] .nav-logo-mark {
-  box-shadow: 0 0 14px rgba(0,224,255,0.25);
+  box-shadow: 0 0 14px rgba(74,158,255,0.28);
 }
 
 .nav-logo-text {
@@ -446,10 +447,10 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
 [data-theme="dark"] .btn-primary {
-  box-shadow: 0 0 18px rgba(0,224,255,0.2);
+  box-shadow: 0 0 18px rgba(74,158,255,0.22);
 }
 [data-theme="dark"] .btn-primary:hover {
-  box-shadow: 0 0 28px rgba(0,224,255,0.35);
+  box-shadow: 0 0 28px rgba(74,158,255,0.38);
 }
 
 .btn-outline {
@@ -510,6 +511,12 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 :root .section-label::before { background: var(--text-muted); }
 
 /* ── Stat grid ── */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border-dim);
+  border: 0.5px solid var(--border-dim);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
 .stat-item {
   background: var(--bg-surface); padding: 24px 20px; text-align: center;
 }
@@ -528,7 +535,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   font-family: var(--font-mono);
   box-shadow: var(--shadow-card);
 }
-:root .terminal { background: #1a1a18; border-color: rgba(0,0,0,0.15); }
+:root .terminal { background: #0a1f3d; border-color: rgba(0,0,0,0.15); }
 
 .terminal-bar {
   display: flex; align-items: center; gap: 7px;
@@ -544,7 +551,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 .terminal-body { padding: 18px 22px; font-size: 0.78rem; line-height: 1.7; }
 
 /* Terminal always sits on a dark background — hardcode light text for both themes */
-.t-cmd   { color: #e8edf4; }
+.t-cmd   { color: #e2ecf8; }
 .t-dim   { color: #5a6a7e; }
 .t-pass  { color: #3ecf8e; }
 .t-fail  { color: #ff6b6b; }
@@ -573,6 +580,9 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 
 /* ── Animations ── */
+@keyframes star-pulse {
+  0%,100%{opacity:1} 50%{opacity:0.45}
+}
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -583,12 +593,46 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .section    { padding: 40px 0; }
+  .section-sm { padding: 28px 0; }
 }
+@media (max-width: 600px) {
+  .section    { padding: 32px 0; }
+  .section-sm { padding: 22px 0; }
+  .stat-grid  { grid-template-columns: repeat(2, 1fr); font-size: 0.85em; }
+}
+}
+  
+    /* ── CASE 2.0 badge ── */
+    .nav-product-badge {
+      display: inline-flex; align-items: center;
+      background: rgba(24,95,186,0.10);
+      border: 0.5px solid rgba(24,95,186,0.35);
+      border-radius: 4px; padding: 2px 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: #185fba; margin-left: 5px; white-space: nowrap;
+    }
+    [data-theme="dark"] .nav-product-badge {
+      background: rgba(74,158,255,0.12);
+      border-color: rgba(74,158,255,0.30);
+      color: #4a9eff;
+    }
+    /* ── Seirios star mark ── */
+    .seirios-mark .star-bg { fill: #185fba; }
+    [data-theme="dark"] .seirios-mark .star-bg { fill: #1a3a6e; }
+    @keyframes star-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .nav-logo-text { font-family: 'DM Mono', monospace !important; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; }
   </style>
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threadledger for DevSecOps — Automated AI Compliance Pipeline</title>
-  <meta name="description" content="For security engineers and DevSecOps: Threadledger enforces compliance controls in your CI pipeline and IDE automatically." />
+  <title>Seirios for DevSecOps — Automated AI Compliance Pipeline</title>
+  <meta name="description" content="For security engineers and DevSecOps: Seirios enforces compliance controls in your CI pipeline and IDE automatically." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <script src="js/theme.js"></script>
   <style>
@@ -617,8 +661,19 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <div class="nav-logo-mark">TL</div>
-        <span class="nav-logo-text">Threadledger</span>
+        <svg class="nav-logo-mark seirios-mark" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Seirios">
+        <rect width="32" height="32" rx="6" fill="#185fba" class="star-bg"/>
+        <circle cx="16" cy="16" r="12.5" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="7.5" y1="7.5" x2="24.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <line x1="24.5" y1="7.5" x2="7.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="16" cy="16" r="4.5" fill="#0d3d8a" stroke="#ffffff" stroke-width="0.7" opacity="0.95"/>
+        <circle cx="16" cy="16" r="2" fill="#7ab8ff"/>
+        <circle cx="16" cy="16" r="0.85" fill="#ffffff"/>
+        <path d="M14.6 16.1 L15.6 17.5 L17.8 14.3" fill="none" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        <span class="nav-logo-text">Seirios</span><span class="nav-product-badge">CASE 2.0</span>
       </a>
       <ul class="nav-links">
         <li><a href="index.html#platform">Platform</a></li>
@@ -634,7 +689,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <li><a href="for-devops.html">For DevSecOps</a></li>
         <li><a href="pages/about.html">About</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="mailto:contact@threadledger.io">Contact</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#62010d0c1603011622160a100703060e07060507104c0b0d">Contact</a></li>
       </ul>
       <div class="nav-right">
         <a href="pages/request-demo.html" class="btn btn-primary btn-sm">Request Demo →</a>
@@ -654,7 +709,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <a href="for-devops.html">For DevSecOps</a>
     <a href="pages/about.html">About</a>
     <a href="index.html#pricing">Pricing</a>
-    <a href="mailto:contact@threadledger.io">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#563539382237352216223e243337323a3332313324783f39">Contact</a>
     <div class="nav-mobile-divider"></div>
     <a href="pages/request-demo.html" style="color:var(--cyan);font-weight:600;">Request Demo →</a>
     <div class="nav-mobile-divider"></div>
@@ -674,7 +729,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         Compliance controls that<br/><em class="accent">can't be skipped.</em>
       </h1>
       <p style="font-size:1rem; color:var(--text-secondary); max-width:540px; line-height:1.7; margin-bottom:28px;">
-        Threadledger CASE 2.0 automatically generates compliance controls from a formally verified risk model, enforces them at build time via IDE agent, and runs a multi-stage CI pipeline that detects gaps before they reach production.
+        Seirios CASE 2.0 automatically generates compliance controls from a formally verified risk model, enforces them at build time via IDE agent, and runs a multi-stage CI pipeline that detects gaps before they reach production.
       </p>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
         <a href="index.html#request-demo" class="btn btn-primary btn-lg">Request Terminal Demo →</a>
@@ -721,7 +776,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
               </div>
             </div>
           </div>
-          <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:10px;font-family:var(--font-mono);">Live demo · runnable in terminal · <a href="mailto:contact@threadledger.io" style="color:var(--green);text-decoration:none;">request access →</a></p>
+          <p style="font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:10px;font-family:var(--font-mono);">Live demo · runnable in terminal · <a href="/cdn-cgi/l/email-protection#41222e2f35202235013529332420252d24252624336f282e" style="color:var(--green);text-decoration:none;">request access →</a></p>
         </div>
       </div>
     </div>
@@ -731,7 +786,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <div class="container">
       <div class="section-label">What the pipeline catches</div>
       <h2 class="display-md" style="margin-bottom:10px;">Three checks — three different failure modes</h2>
-      <p style="color:var(--text-secondary);max-width:520px;font-size:0.9375rem;line-height:1.65;margin-bottom:32px;">Most compliance pipelines check that controls exist. Threadledger also checks that they work — on every code path, against attempts to work around them.</p>
+      <p style="color:var(--text-secondary);max-width:520px;font-size:0.9375rem;line-height:1.65;margin-bottom:32px;">Most compliance pipelines check that controls exist. Seirios also checks that they work — on every code path, against attempts to work around them.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
         <div style="background:var(--bg-card);border:0.5px solid var(--border-dim);border-top:2px solid var(--cyan);border-radius:var(--radius-lg);padding:22px 18px;">
           <div style="font-family:var(--font-mono);font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:9px;">Check 1 · Presence</div>
@@ -756,7 +811,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <div class="container">
       <div class="section-label">Integrations</div>
       <h2 class="display-md" style="margin-bottom:10px;">Fits into your existing stack</h2>
-      <p style="color:var(--text-secondary);max-width:440px;font-size:0.9375rem;line-height:1.65;">No rip-and-replace. Threadledger wraps around your existing CI pipeline and IDE.</p>
+      <p style="color:var(--text-secondary);max-width:440px;font-size:0.9375rem;line-height:1.65;">No rip-and-replace. Seirios wraps around your existing CI pipeline and IDE.</p>
       <div class="integration-grid">
         <div class="integration-card"><div class="integration-icon">🐙</div><div class="integration-name">GitHub Actions</div></div>
         <div class="integration-card"><div class="integration-icon">⚡</div><div class="integration-name">GitLab CI</div></div>
@@ -780,18 +835,18 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
           <div style="width:56px;height:56px;background:var(--green-dim);border:0.5px solid rgba(15,110,86,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:9px 0 9px 16px;border-color:transparent transparent transparent var(--green);margin-left:3px;"></div></div>
           <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">Terminal demo video coming soon</span>
-          <a href="mailto:contact@threadledger.io" class="btn btn-primary btn-sm">Request live terminal access →</a>
+          <a href="/cdn-cgi/l/email-protection#22414d4c5643415662564a504743464e47464547500c4b4d" class="btn btn-primary btn-sm">Request live terminal access →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-sm" style="background:var(--bg-deep);padding-top:0;padding-bottom:64px;">
+  <section class="section section-sm" style="background:var(--bg-deep);padding-bottom:64px;">
     <div class="container">
       <div class="cta-banner">
         <h2 class="display-md" style="margin-bottom:10px;">Run the demo in <span style="color:var(--green);">your terminal</span>.</h2>
         <p style="color:var(--text-secondary);max-width:400px;margin:0 auto 22px;line-height:1.65;">Request access to the prototype. Controls present, path gap found, bypass detected, merge blocked. No slides.</p>
-        <a href="mailto:contact@threadledger.io" class="btn btn-primary btn-lg">Request Demo Access →</a>
+        <a href="/cdn-cgi/l/email-protection#10737f7e64717364506478627571747c75747775623e797f" class="btn btn-primary btn-lg">Request Demo Access →</a>
       </div>
     </div>
   </section>
@@ -800,23 +855,27 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <div class="container">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
         <div style="display:flex;align-items:center;gap:9px;">
-          <div class="nav-logo-mark">TL</div>
-          <span style="font-family:var(--font-mono);font-weight:600;">Threadledger</span>
+          <svg class="nav-logo-mark seirios-mark" width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Seirios">
+        <rect width="28" height="28" rx="6" fill="#185fba" class="star-bg"/>
+        <circle cx="16" cy="16" r="12.5" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="7.5" y1="7.5" x2="24.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <line x1="24.5" y1="7.5" x2="7.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="16" cy="16" r="4.5" fill="#0d3d8a" stroke="#ffffff" stroke-width="0.7" opacity="0.95"/>
+        <circle cx="16" cy="16" r="2" fill="#7ab8ff"/>
+        <circle cx="16" cy="16" r="0.85" fill="#ffffff"/>
+        <path d="M14.6 16.1 L15.6 17.5 L17.8 14.3" fill="none" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+          <span style="font-family:var(--font-mono);font-weight:600;">Seirios</span>
           <span style="color:var(--text-muted);font-size:0.78rem;font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
         </div>
         <div style="display:flex;gap:18px;">
           <a href="index.html" style="color:var(--text-muted);text-decoration:none;font-size:0.78rem;">Home</a>
           <
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('nav-mobile');
     if (hamburger && mobileNav) {
       hamburger.addEventListener('click', () => {
-        const open = hamburger.classList.toggle('open');
-        mobileNav.classList.toggle('open', open);
-        hamburger.setAttribute('aria-expanded', open);
-      });
-      document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-          hamburger.classList.remove('open');
-          mobileNav
+        const open = hambur

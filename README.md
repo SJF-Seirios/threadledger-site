@@ -1,153 +1,81 @@
-# Threadledger Website
+# Seirios Website
 
-**Stack:** Pure HTML/CSS/JS — zero build step, zero dependencies, zero cost.
+**Brand:** Seirios (ThreatLedger B.V.)  
+**Stack:** Pure HTML/CSS/JS — zero build step, zero dependencies, zero cost.  
+**Slogan:** AI you can prove.
+
+## What changed (rebrand from Threadledger)
+
+- Name: Threadledger → **Seirios**
+- Logo mark: green square "TL" → **8-point Seirios star SVG** (Concept A: deep space)
+- CASE 2.0 badge added to nav
+- Light theme accent: teal-green `#1D9E75` → stellar blue `#185fba`
+- Dark theme accent: cyan `#00e0ff` → stellar blue `#4a9eff`
+- Dark bg void: `#080c14` → deep space navy `#0d1117`
+- Slogan: "Provable AI Compliance" → "AI you can prove."
+- Domain ref: hellothreadledger.io → seirios.ai
+- Legal entity: ThreatLedger B.V. preserved in footer
 
 ## File Structure
 
 ```
-threadledger-site/
+seirios-site/
 ├── index.html              # Main homepage
+├── for-ciso.html           # CISO / DPO audience page
+├── for-devops.html         # DevSecOps audience page
 ├── vercel.json             # Vercel deployment config
+├── README.md
 ├── css/
-│   └── design-system.css   # Shared design system (all pages import this)
+│   └── design-system.css   # Source of truth (not linked; CSS is inlined per page)
+├── js/
+│   └── theme.js            # Theme toggle + mobile nav
 ├── pages/
-│   ├── for-ciso.html       # CISO / DPO audience page
-│   └── for-devops.html     # DevSecOps audience page
+│   ├── regulations.html
+│   ├── ai-agent-security.html
+│   ├── request-demo.html
+│   └── about.html
 └── assets/
-    ├── favicon.svg
-    └── videos/             # Add demo videos here (see below)
+    ├── favicon.svg         # TODO: update to Seirios star mark
+    └── videos/
 ```
 
----
+## Favicon
 
-## Deployment: Vercel (Free tier)
+Update `assets/favicon.svg` with the Seirios star mark. Recommended SVG:
 
-### Step 1 — Connect your domain
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0d1117"/>
+  <circle cx="16" cy="16" r="13" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3"/>
+  <line x1="16" y1="4" x2="16" y2="28" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="4" y1="16" x2="28" y2="16" stroke="#4a9eff" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="7.5" y1="7.5" x2="24.5" y2="24.5" stroke="#4a9eff" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="24.5" y1="7.5" x2="7.5" y2="24.5" stroke="#4a9eff" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="16" cy="16" r="4.5" fill="#1a2e50" stroke="#4a9eff" stroke-width="0.8"/>
+  <circle cx="16" cy="16" r="2" fill="#4a9eff"/>
+  <circle cx="16" cy="16" r="0.8" fill="#c8e0ff"/>
+</svg>
+```
 
-Your domain is `serios.xyz`. The website will live at a subdomain, e.g. `threadledger.serios.xyz` or you can point the apex domain.
+## Deployment
 
-### Step 2 — Deploy to Vercel
+Same as before — Vercel free tier, zero build step.
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# From the threadledger-site/ directory
-cd threadledger-site
+cd seirios-site
 vercel
-
-# Follow prompts:
-# - Link to existing project or create new: New
-# - Project name: threadledger
-# - Detected framework: Other (static)
-# - Root directory: ./
 ```
 
-### Step 3 — Add custom domain in Vercel dashboard
+Update domain in Vercel dashboard to point to seirios.ai (or your current domain).
 
-1. Go to Project Settings → Domains
-2. Add `threadledger.serios.xyz` (or your preferred subdomain)
-3. Add the CNAME record in your DNS provider pointing to `cns1.vercel-dns.com`
+## Design Tokens
 
-### Step 4 — Set up email routing
-
-Since you have `serios.xyz` email, `contact@threadledger.io` CTA links in the site use `mailto:contact@threadledger.io`. 
-
-If you want to use a Threadledger subdomain email:
-- **Cloudflare Email Routing** (free): forward `contact@threadledger.serios.xyz` → your real inbox
-- Or use **Forwardemail.net** (free) for custom domain email forwarding
-
----
-
-## Adding Demo Videos
-
-### Recommended approach: Cloudflare Stream (free tier) or Loom
-
-1. Record your terminal demos using **Loom** (free) or **OBS**
-2. For the CISO demo (~4 min): record the Eclipse threat modeling workbench + OCL verification output
-3. For the DevSecOps demo (~5 min): record the terminal running `./threadledger-ci run --mode=full` showing all 3 tiers
-
-### Embed in the pages
-
-Replace the video placeholder `<div class="video-frame">` sections in both pages with:
-
-```html
-<!-- Loom embed -->
-<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px;">
-  <iframe 
-    src="https://www.loom.com/embed/YOUR_VIDEO_ID" 
-    style="position:absolute; top:0; left:0; width:100%; height:100%;" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</div>
-
-<!-- OR: Self-hosted video file in /assets/videos/ -->
-<video 
-  controls 
-  poster="/assets/videos/ciso-demo-thumb.jpg"
-  style="width:100%; border-radius:12px; border:1px solid var(--border-subtle);">
-  <source src="/assets/videos/ciso-demo.mp4" type="video/mp4">
-</video>
-```
-
-**Video size limit on Vercel free tier:** 100MB per deployment. For larger videos, use Loom, YouTube (unlisted), or Cloudflare Stream.
-
----
-
-## Design System
-
-The CSS design system in `css/design-system.css` defines:
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--cyan` | `#00e0ff` | Primary accent, interactive elements |
-| `--green` | `#00ff88` | Success states, DevSecOps page |
-| `--amber` | `#ffaa00` | Warnings, urgency indicators |
-| `--red` | `#ff4466` | Failures, BUILD FAIL states |
-| `--bg-void` | `#080c14` | Page background |
-| `--font-mono` | Space Mono | Headers, code, badges |
-| `--font-body` | DM Sans | Body text, descriptions |
-
----
-
-## Pages
-
-| URL | File | Audience |
-|-----|------|----------|
-| `/` | `index.html` | General — investors, inbound |
-| `/pages/for-ciso.html` | `pages/for-ciso.html` | CISOs, DPOs, Compliance Officers |
-| `/pages/for-devops.html` | `pages/for-devops.html` | Security Engineers, DevSecOps |
-
----
-
-## Next pages to add
-
-- `/pages/pricing.html` — Dedicated pricing comparison
-- `/pages/eu-ai-act.html` — EU AI Act compliance deep-dive (SEO play)
-- `/pages/request-demo.html` — Demo request form (use Tally.so free tier for the form)
-- `/pages/about.html` — Team page (add when co-founders are confirmed)
-
----
-
-## Analytics (free)
-
-Add **Plausible** or **Umami** (self-hosted on Vercel) for privacy-respecting analytics:
-
-```html
-<!-- Plausible (add to <head> of each page) -->
-<script defer data-domain="threadledger.serios.xyz" src="https://plausible.io/js/script.js"></script>
-```
-
----
-
-## Security headers
-
-`vercel.json` already sets:
-- `X-Frame-Options: DENY`
-- `X-Content-Type-Options: nosniff`
-- `X-XSS-Protection`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy` (camera, mic, geo off)
-
-These are appropriate for a security company's website.
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `--cyan` | `#185fba` | `#4a9eff` | Primary accent — buttons, links, active states |
+| `--bg-void` | `#f7f8fb` | `#0d1117` | Page background |
+| `--bg-deep` | `#f0f2f8` | `#0f1520` | Section alternates |
+| `--text-primary` | `#0a1f3d` | `#e2ecf8` | Main text |
+| `--font-display` | DM Serif Display | Space Mono | Headings |
+| `--font-mono` | DM Mono | Space Mono | Badges, code, mono |
+| `--font-body` | Figtree | DM Sans | Body copy |

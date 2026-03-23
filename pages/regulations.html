@@ -11,66 +11,66 @@
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 60px; display: flex; align-items: center;
-      background: rgba(250,249,247,0.95);
+      background: rgba(247,248,251,0.93);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid rgba(0,0,0,0.07);
     }
-    [data-theme="dark"] .nav { background: rgba(8,12,20,0.92); }
+    [data-theme="dark"] .nav { background: rgba(13,17,23,0.90); }
     .nav-inner {
       display: flex; align-items: center;
       width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
-    .nav-logo-mark { width: 30px; height: 30px; background: #1D9E75; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-size: 12px; font-weight: 700; color: #fff; }
-    [data-theme="dark"] .nav-logo-mark { background: #00e0ff; color: #080c14; }
-    .nav-logo-text { font-family: monospace; font-weight: 700; font-size: 0.95rem; }
+    .nav-logo-mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: none; border: none; padding: 0; }
+    [data-theme="dark"] .nav-logo-mark { background: none; }
+    .nav-logo-text { font-family: 'DM Mono', monospace; font-weight: 600; font-size: 0.92rem; letter-spacing: 0.04em; }
     /* Desktop links */
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0 auto 0 24px; padding: 0; }
     .nav-links a, .nav-dropdown-trigger {
-      color: #5a5a52; text-decoration: none; font-size: 0.78rem; font-weight: 500;
+      color: #4a5a7a; text-decoration: none; font-size: 0.78rem; font-weight: 500;
       padding: 5px 9px; border-radius: 4px; transition: all 0.15s;
       background: none; border: none; cursor: pointer; font-family: inherit;
       white-space: nowrap;
     }
-    [data-theme="dark"] .nav-links a, [data-theme="dark"] .nav-dropdown-trigger { color: #8a9bb0; }
-    .nav-links a:hover, .nav-dropdown-trigger:hover { color: #1a1a18; background: #f0ede8; }
-    [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-dropdown-trigger:hover { color: #e8edf4; background: #162030; }
-    .nav-links a.active { color: #1D9E75; }
-    [data-theme="dark"] .nav-links a.active { color: #00e0ff; }
+    [data-theme="dark"] .nav-links a, [data-theme="dark"] .nav-dropdown-trigger { color: #8aabcc; }
+    .nav-links a:hover, .nav-dropdown-trigger:hover { color: #0a1f3d; background: #eaecf4; }
+    [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-dropdown-trigger:hover { color: #e2ecf8; background: #182233; }
+    .nav-links a.active { color: #185fba; }
+    [data-theme="dark"] .nav-links a.active { color: #4a9eff; }
     /* Dropdown */
     .nav-dropdown { position: relative; list-style: none; }
     .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 4px; }
     .nav-dropdown-arrow { font-size: 0.55rem; }
     .nav-dropdown-menu {
       position: absolute; top: calc(100% + 8px); left: 0; min-width: 200px;
-      background: #faf9f7; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 10px;
+      background: #f7f8fb; border: 0.5px solid rgba(24,95,186,0.20); border-radius: 10px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.1); padding: 6px;
       opacity: 0; visibility: hidden; transform: translateY(-4px);
       transition: all 0.15s; z-index: 200;
     }
-    [data-theme="dark"] .nav-dropdown-menu { background: #111927; border-color: rgba(255,255,255,0.1); }
+    [data-theme="dark"] .nav-dropdown-menu { background: #131c2a; border-color: rgba(255,255,255,0.1); }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     .nav-dropdown-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border-radius: 6px; text-decoration: none; }
-    .nav-dropdown-item:hover { background: #f0ede8; }
-    [data-theme="dark"] .nav-dropdown-item:hover { background: #162030; }
+    .nav-dropdown-item:hover { background: #eaecf4; }
+    [data-theme="dark"] .nav-dropdown-item:hover { background: #182233; }
     .nav-dropdown-item-icon { font-size: 0.875rem; flex-shrink: 0; margin-top: 1px; }
-    .nav-dropdown-item-text strong { display: block; font-size: 0.78rem; font-weight: 600; color: #1a1a18; margin-bottom: 1px; }
-    [data-theme="dark"] .nav-dropdown-item-text strong { color: #e8edf4; }
-    .nav-dropdown-item-text span { font-size: 0.7rem; color: #999990; line-height: 1.4; }
+    .nav-dropdown-item-text strong { display: block; font-size: 0.78rem; font-weight: 600; color: #0a1f3d; margin-bottom: 1px; }
+    [data-theme="dark"] .nav-dropdown-item-text strong { color: #e2ecf8; }
+    .nav-dropdown-item-text span { font-size: 0.7rem; color: #8a9bb8; line-height: 1.4; }
     .nav-dropdown-divider { height: 0.5px; background: rgba(0,0,0,0.07); margin: 4px 6px; }
     /* Right side */
     .nav-right { display: flex; align-items: center; gap: 8px; margin-left: 12px; flex-shrink: 0; }
     /* Theme toggle */
     .theme-toggle {
       display: inline-flex; align-items: center; gap: 6px;
-      background: #f0ede8; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 999px;
+      background: #eaecf4; border: 0.5px solid rgba(24,95,186,0.20); border-radius: 999px;
       padding: 4px 12px 4px 8px; cursor: pointer;
       font-family: monospace; font-size: 0.65rem; font-weight: 600;
-      color: #5a5a52; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #4a5a7a; letter-spacing: 0.04em; text-transform: uppercase;
       transition: all 0.15s;
     }
-    [data-theme="dark"] .theme-toggle { background: #162030; border-color: rgba(255,255,255,0.1); color: #8a9bb0; }
+    [data-theme="dark"] .theme-toggle { background: #182233; border-color: rgba(255,255,255,0.1); color: #8aabcc; }
     /* Hamburger — hidden on desktop, flex on mobile via media query */
     .nav-hamburger {
       display: none !important;
@@ -78,7 +78,7 @@
       cursor: pointer; padding: 8px; border-radius: 4px; margin-left: auto; flex-shrink: 0;
     }
     .nav-hamburger span {
-      display: block; width: 20px; height: 2px; background: #1a1a18;
+      display: block; width: 20px; height: 2px; background: #0a1f3d;
       border-radius: 2px; transition: all 0.22s ease; transform-origin: center;
     }
     [data-theme="dark"] .nav-hamburger span { background: #e8edf4; }
@@ -89,25 +89,25 @@
     .nav-mobile {
       display: none; /* JS adds .open which changes to block */
       position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
-      background: #faf9f7; border-bottom: 0.5px solid rgba(0,0,0,0.07);
+      background: #f7f8fb; border-bottom: 0.5px solid rgba(0,0,0,0.07);
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       padding: 12px 0 16px;
       animation: slideDown 0.2s ease;
     }
-    [data-theme="dark"] .nav-mobile { background: #0d1421; }
+    [data-theme="dark"] .nav-mobile { background: #0f1520; }
     @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
     .nav-mobile a {
-      display: block; padding: 11px 24px; color: #5a5a52; text-decoration: none;
+      display: block; padding: 11px 24px; color: #4a5a7a; text-decoration: none;
       font-size: 0.9rem; font-weight: 500; transition: all 0.15s;
     }
-    [data-theme="dark"] .nav-mobile a { color: #8a9bb0; }
-    .nav-mobile a:hover { color: #1a1a18; background: #f0ede8; }
-    [data-theme="dark"] .nav-mobile a:hover { color: #e8edf4; background: #162030; }
-    .nav-mobile a.active { color: #1D9E75; }
-    [data-theme="dark"] .nav-mobile a.active { color: #00e0ff; }
+    [data-theme="dark"] .nav-mobile a { color: #8aabcc; }
+    .nav-mobile a:hover { color: #0a1f3d; background: #eaecf4; }
+    [data-theme="dark"] .nav-mobile a:hover { color: #e2ecf8; background: #182233; }
+    .nav-mobile a.active { color: #185fba; }
+    [data-theme="dark"] .nav-mobile a.active { color: #4a9eff; }
     .nav-mobile-group {
       padding: 10px 24px 4px; font-family: monospace; font-size: 0.62rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #999990;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #8a9bb8;
     }
     .nav-mobile-sub { padding-left: 36px !important; font-size: 0.85rem !important; }
     .nav-mobile-divider { height: 0.5px; background: rgba(0,0,0,0.07); margin: 6px 24px; }
@@ -129,7 +129,7 @@
   
     /* ── DESIGN SYSTEM ── */
 /* ============================================================
-   THREADLEDGER DESIGN SYSTEM — DUAL THEME
+   SEIRIOS DESIGN SYSTEM — DUAL THEME
    Light (default): DM Serif Display + DM Mono + Figtree — warm, document-like
    Dark (toggle):   Space Mono + DM Sans — deep navy security aesthetic
    ============================================================ */
@@ -139,34 +139,34 @@
 /* ── LIGHT THEME (default) ── */
 :root {
   /* Backgrounds */
-  --bg-void:        #faf9f7;
-  --bg-deep:        #f5f3ef;
-  --bg-surface:     #f0ede8;
-  --bg-raised:      #ebe7e1;
-  --bg-card:        #f5f3ef;
+  --bg-void:        #f7f8fb;
+  --bg-deep:        #f0f2f8;
+  --bg-surface:     #eaecf4;
+  --bg-raised:      #e2e5f0;
+  --bg-card:        #f0f2f8;
 
   /* Borders */
-  --border-dim:     rgba(0,0,0,0.07);
-  --border-subtle:  rgba(0,0,0,0.10);
-  --border-accent:  rgba(29,158,117,0.35);
+  --border-dim:     rgba(24,95,186,0.14);
+  --border-subtle:  rgba(24,95,186,0.22);
+  --border-accent:  rgba(24,95,186,0.35);
 
   /* Accent colours */
-  --cyan:           #1D9E75;
-  --cyan-dim:       rgba(29,158,117,0.10);
-  --cyan-glow:      rgba(29,158,117,0.06);
-  --green:          #0F6E56;
-  --green-dim:      rgba(15,110,86,0.10);
-  --amber:          #BA7517;
-  --amber-dim:      rgba(186,117,23,0.10);
-  --red:            #C0392B;
-  --red-dim:        rgba(192,57,43,0.08);
+  --cyan:           #185fba;
+  --cyan-dim:       rgba(24,95,186,0.10);
+  --cyan-glow:      rgba(24,95,186,0.06);
+  --green:          #0e6655;
+  --green-dim:      rgba(14,102,85,0.10);
+  --amber:          #b06000;
+  --amber-dim:      rgba(176,96,0,0.10);
+  --red:            #b52828;
+  --red-dim:        rgba(181,40,40,0.08);
 
   /* Text */
-  --text-primary:   #1a1a18;
-  --text-secondary: #5a5a52;
-  --text-muted:     #999990;
-  --text-cyan:      #1D9E75;
-  --text-green:     #0F6E56;
+  --text-primary:   #0a1f3d;
+  --text-secondary: #4a5a7a;
+  --text-muted:     #8a9bb8;
+  --text-cyan:      #185fba;
+  --text-green:     #0e6655;
 
   /* Typography */
   --font-display:   'DM Serif Display', Georgia, serif;
@@ -180,8 +180,8 @@
   --radius-xl:      14px;
 
   /* Shadows */
-  --shadow-card:    0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-  --shadow-glow:    0 0 20px rgba(29,158,117,0.08);
+  --shadow-card:    0 1px 3px rgba(10,31,61,0.06), 0 4px 12px rgba(10,31,61,0.04);
+  --shadow-glow:    0 0 20px rgba(24,95,186,0.08);
 
   --transition:     0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -191,38 +191,38 @@
 
 /* ── DARK THEME ── */
 [data-theme="dark"] {
-  --bg-void:        #080c14;
-  --bg-deep:        #0d1421;
-  --bg-surface:     #111927;
-  --bg-raised:      #162030;
+  --bg-void:        #0d1117;
+  --bg-deep:        #0f1520;
+  --bg-surface:     #131c2a;
+  --bg-raised:      #182233;
   --bg-card:        #1a2638;
 
-  --border-dim:     rgba(255,255,255,0.06);
-  --border-subtle:  rgba(255,255,255,0.10);
-  --border-accent:  rgba(0,224,255,0.25);
+  --border-dim:     rgba(74,158,255,0.06);
+  --border-subtle:  rgba(74,158,255,0.12);
+  --border-accent:  rgba(74,158,255,0.28);
 
-  --cyan:           #00e0ff;
-  --cyan-dim:       rgba(0,224,255,0.15);
-  --cyan-glow:      rgba(0,224,255,0.08);
-  --green:          #00ff88;
-  --green-dim:      rgba(0,255,136,0.12);
+  --cyan:           #4a9eff;
+  --cyan-dim:       rgba(74,158,255,0.15);
+  --cyan-glow:      rgba(74,158,255,0.08);
+  --green:          #00d98a;
+  --green-dim:      rgba(0,217,138,0.12);
   --amber:          #ffaa00;
   --amber-dim:      rgba(255,170,0,0.12);
   --red:            #ff4466;
   --red-dim:        rgba(255,68,102,0.12);
 
-  --text-primary:   #e8edf4;
-  --text-secondary: #8a9bb0;
-  --text-muted:     #4a5a6e;
-  --text-cyan:      #00e0ff;
-  --text-green:     #00ff88;
+  --text-primary:   #e2ecf8;
+  --text-secondary: #8aabcc;
+  --text-muted:     #3d5470;
+  --text-cyan:      #4a9eff;
+  --text-green:     #00d98a;
 
   --font-display:   'Space Mono', 'Courier New', monospace;
   --font-mono:      'Space Mono', 'Courier New', monospace;
   --font-body:      'DM Sans', system-ui, sans-serif;
 
   --shadow-card:    0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-glow:    0 0 24px rgba(0,224,255,0.12);
+  --shadow-glow:    0 0 28px rgba(74,158,255,0.14);
 }
 
 /* ── Dark theme ambient glow ── */
@@ -231,8 +231,8 @@
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0,224,255,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,255,136,0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(74,158,255,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,217,138,0.03) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -292,7 +292,8 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 
 /* ── Layout ── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-.section-sm { padding: 56px 0; position: relative; z-index: 1; }
+.section    { padding: 52px 0; position: relative; z-index: 1; }
+.section-sm { padding: 36px 0;  position: relative; z-index: 1; }
 
 /* ── Navigation ── */
 .nav {
@@ -300,13 +301,13 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   z-index: 100;
   height: var(--nav-h);
   display: flex; align-items: center;
-  background: rgba(250,249,247,0.92);
+  background: rgba(247,248,251,0.93);
   backdrop-filter: blur(16px) saturate(130%);
   border-bottom: 0.5px solid var(--border-dim);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 [data-theme="dark"] .nav {
-  background: rgba(8,12,20,0.88);
+  background: rgba(13,17,23,0.90);
 }
 
 .nav-inner {
@@ -329,7 +330,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   transition: background 0.3s ease;
 }
 [data-theme="dark"] .nav-logo-mark {
-  box-shadow: 0 0 14px rgba(0,224,255,0.25);
+  box-shadow: 0 0 14px rgba(74,158,255,0.28);
 }
 
 .nav-logo-text {
@@ -446,10 +447,10 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
 [data-theme="dark"] .btn-primary {
-  box-shadow: 0 0 18px rgba(0,224,255,0.2);
+  box-shadow: 0 0 18px rgba(74,158,255,0.22);
 }
 [data-theme="dark"] .btn-primary:hover {
-  box-shadow: 0 0 28px rgba(0,224,255,0.35);
+  box-shadow: 0 0 28px rgba(74,158,255,0.38);
 }
 
 .btn-outline {
@@ -528,7 +529,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   font-family: var(--font-mono);
   box-shadow: var(--shadow-card);
 }
-:root .terminal { background: #1a1a18; border-color: rgba(0,0,0,0.15); }
+:root .terminal { background: #0a1f3d; border-color: rgba(0,0,0,0.15); }
 
 .terminal-bar {
   display: flex; align-items: center; gap: 7px;
@@ -544,7 +545,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 .terminal-body { padding: 18px 22px; font-size: 0.78rem; line-height: 1.7; }
 
 /* Terminal always sits on a dark background — hardcode light text for both themes */
-.t-cmd   { color: #e8edf4; }
+.t-cmd   { color: #e2ecf8; }
 .t-dim   { color: #5a6a7e; }
 .t-pass  { color: #3ecf8e; }
 .t-fail  { color: #ff6b6b; }
@@ -573,6 +574,9 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 
 /* ── Animations ── */
+@keyframes star-pulse {
+  0%,100%{opacity:1} 50%{opacity:0.45}
+}
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -583,12 +587,46 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .section    { padding: 40px 0; }
+  .section-sm { padding: 28px 0; }
 }
+@media (max-width: 600px) {
+  .section    { padding: 32px 0; }
+  .section-sm { padding: 22px 0; }
+  .stat-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+}
+  
+    /* ── CASE 2.0 badge ── */
+    .nav-product-badge {
+      display: inline-flex; align-items: center;
+      background: rgba(24,95,186,0.10);
+      border: 0.5px solid rgba(24,95,186,0.35);
+      border-radius: 4px; padding: 2px 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: #185fba; margin-left: 5px; white-space: nowrap;
+    }
+    [data-theme="dark"] .nav-product-badge {
+      background: rgba(74,158,255,0.12);
+      border-color: rgba(74,158,255,0.30);
+      color: #4a9eff;
+    }
+    /* ── Seirios star mark ── */
+    .seirios-mark .star-bg { fill: #185fba; }
+    [data-theme="dark"] .seirios-mark .star-bg { fill: #1a3a6e; }
+    @keyframes star-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .nav-logo-text { font-family: 'DM Mono', monospace !important; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; }
   </style>
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threadledger — Safety &amp; Compliance Frameworks</title>
-  <meta name="description" content="Threadledger supports EU AI Act, GDPR, NIST AI RMF, MITRE ATT&CK, DORA, PSD3, and more. Swap regulation profiles without rebuilding your risk model." />
+  <title>Seirios — Safety &amp; Compliance Frameworks</title>
+  <meta name="description" content="Seirios supports EU AI Act, GDPR, NIST AI RMF, MITRE ATT&CK, DORA, PSD3, and more. Swap regulation profiles without rebuilding your risk model." />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <script src="../js/theme.js"></script>
   <style>
@@ -847,8 +885,19 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   <nav class="nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">
-        <div class="nav-logo-mark">TL</div>
-        <span class="nav-logo-text">Threadledger</span>
+        <svg class="nav-logo-mark seirios-mark" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Seirios">
+        <rect width="32" height="32" rx="6" fill="#185fba" class="star-bg"/>
+        <circle cx="16" cy="16" r="12.5" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="7.5" y1="7.5" x2="24.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <line x1="24.5" y1="7.5" x2="7.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="16" cy="16" r="4.5" fill="#0d3d8a" stroke="#ffffff" stroke-width="0.7" opacity="0.95"/>
+        <circle cx="16" cy="16" r="2" fill="#7ab8ff"/>
+        <circle cx="16" cy="16" r="0.85" fill="#ffffff"/>
+        <path d="M14.6 16.1 L15.6 17.5 L17.8 14.3" fill="none" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        <span class="nav-logo-text">Seirios</span><span class="nav-product-badge">CASE 2.0</span>
       </a>
       <ul class="nav-links">
         <li><a href="../index.html#platform">Platform</a></li>
@@ -864,7 +913,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <li><a href="../for-devops.html">For DevSecOps</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="../index.html#pricing">Pricing</a></li>
-        <li><a href="mailto:contact@threadledger.io">Contact</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#fc9f9392889d9f88bc88948e999d989099989b998ed29593">Contact</a></li>
       </ul>
       <div class="nav-right">
         <a href="request-demo.html" class="btn btn-primary btn-sm">Request Demo →</a>
@@ -884,7 +933,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <a href="../for-devops.html">For DevSecOps</a>
     <a href="about.html">About</a>
     <a href="../index.html#pricing">Pricing</a>
-    <a href="mailto:contact@threadledger.io">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#9cfff3f2e8fdffe8dce8f4eef9fdf8f0f9f8fbf9eeb2f5f3">Contact</a>
     <div class="nav-mobile-divider"></div>
     <a href="request-demo.html" style="color:var(--cyan);font-weight:600;">Request Demo →</a>
     <div class="nav-mobile-divider"></div>
@@ -905,7 +954,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         One platform.<br/><em class="accent">Every framework.</em>
       </h1>
       <p style="font-size:1rem; color:var(--text-secondary); max-width:560px; line-height:1.7; margin-bottom:28px;">
-        Threadledger covers both the regulatory obligation and the underlying safety engineering discipline. Compliance frameworks, adversarial threat models, and formal safety standards — all verified by the same 4-layer platform.
+        Seirios covers both the regulatory obligation and the underlying safety engineering discipline. Compliance frameworks, adversarial threat models, and formal safety standards — all verified by the same 4-layer platform.
       </p>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <span class="badge badge-green">6 live</span>
@@ -988,7 +1037,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Article</span>
           <span>Requirement</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Art. 9</span>
@@ -1024,7 +1073,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 
       <div class="coverage-grid">
         <div class="coverage-item">
-          <div class="coverage-label">What Threadledger produces</div>
+          <div class="coverage-label">What Seirios produces</div>
           <h4>Regulator-ready evidence package</h4>
           <p>Design-time proof, implementation proof, developer guidance logs, and a continuous CI compliance score — all in one exportable package per release.</p>
         </div>
@@ -1063,7 +1112,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Article</span>
           <span>Requirement</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Art. 5</span>
@@ -1098,7 +1147,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">Note:</strong> GDPR and EU AI Act overlap significantly for AI systems processing personal data. Threadledger's combined EU profile covers both simultaneously — no duplicate configuration required.
+        <strong style="color:var(--cyan);">Note:</strong> GDPR and EU AI Act overlap significantly for AI systems processing personal data. Seirios's combined EU profile covers both simultaneously — no duplicate configuration required.
       </div>
     </section>
 
@@ -1123,17 +1172,17 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Article 10 — Quality management</div>
           <h4>Documented QMS covering the full lifecycle</h4>
-          <p>Threadledger's 4-layer stack produces the documentation evidence an MDR Article 10 QMS audit requires — risk model, code controls, developer records, and continuous CI verification.</p>
+          <p>Seirios's 4-layer stack produces the documentation evidence an MDR Article 10 QMS audit requires — risk model, code controls, developer records, and continuous CI verification.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Article 83 — Post-market surveillance</div>
           <h4>Continuous monitoring after CE marking</h4>
-          <p>MDR requires continuous post-market surveillance of deployed devices. Threadledger's L3 CI agent and on-chain audit trail produce per-release evidence suitable for PMS reports.</p>
+          <p>MDR requires continuous post-market surveillance of deployed devices. Seirios's L3 CI agent and on-chain audit trail produce per-release evidence suitable for PMS reports.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">EU AI Act overlap</div>
           <h4>Medical AI must meet both MDR and EU AI Act</h4>
-          <p>HIGH-risk AI in medical devices falls under both EU AI Act and MDR simultaneously. Threadledger's combined EU profile covers both without duplicate configuration.</p>
+          <p>HIGH-risk AI in medical devices falls under both EU AI Act and MDR simultaneously. Seirios's combined EU profile covers both without duplicate configuration.</p>
         </div>
       </div>
       <div class="roadmap-callout">
@@ -1164,7 +1213,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">ICT risk management (Art. 6–16)</div>
           <h4>Documented ICT risk framework with controls</h4>
-          <p>Threadledger's risk model maps ICT risks to DORA articles. Controls are generated and verified automatically.</p>
+          <p>Seirios's risk model maps ICT risks to DORA articles. Controls are generated and verified automatically.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Incident classification (Art. 17–23)</div>
@@ -1174,7 +1223,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Third-party oversight (Art. 28–44)</div>
           <h4>Supplier compliance requirements</h4>
-          <p>Threadledger's compliance model can be embedded in supplier contracts — requiring downstream vendors to meet the same standards.</p>
+          <p>Seirios's compliance model can be embedded in supplier contracts — requiring downstream vendors to meet the same standards.</p>
         </div>
       </div>
 
@@ -1204,7 +1253,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
 
       <div class="roadmap-callout">
         <span style="font-size:1.1rem;">🔧</span>
-        <div><strong>In progress:</strong> PSD3 is still in legislative process. Threadledger's combined EU profile (EU AI Act + GDPR) covers the majority of PSD3's AI-related obligations today. A dedicated PSD3 profile will ship once the final text is adopted.</div>
+        <div><strong>In progress:</strong> PSD3 is still in legislative process. Seirios's combined EU profile (EU AI Act + GDPR) covers the majority of PSD3's AI-related obligations today. A dedicated PSD3 profile will ship once the final text is adopted.</div>
       </div>
     </section>
 
@@ -1230,7 +1279,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">GOVERN</div>
           <h4>Policies, processes, organisational accountability</h4>
-          <p>Threadledger's risk model formalises governance requirements as verifiable OCL invariants — not policy documents.</p>
+          <p>Seirios's risk model formalises governance requirements as verifiable OCL invariants — not policy documents.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">MAP</div>
@@ -1281,7 +1330,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Risk category</span>
           <span>Description</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Confabulation</span>
@@ -1341,7 +1390,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Requirement</span>
           <span>Description</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Quality system</span>
@@ -1389,13 +1438,13 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </div>
       </div>
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        21 CFR Part 11 governs electronic records and electronic signatures in FDA-regulated industries — pharmaceutical manufacturing, clinical trials, medical device production. Any AI system that generates, modifies, or transmits records in these environments must produce audit trails that meet Part 11 requirements: uniquely identifiable, time-stamped, sequentially recorded, and protected against falsification. Threadledger's on-chain AuditRegistry is architecturally aligned with every one of these requirements.
+        21 CFR Part 11 governs electronic records and electronic signatures in FDA-regulated industries — pharmaceutical manufacturing, clinical trials, medical device production. Any AI system that generates, modifies, or transmits records in these environments must produce audit trails that meet Part 11 requirements: uniquely identifiable, time-stamped, sequentially recorded, and protected against falsification. Seirios's on-chain AuditRegistry is architecturally aligned with every one of these requirements.
       </p>
       <div class="coverage-grid">
         <div class="coverage-item">
           <div class="coverage-label">Audit trails (§11.10(e))</div>
           <h4>Computer-generated, time-stamped audit trails</h4>
-          <p>Part 11 requires audit trails that record the date and time of operator entries and actions that create, modify, or delete electronic records. Threadledger's on-chain AuditRegistry satisfies this by construction.</p>
+          <p>Part 11 requires audit trails that record the date and time of operator entries and actions that create, modify, or delete electronic records. Seirios's on-chain AuditRegistry satisfies this by construction.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">System access controls (§11.10(d))</div>
@@ -1409,7 +1458,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </div>
       </div>
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">21 CFR Part 11 and ICH E6 GCP overlap significantly.</strong> Organisations conducting FDA-regulated clinical trials need both. The Threadledger life sciences bundle covers Part 11, GCP, FDA SaMD, EU MDR, and IEC 62304 together.
+        <strong style="color:var(--cyan);">21 CFR Part 11 and ICH E6 GCP overlap significantly.</strong> Organisations conducting FDA-regulated clinical trials need both. The Seirios life sciences bundle covers Part 11, GCP, FDA SaMD, EU MDR, and IEC 62304 together.
       </div>
     </section>
 
@@ -1428,23 +1477,23 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </div>
       </div>
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        ICH E6 Good Clinical Practice is the international standard governing clinical trials — adopted by regulatory authorities in the EU, US, Japan, and most global markets. The 2023 revision (R3) explicitly addresses digital systems and AI used in trial processes, requiring data integrity, audit trails, validation, and traceability for any AI-generated or AI-assisted data used in a regulatory submission. Threadledger's on-chain audit log and L3 CI reports map directly to GCP's audit trail requirements.
+        ICH E6 Good Clinical Practice is the international standard governing clinical trials — adopted by regulatory authorities in the EU, US, Japan, and most global markets. The 2023 revision (R3) explicitly addresses digital systems and AI used in trial processes, requiring data integrity, audit trails, validation, and traceability for any AI-generated or AI-assisted data used in a regulatory submission. Seirios's on-chain audit log and L3 CI reports map directly to GCP's audit trail requirements.
       </p>
       <div class="coverage-grid">
         <div class="coverage-item">
           <div class="coverage-label">Data integrity (GCP 5.5)</div>
           <h4>Complete, consistent, accurate trial records</h4>
-          <p>Every AI decision logged on-chain with immutable timestamp. GCP requires that records be attributable, legible, contemporaneous, original, and accurate — ALCOA+ criteria that Threadledger's audit trail satisfies by design.</p>
+          <p>Every AI decision logged on-chain with immutable timestamp. GCP requires that records be attributable, legible, contemporaneous, original, and accurate — ALCOA+ criteria that Seirios's audit trail satisfies by design.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">System validation (GCP 5.5.3)</div>
           <h4>Documented evidence that AI systems perform as intended</h4>
-          <p>GCP requires validation documentation for computerised systems. Threadledger's per-release compliance reports and CI gate logs constitute system validation evidence.</p>
+          <p>GCP requires validation documentation for computerised systems. Seirios's per-release compliance reports and CI gate logs constitute system validation evidence.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Audit trail (GCP 8.3)</div>
           <h4>Tamper-evident record of all data changes</h4>
-          <p>GCP mandates audit trails showing who did what and when. Threadledger's on-chain AuditRegistry produces exactly this — immutable, timestamped, and exportable for submission.</p>
+          <p>GCP mandates audit trails showing who did what and when. Seirios's on-chain AuditRegistry produces exactly this — immutable, timestamped, and exportable for submission.</p>
         </div>
       </div>
     </section>
@@ -1463,7 +1512,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        MITRE ATT&amp;CK is the industry-standard taxonomy for adversarial tactics and techniques. Threadledger's threat ontology maps ATT&amp;CK vectors specifically to AI and LLM attack surfaces — prompt injection, model evasion, data poisoning, and supply chain compromise — and generates enforcement controls automatically from them.
+        MITRE ATT&amp;CK is the industry-standard taxonomy for adversarial tactics and techniques. Seirios's threat ontology maps ATT&amp;CK vectors specifically to AI and LLM attack surfaces — prompt injection, model evasion, data poisoning, and supply chain compromise — and generates enforcement controls automatically from them.
       </p>
 
       <div class="coverage-grid">
@@ -1512,7 +1561,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Reconnaissance</div>
           <h4>ML pipeline and model discovery attacks</h4>
-          <p>Attackers probing model architecture, training data, and inference APIs. Threadledger maps these vectors to L0 threat classifications and L1 access controls.</p>
+          <p>Attackers probing model architecture, training data, and inference APIs. Seirios maps these vectors to L0 threat classifications and L1 access controls.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">ML attack staging</div>
@@ -1537,13 +1586,13 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">ATT&amp;CK + ATLAS</div>
           <h4>One threat model, both frameworks</h4>
-          <p>Threadledger's threat ontology covers both ATT&CK and ATLAS vectors in a single risk model. No separate configuration required.</p>
+          <p>Seirios's threat ontology covers both ATT&CK and ATLAS vectors in a single risk model. No separate configuration required.</p>
         </div>
       </div>
 
       <div class="roadmap-callout">
         <span style="font-size:1.1rem;">🔧</span>
-        <div><strong>In progress:</strong> The ATLAS profile extends Threadledger's existing MITRE ATT&CK coverage with ML-specific tactic and technique mappings. Contact us if ATLAS coverage is a priority — it is in active development.</div>
+        <div><strong>In progress:</strong> The ATLAS profile extends Seirios's existing MITRE ATT&CK coverage with ML-specific tactic and technique mappings. Contact us if ATLAS coverage is a priority — it is in active development.</div>
       </div>
     </section>
 
@@ -1563,14 +1612,14 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        The OWASP Top 10 for LLMs is the most widely adopted reference list for vulnerabilities specific to large language model applications. Published by the Open Worldwide Application Security Project, it defines the ten most critical risks — from prompt injection and insecure output handling to training data poisoning and model theft. Every engineering team building AI products recognises it. Threadledger's threat ontology maps all ten categories to enforceable controls automatically.
+        The OWASP Top 10 for LLMs is the most widely adopted reference list for vulnerabilities specific to large language model applications. Published by the Open Worldwide Application Security Project, it defines the ten most critical risks — from prompt injection and insecure output handling to training data poisoning and model theft. Every engineering team building AI products recognises it. Seirios's threat ontology maps all ten categories to enforceable controls automatically.
       </p>
 
       <div class="article-map">
         <div class="article-map-header">
           <span>Risk</span>
           <span>Description</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">LLM01</span>
@@ -1605,7 +1654,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">Already covered by MITRE profile:</strong> Threadledger's MITRE ATT&CK profile addresses all ten OWASP LLM categories. Making OWASP explicit gives development teams a familiar reference point — the underlying controls are the same.
+        <strong style="color:var(--cyan);">Already covered by MITRE profile:</strong> Seirios's MITRE ATT&CK profile addresses all ten OWASP LLM categories. Making OWASP explicit gives development teams a familiar reference point — the underlying controls are the same.
       </div>
     </section>
 
@@ -1625,13 +1674,13 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </div>
       </div>
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        The OWASP Top 10 for LLM Agents extends the LLM Top 10 to cover the specific vulnerabilities of autonomous agent systems — where the risk is not just what the model says, but what the agent <em>does</em>. Agents with access to tools, APIs, filesystems, and credentials introduce an entirely new attack surface. Threadledger addresses all ten categories through formally verified scope invariants, auto-generated tool guards, and CI-enforced permission boundaries.
+        The OWASP Top 10 for LLM Agents extends the LLM Top 10 to cover the specific vulnerabilities of autonomous agent systems — where the risk is not just what the model says, but what the agent <em>does</em>. Agents with access to tools, APIs, filesystems, and credentials introduce an entirely new attack surface. Seirios addresses all ten categories through formally verified scope invariants, auto-generated tool guards, and CI-enforced permission boundaries.
       </p>
       <div class="article-map">
         <div class="article-map-header">
           <span>Risk</span>
           <span>Description</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Agent01</span>
@@ -1685,7 +1734,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </div>
       </div>
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">Different from OWASP LLM Top 10:</strong> LLM Top 10 covers model-level risks (what the model outputs). Agentic Top 10 covers action-level risks (what the agent does with that output). Both profiles are needed for any production agent deployment. Threadledger addresses both through the same risk model.
+        <strong style="color:var(--cyan);">Different from OWASP LLM Top 10:</strong> LLM Top 10 covers model-level risks (what the model outputs). Agentic Top 10 covers action-level risks (what the agent does with that output). Both profiles are needed for any production agent deployment. Seirios addresses both through the same risk model.
       </div>
     </section>
 
@@ -1711,7 +1760,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Clause</span>
           <span>Requirement</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Clause 4</span>
@@ -1749,17 +1798,17 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Why this matters commercially</div>
           <h4>Procurement teams are already requiring it</h4>
-          <p>Large enterprises and public sector buyers are adding ISO 42001 certification requirements to AI supplier contracts. Threadledger's evidence chain maps directly to what an ISO 42001 audit requires.</p>
+          <p>Large enterprises and public sector buyers are adding ISO 42001 certification requirements to AI supplier contracts. Seirios's evidence chain maps directly to what an ISO 42001 audit requires.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">EU AI Act overlap</div>
           <h4>One model, two certifications</h4>
-          <p>ISO 42001 and EU AI Act share significant structural overlap. A Threadledger risk model built for EU AI Act compliance satisfies the majority of ISO 42001 Clause 6 and 8 requirements without additional configuration.</p>
+          <p>ISO 42001 and EU AI Act share significant structural overlap. A Seirios risk model built for EU AI Act compliance satisfies the majority of ISO 42001 Clause 6 and 8 requirements without additional configuration.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Audit readiness</div>
           <h4>Evidence package built for ISO auditors</h4>
-          <p>ISO 42001 certification requires documented evidence of your AI management system in operation. Threadledger's per-release compliance reports and on-chain audit trail are exactly that evidence.</p>
+          <p>ISO 42001 certification requires documented evidence of your AI management system in operation. Seirios's per-release compliance reports and on-chain audit trail are exactly that evidence.</p>
         </div>
       </div>
 
@@ -1785,30 +1834,30 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        IEC 62304 defines the software development lifecycle requirements for medical device software — including AI systems used for diagnosis, treatment recommendation, and clinical decision support. It is mandatory in the EU (via MDR/IVDR), US (via FDA 510k/PMA), and most global markets. IEC 62304's post-market surveillance requirements are structurally identical to what Threadledger's L3 CI agent produces on every release.
+        IEC 62304 defines the software development lifecycle requirements for medical device software — including AI systems used for diagnosis, treatment recommendation, and clinical decision support. It is mandatory in the EU (via MDR/IVDR), US (via FDA 510k/PMA), and most global markets. IEC 62304's post-market surveillance requirements are structurally identical to what Seirios's L3 CI agent produces on every release.
       </p>
 
       <div class="coverage-grid">
         <div class="coverage-item">
           <div class="coverage-label">Software safety classification</div>
           <h4>Class A / B / C risk classification</h4>
-          <p>IEC 62304's three safety classes map directly to Threadledger's risk level classifications in the L0 threat model. HIGH-risk AI maps to Class C — the strictest requirements.</p>
+          <p>IEC 62304's three safety classes map directly to Seirios's risk level classifications in the L0 threat model. HIGH-risk AI maps to Class C — the strictest requirements.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Software development process</div>
           <h4>Documented lifecycle with traceability</h4>
-          <p>Every Threadledger release produces a traceable evidence chain from risk definition (L0) to code controls (L1) to developer guidance (L2) to CI verification (L3) — exactly what IEC 62304 requires.</p>
+          <p>Every Seirios release produces a traceable evidence chain from risk definition (L0) to code controls (L1) to developer guidance (L2) to CI verification (L3) — exactly what IEC 62304 requires.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Post-market surveillance</div>
           <h4>Continuous monitoring after release</h4>
-          <p>IEC 62304 requires ongoing monitoring of deployed software. Threadledger's L3 CI agent and on-chain audit trail provide continuous, per-release evidence for post-market surveillance submissions.</p>
+          <p>IEC 62304 requires ongoing monitoring of deployed software. Seirios's L3 CI agent and on-chain audit trail provide continuous, per-release evidence for post-market surveillance submissions.</p>
         </div>
       </div>
 
       <div class="roadmap-callout">
         <span style="font-size:1.1rem;">📋</span>
-        <div><strong>Planned:</strong> IEC 62304 profile is on the roadmap for organisations building AI in medical devices or clinical decision support. The 4-layer Threadledger stack maps almost directly to IEC 62304's software lifecycle documentation requirements.</div>
+        <div><strong>Planned:</strong> IEC 62304 profile is on the roadmap for organisations building AI in medical devices or clinical decision support. The 4-layer Seirios stack maps almost directly to IEC 62304's software lifecycle documentation requirements.</div>
       </div>
     </section>
 
@@ -1827,29 +1876,29 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        ISO 26262 is the functional safety standard for automotive electrical and electronic systems — mandatory for any AI system making decisions in a vehicle. ISO 21448 (SOTIF — Safety of the Intended Functionality) extends this to AI-specific failures: situations where the system performs as designed but the design itself is insufficient for safety. SOTIF is philosophically identical to Threadledger's core premise — guard presence is not guard sufficiency.
+        ISO 26262 is the functional safety standard for automotive electrical and electronic systems — mandatory for any AI system making decisions in a vehicle. ISO 21448 (SOTIF — Safety of the Intended Functionality) extends this to AI-specific failures: situations where the system performs as designed but the design itself is insufficient for safety. SOTIF is philosophically identical to Seirios's core premise — guard presence is not guard sufficiency.
       </p>
 
       <div class="coverage-grid">
         <div class="coverage-item">
           <div class="coverage-label">Hazard analysis (ISO 26262)</div>
           <h4>Systematic identification of safety-critical risks</h4>
-          <p>Threadledger's L0 formal threat modeling performs exactly the structured hazard analysis ISO 26262 requires — with mathematical verification that the analysis is complete.</p>
+          <p>Seirios's L0 formal threat modeling performs exactly the structured hazard analysis ISO 26262 requires — with mathematical verification that the analysis is complete.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">SOTIF — intended functionality</div>
           <h4>Proving the system does what it's supposed to</h4>
-          <p>SOTIF asks whether a correctly functioning system is safe. Threadledger's 3-check CI pipeline — presence, coverage, integrity — directly addresses SOTIF's requirement to prove behavioural safety, not just control presence.</p>
+          <p>SOTIF asks whether a correctly functioning system is safe. Seirios's 3-check CI pipeline — presence, coverage, integrity — directly addresses SOTIF's requirement to prove behavioural safety, not just control presence.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Traceability</div>
           <h4>Requirements to implementation to verification</h4>
-          <p>ISO 26262 mandates full traceability from safety requirements to implementation to test evidence. Threadledger's 4-layer chain — model to code to CI to audit log — is that traceability chain.</p>
+          <p>ISO 26262 mandates full traceability from safety requirements to implementation to test evidence. Seirios's 4-layer chain — model to code to CI to audit log — is that traceability chain.</p>
         </div>
       </div>
 
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">SOTIF and Threadledger share the same insight:</strong> a control that exists but is bypassed is not a control. ISO 26262 and SOTIF demand proof of sufficiency, not just presence — exactly what Threadledger's verification engine provides.
+        <strong style="color:var(--cyan);">SOTIF and Seirios share the same insight:</strong> a control that exists but is bypassed is not a control. ISO 26262 and SOTIF demand proof of sufficiency, not just presence — exactly what Seirios's verification engine provides.
       </div>
 
       <div class="roadmap-callout" style="margin-top:16px;">
@@ -1880,37 +1929,37 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Expand strong foundations</div>
           <h4>Secure-by-design AI infrastructure</h4>
-          <p>SAIF requires security built into AI systems from design time, not added after deployment. Threadledger's L0 formal verification and L1 auto-generated controls are exactly this — compliance and security enforced structurally, not through policy.</p>
+          <p>SAIF requires security built into AI systems from design time, not added after deployment. Seirios's L0 formal verification and L1 auto-generated controls are exactly this — compliance and security enforced structurally, not through policy.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Extend detection and response</div>
           <h4>Continuous monitoring of AI behaviour</h4>
-          <p>SAIF requires extending security detection to cover AI-specific threats. Threadledger's L3 CI agent and on-chain audit log provide per-release compliance scoring and immutable behavioural records — the detection layer SAIF requires.</p>
+          <p>SAIF requires extending security detection to cover AI-specific threats. Seirios's L3 CI agent and on-chain audit log provide per-release compliance scoring and immutable behavioural records — the detection layer SAIF requires.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Automate defences</div>
           <h4>AI-powered security that scales</h4>
-          <p>SAIF advocates for automated security controls that keep pace with AI development velocity. Threadledger's MDD engine generates guards automatically from the verified model — zero manual security code, scales with every code change.</p>
+          <p>SAIF advocates for automated security controls that keep pace with AI development velocity. Seirios's MDD engine generates guards automatically from the verified model — zero manual security code, scales with every code change.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Harmonise platform controls</div>
           <h4>Consistent controls across the AI stack</h4>
-          <p>SAIF requires consistent security controls across model, data, and infrastructure layers. Threadledger's single risk model drives controls across all four layers — no inconsistency between what the compliance team defined and what engineering deployed.</p>
+          <p>SAIF requires consistent security controls across model, data, and infrastructure layers. Seirios's single risk model drives controls across all four layers — no inconsistency between what the compliance team defined and what engineering deployed.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Adapt controls for AI</div>
           <h4>AI-specific threat mitigations</h4>
-          <p>SAIF recognises that classical security controls are insufficient for AI. Threadledger's MITRE ATLAS and OWASP Agentic profiles add AI-specific threat categories on top of the classical security baseline.</p>
+          <p>SAIF recognises that classical security controls are insufficient for AI. Seirios's MITRE ATLAS and OWASP Agentic profiles add AI-specific threat categories on top of the classical security baseline.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Contextualise risks</div>
           <h4>Risk-proportionate controls</h4>
-          <p>SAIF requires controls proportionate to the risk level of each AI deployment. Threadledger's L0 risk classification drives exactly this — HIGH-risk systems get hard-blocking CI gates, lower-risk systems get scored reports.</p>
+          <p>SAIF requires controls proportionate to the risk level of each AI deployment. Seirios's L0 risk classification drives exactly this — HIGH-risk systems get hard-blocking CI gates, lower-risk systems get scored reports.</p>
         </div>
       </div>
       <div class="roadmap-callout">
         <span style="font-size:1.1rem;">🔧</span>
-        <div><strong>In progress:</strong> A dedicated Google SAIF profile maps SAIF's six principles to Threadledger's 4-layer stack. Organisations including SAIF compliance in supplier assessments can use this profile to generate auditor-ready evidence automatically.</div>
+        <div><strong>In progress:</strong> A dedicated Google SAIF profile maps SAIF's six principles to Seirios's 4-layer stack. Organisations including SAIF compliance in supplier assessments can use this profile to generate auditor-ready evidence automatically.</div>
       </div>
     </section>
 
@@ -1929,7 +1978,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        The Financial Services AI Risk Management Framework combines MAS Technology Risk Management (TRM) guidelines with the FEAT (Fairness, Ethics, Accountability, Transparency) principles for AI in Singapore financial services. MAS TRM is live in Threadledger today. The full FS AI RMF profile adds FEAT-specific controls for financial AI systems.
+        The Financial Services AI Risk Management Framework combines MAS Technology Risk Management (TRM) guidelines with the FEAT (Fairness, Ethics, Accountability, Transparency) principles for AI in Singapore financial services. MAS TRM is live in Seirios today. The full FS AI RMF profile adds FEAT-specific controls for financial AI systems.
       </p>
 
       <div class="overlap-note">
@@ -1959,7 +2008,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="article-map-header">
           <span>Requirement</span>
           <span>Description</span>
-          <span style="text-align:right;">Threadledger layer</span>
+          <span style="text-align:right;">Seirios layer</span>
         </div>
         <div class="article-row">
           <span class="article-ref">Risk management</span>
@@ -1984,7 +2033,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <div class="overlap-note">
-        <strong style="color:var(--cyan);">Already in force:</strong> CPS 230 came into effect July 2025. APRA-regulated institutions deploying AI systems should treat this as an active compliance obligation. Threadledger's MAS TRM profile (live today) provides strong coverage of CPS 230's operational risk requirements given the structural alignment between MAS and APRA frameworks.
+        <strong style="color:var(--cyan);">Already in force:</strong> CPS 230 came into effect July 2025. APRA-regulated institutions deploying AI systems should treat this as an active compliance obligation. Seirios's MAS TRM profile (live today) provides strong coverage of CPS 230's operational risk requirements given the structural alignment between MAS and APRA frameworks.
       </div>
 
       <div class="roadmap-callout" style="margin-top:16px;">
@@ -2015,17 +2064,17 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">Current landscape</div>
           <h4>Sector-based guidance already in force</h4>
-          <p>FCA guidance on AI in financial services, ICO guidance on AI and data protection, and CMA principles on AI foundation models all apply today. Threadledger's EU AI Act + GDPR profiles cover the majority of these requirements.</p>
+          <p>FCA guidance on AI in financial services, ICO guidance on AI and data protection, and CMA principles on AI foundation models all apply today. Seirios's EU AI Act + GDPR profiles cover the majority of these requirements.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Statutory framework</div>
           <h4>Cross-sector obligations coming</h4>
-          <p>The UK government has committed to statutory AI regulation. When enacted, it will require risk management systems, transparency obligations, and audit capabilities — all directly addressed by Threadledger's 4-layer stack.</p>
+          <p>The UK government has committed to statutory AI regulation. When enacted, it will require risk management systems, transparency obligations, and audit capabilities — all directly addressed by Seirios's 4-layer stack.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">EU AI Act overlap</div>
           <h4>One model covers both jurisdictions</h4>
-          <p>The UK framework is deliberately designed to be compatible with EU AI Act to avoid creating dual compliance burdens. A Threadledger model built for EU AI Act provides strong UK coverage with minimal additional configuration.</p>
+          <p>The UK framework is deliberately designed to be compatible with EU AI Act to avoid creating dual compliance burdens. A Seirios model built for EU AI Act provides strong UK coverage with minimal additional configuration.</p>
         </div>
       </div>
 
@@ -2057,12 +2106,12 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         <div class="coverage-item">
           <div class="coverage-label">UAE AI Ethics Guidelines</div>
           <h4>Responsibility, transparency, human oversight</h4>
-          <p>The UAE AI Office's principles map closely to EU AI Act Article 13 (transparency) and Article 14 (human oversight). Threadledger's L0 risk model and L1 controls address both directly.</p>
+          <p>The UAE AI Office's principles map closely to EU AI Act Article 13 (transparency) and Article 14 (human oversight). Seirios's L0 risk model and L1 controls address both directly.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">ADGM / DIFC guidance</div>
           <h4>Financial services AI requirements</h4>
-          <p>Both free zones have published AI governance guidance for financial institutions covering model risk management, explainability, and audit trails — all areas Threadledger addresses natively.</p>
+          <p>Both free zones have published AI governance guidance for financial institutions covering model risk management, explainability, and audit trails — all areas Seirios addresses natively.</p>
         </div>
         <div class="coverage-item">
           <div class="coverage-label">Regulatory direction</div>
@@ -2138,7 +2187,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        Japan's Ministry of Economy, Trade and Industry (METI) published AI Guidelines for Business in 2024, establishing a voluntary risk management framework with strong alignment to NIST AI RMF and EU AI Act principles. Japan is expected to move toward mandatory requirements by 2025–26. Organisations operating in Japan can use Threadledger's NIST profile as a strong baseline today.
+        Japan's Ministry of Economy, Trade and Industry (METI) published AI Guidelines for Business in 2024, establishing a voluntary risk management framework with strong alignment to NIST AI RMF and EU AI Act principles. Japan is expected to move toward mandatory requirements by 2025–26. Organisations operating in Japan can use Seirios's NIST profile as a strong baseline today.
       </p>
 
       <div class="roadmap-callout">
@@ -2162,7 +2211,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
       </div>
 
       <p style="font-size:0.9375rem; color:var(--text-secondary); max-width:720px; line-height:1.7; margin-bottom:24px;">
-        Singapore's Personal Data Protection Act (PDPA) combined with the IMDA/PDPC AI Governance Framework v2 establishes data protection and AI accountability requirements for organisations operating in Singapore. The framework emphasises explainability, human oversight, and algorithmic impact assessments — all areas directly covered by Threadledger's existing MAS TRM profile.
+        Singapore's Personal Data Protection Act (PDPA) combined with the IMDA/PDPC AI Governance Framework v2 establishes data protection and AI accountability requirements for organisations operating in Singapore. The framework emphasises explainability, human oversight, and algorithmic impact assessments — all areas directly covered by Seirios's existing MAS TRM profile.
       </p>
 
       <div class="overlap-note">
@@ -2188,7 +2237,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
         </p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
           <a href="request-demo.html" class="btn btn-primary btn-lg">Request Demo →</a>
-          <a href="mailto:contact@threadledger.io" class="btn btn-outline btn-lg">Request a regulation profile</a>
+          <a href="/cdn-cgi/l/email-protection#73101c1d0712100733071b011612171f16171416015d1a1c" class="btn btn-outline btn-lg">Request a regulation profile</a>
         </div>
       </div>
     </div>
@@ -2198,20 +2247,31 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     <div class="container">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
         <div style="display:flex; align-items:center; gap:9px;">
-          <div class="nav-logo-mark">TL</div>
-          <span style="font-family:var(--font-mono); font-weight:600;">Threadledger</span>
+          <svg class="nav-logo-mark seirios-mark" width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Seirios">
+        <rect width="28" height="28" rx="6" fill="#185fba" class="star-bg"/>
+        <circle cx="16" cy="16" r="12.5" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+        <line x1="7.5" y1="7.5" x2="24.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <line x1="24.5" y1="7.5" x2="7.5" y2="24.5" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="16" cy="16" r="4.5" fill="#0d3d8a" stroke="#ffffff" stroke-width="0.7" opacity="0.95"/>
+        <circle cx="16" cy="16" r="2" fill="#7ab8ff"/>
+        <circle cx="16" cy="16" r="0.85" fill="#ffffff"/>
+        <path d="M14.6 16.1 L15.6 17.5 L17.8 14.3" fill="none" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+          <span style="font-family:var(--font-mono); font-weight:600;">Seirios</span>
           <span style="color:var(--text-muted); font-size:0.78rem; font-family:var(--font-mono);">· ThreatLedger B.V. · Amsterdam · Dutch law</span>
         </div>
         <div style="display:flex; gap:18px;">
           <a href="../index.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">Home</a>
           <a href="../for-ciso.html" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;">For CISOs &amp; DPOs</a>
-          <a href="mailto:contact@threadledger.io" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;"><span class="__cf_email__" data-cfemail="7b1814150f1a180f3b0f13091e1a1f171e1f1c1e09551214">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#95f6fafbe1f4f6e1d5e1fde7f0f4f1f9f0f1f2f0e7bbfcfa" style="color:var(--text-muted); text-decoration:none; font-size:0.78rem;"><span class="__cf_email__" data-cfemail="7b1814150f1a180f3b0f13091e1a1f171e1f1c1e09551214">[email&#160;protected]</span></a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Highlight active tab on scroll
     const sections = document.querySelectorAll('.reg-section');
     const tabs = document.querySelectorAll('.tab');
@@ -2222,10 +2282,4 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     if (hamburger && mobileNav) {
       hamburger.addEventListener('click', () => {
         const open = hamburger.classList.toggle('open');
-        mobileNav.classList.toggle('open', open);
-        hamburger.setAttribute('aria-expanded', open);
-      });
-      document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-          hamburger.classList.remove('open');
-          mobileNav
+        mobileNa
