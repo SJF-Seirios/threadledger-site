@@ -632,7 +632,7 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seirios — AI you can prove.</title>
+  <title>Seirios — Build AI that can't be built wrong.</title>
   <meta name="description" content="Seirios CASE 2.0 makes AI compliance provable, automatic and continuous. From formal threat models to CI-enforced controls — a complete regulator-ready evidence chain." />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <script src="js/theme.js"></script>
@@ -838,7 +838,223 @@ em.accent { font-style: italic; color: var(--text-secondary); }
     @media (max-width: 600px) {
       .evidence-chain { grid-template-columns: 1fr; }
     }
-  </style>
+  
+    /* ── Pipeline hero ── */
+    .pipeline-hero {
+      padding: calc(var(--nav-h) + 56px) 0 0;
+      background: var(--bg-deep);
+      position: relative; z-index: 1;
+    }
+    .pipeline-hero .headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.2vw, 3rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .pipeline-hero .subhead {
+      font-family: var(--font-body);
+      font-size: 0.9875rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+    /* Pipeline row */
+    .ph-pipeline {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .ph-stage { flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .ph-box {
+      width: 100%; max-width: 148px;
+      background: var(--bg-surface);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      padding: 16px 12px 14px;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      cursor: default; position: relative;
+    }
+    .ph-box:hover { border-color: var(--border-accent); box-shadow: var(--shadow-glow); }
+    .ph-icon {
+      width: 34px; height: 34px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ph-step  { font-family: var(--font-mono); font-size: 0.57rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .ph-title { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; color: var(--text-primary); text-align: center; line-height: 1.3; }
+    .ph-actor { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .ph-out   { font-size: 0.61rem; text-align: center; line-height: 1.4; }
+    /* Connector */
+    .ph-conn {
+      flex: 0 0 28px;
+      position: relative; margin-top: -18px;
+    }
+    .ph-conn-line {
+      width: 100%; height: 1px;
+      background: var(--border-dim);
+      position: relative; overflow: hidden;
+    }
+    .ph-particle {
+      position: absolute; top: 0; width: 12px; height: 1px;
+      border-radius: 1px;
+      opacity: 0; animation: phFlow 2.4s linear infinite;
+    }
+    .ph-particle:nth-child(2) { animation-delay: 0.8s; }
+    .ph-particle:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes phFlow {
+      0%   { left: -12px; opacity: 0; }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.8; }
+      100% { left: calc(100% + 12px); opacity: 0; }
+    }
+    .ph-conn-arrow {
+      position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid var(--border-dim);
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+    /* Stage accent colours */
+    .ph-s1 .ph-icon { background: rgba(100,112,204,0.10); }
+    .ph-s2 .ph-icon { background: var(--cyan-dim); }
+    .ph-s3 .ph-icon { background: var(--amber-dim); }
+    .ph-s4 .ph-icon { background: var(--green-dim); }
+    .ph-s5 .ph-icon { background: rgba(62,207,142,0.08); }
+    .ph-s1 .ph-out { color: #6470cc; }
+    [data-theme="dark"] .ph-s1 .ph-out { color: #8a90ff; }
+    .ph-s2 .ph-out { color: var(--text-cyan); }
+    .ph-s3 .ph-out { color: var(--amber); }
+    .ph-s4 .ph-out { color: var(--text-green); }
+    .ph-s5 .ph-out { color: var(--text-green); }
+    /* Before / After cards */
+    .ph-ba {
+      margin-top: 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      width: 100%; max-width: 920px; margin-left: auto; margin-right: auto;
+      margin-top: 32px;
+    }
+    .ph-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .ph-card-bar {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      border-bottom: 0.5px solid var(--border-dim);
+    }
+    .ph-card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .ph-card-title { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.06em; }
+    .ph-card-body { padding: 16px 18px; }
+    .ph-check {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 9px; font-family: var(--font-body); font-size: 0.78rem;
+      color: var(--text-secondary); line-height: 1.5;
+    }
+    .ph-check:last-child { margin-bottom: 0; }
+    .ph-check strong { color: var(--text-primary); font-weight: 600; }
+    .ph-xi    { color: var(--red);   flex-shrink: 0; font-style: normal; margin-top: 1px; }
+    .ph-tick  { color: var(--green); flex-shrink: 0; font-style: normal; margin-top: 1px; }
+    /* Evidence mini table inside pass card */
+    .ph-ev {
+      margin-top: 12px; padding: 10px 12px;
+      background: var(--bg-surface);
+      border: 0.5px solid var(--border-accent);
+      border-radius: var(--radius-md);
+    }
+    .ph-ev-label {
+      font-family: var(--font-mono); font-size: 0.59rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 8px;
+    }
+    :root .ph-ev-label { color: var(--text-green); }
+    .ph-ev-row {
+      display: flex; justify-content: space-between;
+      padding: 4px 0; border-bottom: 0.5px solid var(--border-dim);
+      font-size: 0.68rem;
+    }
+    .ph-ev-row:last-child { border-bottom: none; }
+    .ph-ev-k { color: var(--text-muted); font-family: var(--font-body); }
+    .ph-ev-v { font-family: var(--font-mono); }
+    .ph-ev-pass { color: var(--green); }
+    .ph-ev-hash { color: var(--cyan); font-size: 0.61rem; }
+    :root .ph-ev-hash { color: #1D9E75; }
+    .ph-ev-reg  { color: var(--amber); }
+    /* Build fail pulse */
+    .ph-fail-box {
+      margin-top: 10px; padding: 8px 10px;
+      background: var(--red-dim); border-left: 2px solid var(--red);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .ph-build-fail {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      color: var(--red); letter-spacing: 0.05em;
+      animation: phFailPulse 2s ease-in-out infinite;
+    }
+    @keyframes phFailPulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
+    .ph-live-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--green);
+      margin-right: 6px;
+      animation: phLivePulse 1.8s ease-in-out infinite;
+    }
+    @keyframes phLivePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    /* Updated stats row */
+    .ph-stats {
+      display: flex; gap: 0;
+      background: var(--border-dim);
+      border: 0.5px solid var(--border-dim);
+      border-radius: var(--radius-lg); overflow: hidden;
+      margin-top: 32px;
+      width: 100%; max-width: 920px;
+      margin-left: auto; margin-right: auto;
+    }
+    .ph-stat {
+      flex: 1; background: var(--bg-surface);
+      padding: 20px 16px; text-align: center;
+    }
+    .ph-stat + .ph-stat { margin-left: 1px; }
+    .ph-stat-val {
+      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600;
+      color: var(--text-primary); line-height: 1; margin-bottom: 5px;
+    }
+    :root .ph-stat-val { color: var(--text-primary); }
+    [data-theme="dark"] .ph-stat-val { color: var(--cyan); }
+    .ph-stat-lbl { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.4; }
+    /* Eyebrow */
+    .ph-eyebrow {
+      font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-cyan);
+      text-align: center; margin-bottom: 16px;
+    }
+    :root .ph-eyebrow { color: var(--green); }
+    /* Pipeline hero responsive */
+    .ph-pipeline-wrap {
+      max-width: 920px; margin: 0 auto; padding: 0;
+    }
+    .ph-hero-inner {
+      padding: 0 0 40px;
+      background: var(--bg-deep);
+    }
+    @media (max-width: 860px) {
+      .ph-pipeline { flex-direction: column; gap: 6px; }
+      .ph-conn { transform: rotate(90deg); flex: 0 0 24px; margin: 0; }
+      .ph-box  { max-width: 100%; flex-direction: row; padding: 12px 16px; gap: 12px; }
+      .ph-ba   { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .ph-stats { flex-wrap: wrap; }
+      .ph-stat  { flex: 1 1 calc(50% - 1px); }
+    }
+</style>
   <!-- build: 2026-03-22 22:02:23 -->
 </head>
 <body>
@@ -913,86 +1129,221 @@ em.accent { font-style: italic; color: var(--text-secondary); }
   </div>
 
   <!-- ── Hero ── -->
-  <section class="hero">
+  <section class="pipeline-hero">
     <div class="container">
-      <div class="hero-grid">
+      <div class="ph-hero-inner">
 
-        <div>
-          <div class="urgency-pill">
-            <span class="urgency-dot"></span>EU AI Act enforcement: live now &amp; escalating through 2027
+        <div class="ph-eyebrow">Seirios CASE 2.0</div>
+
+        <h1 class="headline">Build AI that can't<br/>be built wrong.</h1>
+
+        <p class="subhead">
+          A model-driven development platform for regulated AI —
+          compliance requirements defined once, controls generated automatically,
+          enforced at build time, and proved on every release.
+        </p>
+
+        <!-- Pipeline -->
+        <div class="ph-pipeline">
+
+          <div class="ph-stage ph-s1">
+            <div class="ph-box">
+              <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#6470cc" stroke-width="1.2" fill="rgba(100,112,204,0.15)" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ph-step">Step 1</div>
+              <div class="ph-title">Define risks</div>
+              <div class="ph-actor">DPO / Architect</div>
+              <div class="ph-out">Mathematically verified</div>
+            </div>
           </div>
-          <p style="font-family:var(--font-mono);font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff;margin-bottom:14px;">Seirios. AI you can prove.</p>
-          <h1 class="display-xl">
-            Your AI is compliant.<br/><em>Prove it.</em>
-          </h1>
-          <p class="hero-sub">
-            Seirios CASE 2.0 is the compliance infrastructure layer for AI. From formally-verified risk models to CI-enforced controls — every claim is mathematically proven, every check is automated, every audit trail is permanent.
-          </p>
-          <div class="hero-actions">
-            <a href="#request-demo" class="btn btn-primary btn-lg">Request Live Demo →</a>
-            <a href="for-ciso.html" class="btn btn-outline btn-lg">For CISOs &amp; DPOs</a>
+
+          <div class="ph-conn">
+            <div class="ph-conn-line">
+              <div class="ph-particle" style="background:var(--cyan);"></div>
+              <div class="ph-particle" style="background:var(--cyan);"></div>
+              <div class="ph-particle" style="background:var(--cyan);"></div>
+            </div>
+            <div class="ph-conn-arrow"></div>
+          </div>
+
+          <div class="ph-stage ph-s2">
+            <div class="ph-box">
+              <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.2" fill="rgba(0,168,204,0.10)" style="color:var(--cyan)"/>
+                  <path d="M7 9L9 11L13 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan)"/>
+                </svg>
+              </div>
+              <div class="ph-step">Step 2</div>
+              <div class="ph-title">Generate controls</div>
+              <div class="ph-actor">Automated</div>
+              <div class="ph-out">Zero hand-written compliance code</div>
+            </div>
+          </div>
+
+          <div class="ph-conn">
+            <div class="ph-conn-line">
+              <div class="ph-particle" style="background:var(--cyan); animation-delay:0.3s"></div>
+              <div class="ph-particle" style="background:var(--cyan); animation-delay:1.1s"></div>
+              <div class="ph-particle" style="background:var(--cyan); animation-delay:1.9s"></div>
+            </div>
+            <div class="ph-conn-arrow"></div>
+          </div>
+
+          <div class="ph-stage ph-s3">
+            <div class="ph-box">
+              <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="4" y="3" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.2" fill="rgba(186,117,23,0.10)" style="color:var(--amber)"/>
+                  <path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" style="color:var(--amber)"/>
+                </svg>
+              </div>
+              <div class="ph-step">Step 3</div>
+              <div class="ph-title">Guide developers</div>
+              <div class="ph-actor">Developer</div>
+              <div class="ph-out">Build fails if missed</div>
+            </div>
+          </div>
+
+          <div class="ph-conn">
+            <div class="ph-conn-line">
+              <div class="ph-particle" style="background:var(--amber); animation-delay:0.6s"></div>
+              <div class="ph-particle" style="background:var(--amber); animation-delay:1.4s"></div>
+              <div class="ph-particle" style="background:var(--amber); animation-delay:2.2s"></div>
+            </div>
+            <div class="ph-conn-arrow"></div>
+          </div>
+
+          <div class="ph-stage ph-s4">
+            <div class="ph-box">
+              <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.2" fill="rgba(15,110,86,0.10)" style="color:var(--green)"/>
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)"/>
+                </svg>
+              </div>
+              <div class="ph-step">Step 4</div>
+              <div class="ph-title">Prove it continuously</div>
+              <div class="ph-actor">Every release</div>
+              <div class="ph-out">Bypasses caught &amp; blocked</div>
+            </div>
+          </div>
+
+          <div class="ph-conn">
+            <div class="ph-conn-line">
+              <div class="ph-particle" style="background:var(--green); animation-delay:0.9s"></div>
+              <div class="ph-particle" style="background:var(--green); animation-delay:1.7s"></div>
+              <div class="ph-particle" style="background:var(--green); animation-delay:2.5s"></div>
+            </div>
+            <div class="ph-conn-arrow"></div>
+          </div>
+
+          <div class="ph-stage ph-s5">
+            <div class="ph-box">
+              <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M10 2L17 6v6c0 3.5-3 6-7 7-4-1-7-3.5-7-7V6l7-4z" stroke="currentColor" stroke-width="1.2" fill="rgba(15,110,86,0.08)" stroke-linejoin="round" style="color:var(--green)"/>
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)"/>
+                </svg>
+              </div>
+              <div class="ph-step">Output</div>
+              <div class="ph-title">Regulator-ready evidence</div>
+              <div class="ph-actor">Board / Regulator</div>
+              <div class="ph-out">Immutable audit trail</div>
+            </div>
           </div>
 
         </div>
+        <!-- /pipeline -->
 
-        <!-- Terminal — outcome language, no implementation detail -->
-        <div class="hero-terminal" style="animation: fadeInUp 0.7s ease 0.15s both;">
-          <div class="terminal">
-            <div class="terminal-bar">
-              <div class="terminal-dot dot-red"></div>
-              <div class="terminal-dot dot-yellow"></div>
-              <div class="terminal-dot dot-green"></div>
-              <span class="terminal-title">seirios · compliance-agent · ai-lending-service</span>
+        <!-- Before / After -->
+        <div class="ph-ba">
+
+          <!-- Without Seirios -->
+          <div class="ph-card">
+            <div class="ph-card-bar" style="background:var(--red-dim);">
+              <div class="ph-card-dot" style="background:var(--red);"></div>
+              <div class="ph-card-dot" style="background:var(--red); opacity:0.4;"></div>
+              <div class="ph-card-dot" style="background:var(--red); opacity:0.2;"></div>
+              <span class="ph-card-title" style="color:var(--red); margin-left:4px;">Without Seirios</span>
             </div>
-            <div class="terminal-body">
-              <div class="t-dim">Running compliance verification pipeline...</div>
-              <br/>
-              <div class="t-cmd">Step 1 — Formal risk model verification</div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">Risk definitions complete and consistent</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">All HIGH-risk items have documented mitigations</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-info">Design-time proof generated · PASS</span></div>
-              <br/>
-              <div class="t-cmd">Step 2 — Code controls verification</div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">Auto-generated controls present in codebase</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">Build rejects non-compliant deployments</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-info">Implementation proof generated · PASS</span></div>
-              <br/>
-              <div class="t-cmd">Step 3 — Developer guidance check</div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-pass">✓</span> <span class="t-dim">IDE agent active — all developers guided</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-info">Developer proof generated · PASS</span></div>
-              <br/>
-              <div class="t-cmd">Step 4 — Continuous compliance testing</div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-warn">⚠ Compliance gap detected on code path</span></div>
-              <div style="padding-left:14px; margin:2px 0;"><span class="t-fail">✗ Release blocked — HIGH-RISK rule not covered</span></div>
-              <br/>
-              <div style="background:rgba(192,57,43,0.07); border:0.5px solid rgba(192,57,43,0.18); border-radius:4px; padding:9px 13px;">
-                <span class="t-fail" style="font-weight:700;">✗ BUILD FAILED — merge blocked</span><br/>
-                <span class="t-dim" style="font-size:0.73rem;">Compliance report generated · On-chain audit log updated</span>
+            <div class="ph-card-body">
+              <div class="ph-check">
+                <i class="ph-xi">✗</i>
+                <span><strong>Compliance lives in documents.</strong> Risk registers and audit reports outdated the moment they're written.</span>
+              </div>
+              <div class="ph-check">
+                <i class="ph-xi">✗</i>
+                <span><strong>Controls are hand-written.</strong> Every developer implements them differently. Some code paths skip them entirely.</span>
+              </div>
+              <div class="ph-check">
+                <i class="ph-xi">✗</i>
+                <span><strong>Non-compliance discovered after the fact.</strong> After a breach, an audit failure, or a regulator inquiry.</span>
+              </div>
+              <div class="ph-fail-box">
+                <span class="ph-build-fail">Nothing to show a regulator.</span>
               </div>
             </div>
           </div>
-          <p style="font-size:0.71rem; color:var(--text-muted); text-align:center; margin-top:10px; font-family:var(--font-mono);">
-            Live demo available · <a href="#request-demo" style="color:var(--cyan); text-decoration:none;">request access →</a>
-          </p>
+
+          <!-- With Seirios -->
+          <div class="ph-card" style="border-color:var(--border-accent);">
+            <div class="ph-card-bar" style="background:var(--green-dim);">
+              <div class="ph-card-dot" style="background:var(--green);"></div>
+              <div class="ph-card-dot" style="background:var(--green);"></div>
+              <div class="ph-card-dot" style="background:var(--green);"></div>
+              <span class="ph-card-title" style="color:var(--green); margin-left:4px;"><span class="ph-live-dot"></span>With Seirios</span>
+            </div>
+            <div class="ph-card-body">
+              <div class="ph-check">
+                <i class="ph-tick">✓</i>
+                <span><strong>Compliance built into the code.</strong> Controls generated automatically. Zero hand-written compliance logic.</span>
+              </div>
+              <div class="ph-check">
+                <i class="ph-tick">✓</i>
+                <span><strong>Non-compliance blocked before it ships.</strong> Any release that violates a control is rejected at build time.</span>
+              </div>
+              <div class="ph-check">
+                <i class="ph-tick">✓</i>
+                <span><strong>Evidence generated on every release.</strong> Design proof, implementation proof, continuous verification proof.</span>
+              </div>
+              <div class="ph-ev">
+                <div class="ph-ev-label">Evidence package · AcmeBank AI Lending</div>
+                <div class="ph-ev-row"><span class="ph-ev-k">Risk model verified</span><span class="ph-ev-v ph-ev-pass">Complete ✓</span></div>
+                <div class="ph-ev-row"><span class="ph-ev-k">Controls enforced</span><span class="ph-ev-v ph-ev-pass">All checks pass ✓</span></div>
+                <div class="ph-ev-row"><span class="ph-ev-k">Bypasses detected</span><span class="ph-ev-v ph-ev-pass">None found ✓</span></div>
+                <div class="ph-ev-row"><span class="ph-ev-k">Audit trail</span><span class="ph-ev-v ph-ev-hash">Immutable · on-chain</span></div>
+                <div class="ph-ev-row"><span class="ph-ev-k">Regulation</span><span class="ph-ev-v ph-ev-reg">EU AI Act · GDPR</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /before-after -->
+
+        <!-- Stats -->
+        <div class="ph-stats">
+          <div class="ph-stat"><div class="ph-stat-val">€35M</div><div class="ph-stat-lbl">Max EU AI Act fine</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">80%</div><div class="ph-stat-lbl">AI models non-compliant</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">Aug 2026</div><div class="ph-stat-lbl">HIGH-risk enforcement deadline</div></div>
+          <div class="ph-stat"><div class="ph-stat-val">Zero</div><div class="ph-stat-lbl">Competitors with our approach</div></div>
+        </div>
+
+        <!-- CTA row -->
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; padding:32px 0 0;">
+          <a href="#request-demo" class="btn btn-primary btn-lg">Request Live Demo →</a>
+          <a href="pages/ai-agent-security.html" class="btn btn-outline btn-lg">AI Agent Security</a>
+          <a href="for-ciso.html" class="btn btn-ghost btn-lg">For CISOs &amp; DPOs</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ── Stats ── -->
-  <section class="section-sm" style="padding-top:32px; position:relative; z-index:1;">
-    <div class="container">
-      <div class="stat-grid">
-        <div class="stat-item"><div class="stat-value">Now</div><div class="stat-label">Enforcement powers active</div></div>
-        <div class="stat-item"><div class="stat-value">€35M</div><div class="stat-label">Max fine per violation</div></div>
-        <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Regulation profiles supported</div></div>
-        <div class="stat-item"><div class="stat-value">Zero</div><div class="stat-label">Competitors with our approach</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── What it is ── -->
+<!-- ── What it is ── -->
   <section class="section" id="platform" style="background: var(--bg-deep);">
     <div class="container">
       <div class="section-label">What is it — in plain language</div>
